@@ -1,0 +1,46 @@
+<template name='login'>
+  <div class="login-background">
+    <div class="container">
+      <div class="row">
+        <div class="col offset-m1 offset-l1 s12 m10 l10">
+          <div class="card login-card">
+            <div class="card-content">
+              <h2>Login</h2>
+              {{#if currentUser}}
+                <h2>Logged in as {{currentUser.username}}</h2>
+              <p><button id="logout">Log Out</button></p>
+              {{else}}
+                {{#if logginIn}}
+                <p>Logging in...</p>
+                {{else}}
+                  {{#if creatingAccount}} 
+                    {{> newAccountForm}}
+                  {{else}}
+                    {{> loginForm}}
+                  {{/if}}
+                {{/if}}
+              {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
+<template name='newAccountForm'>
+  <input type="text" name="" value="" id="email" placeholder="email" />
+  <input type="text" name="" value="" id="name" placeholder="name" />
+  <input type="text" name="" value="" id="username" placeholder="username" />
+  <input type="password" name="" value="" id="password" placeholder="password" />
+  <button class="btn" id="createAccount">Create Account</button>
+  <button class="btn" id="loginForm">Login</button>
+</template>
+
+<template name='loginForm'>
+  <input type="text" name="" value="" id="username" placeholder="username">
+  <input type="password" name="" value="" id="password" placeholder="password">
+  <button class="btn" name="" id="login">Log In</button>
+  <button class="btn" id="accountForm">Create Account</button>
+</template>

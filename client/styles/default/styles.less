@@ -213,6 +213,17 @@ background-color: lighten(@icarus-red, 10%);
   position: relative;
 }
 
+.login-background {
+  height: 50rem;
+  width: 100%;
+  background: url(/background/tropics.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
 footer {
   p {
     color: lighten(black, 50%);
@@ -254,4 +265,25 @@ footer {
   color: lighten(@icarus-grey, 20%);
   margin: 0;
   text-align: center;
+}
+
+.login-button {
+  background-color: lighten(@icarus-red, 10%);
+  border-radius: 50%;
+
+}
+
+.login-card {
+  margin-top: 15%;
+  h2 {
+    text-align: center;
+  }
+}
+
+.btn {
+  background-color: @icarus-red;
+}
+
+.btn:hover {
+  background-color: lighten(@icarus-red, 10%);
 }
