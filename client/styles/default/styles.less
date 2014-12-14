@@ -1,3 +1,5 @@
+// @import url(http://fonts.googleapis.com/css?family=Cinzel:400,700);
+
 @icarus-red: #D1122B;
 @icarus-grey: #797979;
 
@@ -20,9 +22,9 @@
 }
 
 /* Navbar hover over color */
-/* nav ul li:hover, nav ul li.active {
-background-color: #ea454b;
-} */
+nav ul li:hover, nav ul li.active {
+background-color: lighten(@icarus-red, 10%);
+}
 
 /* Radio buttons color */
 /* [type="radio"]:checked + label:after {
@@ -53,6 +55,12 @@ background-color: #ea454b;
   background-color: white;
 }
 
+.home-statistics-red {
+  height: 20rem;
+  width: 100%;
+  background-color: @icarus-red;
+}
+
 .verbose-intro {
   height: 50rem;
   width: 100%;
@@ -68,4 +76,83 @@ background-color: #ea454b;
   height: 0.5rem;
   width: 100%;
   background-color: @icarus-red;
+}
+
+.grey-break {
+  height: 0.5rem;
+  width: 100%;
+  background-color: @icarus-grey;
+}
+
+.white-break {
+  height: 0.5rem;
+  width: 100%;
+  background-color: white;
+}
+
+.navbar-logo {
+  background-color: white;
+  border-radius: 10px;
+  padding: 0.25rem;
+}
+
+.card {
+  background-color: rgba(256, 256, 256, 0.8);
+  p {
+    color: lighten(black, 20%);
+    font-size: 1em;
+  }
+  h2 {
+    color: @icarus-red;
+    font-size: 2em;
+  }
+  a {
+    color: @icarus-red;
+    text-decoration: underline;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.intro-card {
+  margin-top: 50%;
+}
+
+.res-com-rental {
+
+}
+
+.card-image {
+  i {
+    margin-top: 10%;
+    margin-left: 25%;
+    font-size: 8em;
+    color: @icarus-red;
+  }
+}
+
+.for-rent-svg {
+  max-width: 70%;
+  max-height: 150px;
+  margin-left: 10%;
+}
+
+
+.third-intro-image {
+  height: 50rem;
+  width: 100%;
+  background: url(/background/ny-filtered.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+footer {
+  p {
+    color: lighten(black, 50%);
+    text-align: right;
+    margin-right: 10%;
+  }
 }

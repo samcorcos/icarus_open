@@ -1,21 +1,128 @@
 <template name="home">
-	<div class="introduction row">
+	{{> firstPane}}
+	<div class="red-break"></div>
+		<div class="row home-statistics">
+			<h1>This is the part where we put in the d3 stats</h1>
+		</div>
+	<div class="red-break"></div>
+		{{> secondPane}}
+	<div class="white-break"></div>
+		<div class="row home-statistics-red">
+			<h1>This is where we put more stats</h1>
+		</div>
+	<div class="white-break"></div>
+		{{> thirdPane}}
+	<footer>
+		<p>
+			© Icarus Investment Group LLC, 2014. All rights reserved.
+		</p>
+	</footer>
+</template>
+
+
+<template name='firstPane'>
+	<div class="introduction">
 		<div class="container">
 			<div class="row">
-				<div class="col">
-					<h2 class="lead">
-						Home page
-					</h2>
+				<div class="col offset-m3 offset-l3 s12 m6 l6">
+					<div class="card intro-card">
+						<div class="card-content">
+							<h2>Card Title</h2>
+							<p>I am a very simple card. I am good at containing small bits of information.
+								I am convenient because I require little markup to use effectively.</p>
+						</div>
+						<div class="row">
+							<a class="col m6 l6" href="#">This is a link</a>
+							<a class="col m6 l6" href='#'>This is a link</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="red-break"></div>
-	<div class="row home-statistics">
-		<h1>This is the part where we put in the d3 stats</h1>
-	</div>
-	<div class="red-break"></div>
-	<div class="row verbose-intro">
+</template>
+
+
+
+<template name='secondPane'>
+	<div class="verbose-intro">
+		<div class="container">
+			<div class="row">
+				<div class="col s12 m4 l4">
+					<div class="card res-com-rental">
+						<div class="card-image">
+							<i class="fa fa-home"></i>
+						</div>
+						<div class="card-content">
+							<h2>Residential</h2>
+							<p>Icarus Investment Group is a one stop shop for investors. Our specialty is buying distressed condos in short sales, auctions, and foreclosures. We fix the unit up, get it rented, and manage the property.</p>
+							</div>
+							<div class="row">
+								<a class="col m6 l6" href="#">This is a link</a>
+								<a class="col m6 l6" href='#'>This is a link</a>
+							</div>
+						</div>
+					</div>
+					<div class="col s12 m4 l4">
+						<div class="card res-com-rental">
+							<div class="card-image">
+								<i class="fa fa-building"></i>
+							</div>
+							<div class="card-content">
+								<h2>Commercial</h2>
+								<p>Icarus Investment Group also purchases commercial real estate, such as apartment buildings.</p>
+							</div>
+							<div class="row">
+								<a class="col m6 l6" href="#">This is a link</a>
+								<a class="col m6 l6" href='#'>This is a link</a>
+							</div>
+						</div>
+					</div>
+					<div class="col s12 m4 l4">
+						<div class="card res-com-rental">
+							<div class="card-image">
+								{{> forRent}}
+							</div>
+							<div class="card-content">
+								<h2>Rental</h2>
+								<p>Icarus Investment Group specializes in buying rental properties that produce a positive cashflow above 10% and targets markets that have low costs to buy, but high rental costs.</p>
+							</div>
+							<div class="row">
+								<a class="col m6 l6" href="#">This is a link</a>
+								<a class="col m6 l6" href='#'>This is a link</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</template>
+
+
+<template name='thirdPane'>
+	<div class="third-intro-image">
 
 	</div>
+</template>
+
+
+<template name='forRent'>
+	<svg class="for-rent-svg" width="1165px" height="1144px" viewBox="0 0 1165 1144" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+		<!-- Generator: Sketch 3.2.1 (9977) - http://www.bohemiancoding.com/sketch -->
+		<title>for_rent</title>
+		<desc>Created with Sketch.</desc>
+		<defs></defs>
+		<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+			<rect id="Rectangle-1" stroke="#979797" fill="#FFFFFF" sketch:type="MSShapeGroup" x="1" y="275" width="1163" height="868"></rect>
+			<rect id="Rectangle-2" stroke="#979797" fill="#D1122B" sketch:type="MSShapeGroup" x="32" y="301" width="1111" height="816"></rect>
+			<rect id="Rectangle-3" stroke="#979797" fill="#FFFFFF" sketch:type="MSShapeGroup" x="59" y="329" width="1057" height="761"></rect>
+			<rect id="Rectangle-4" stroke="#979797" fill="#D1122B" sketch:type="MSShapeGroup" x="88" y="360" width="1000" height="700"></rect>
+			<text id="FOR" sketch:type="MSTextLayer" font-family="Arial" font-size="350" font-weight="bold" fill="#FFFFFF">
+				<tspan x="218" y="677">FOR</tspan>
+			</text>
+			<text id="RENT" sketch:type="MSTextLayer" font-family="Arial" font-size="350" font-weight="bold" fill="#FFFFFF">
+				<tspan x="111" y="975">RENT</tspan>
+			</text>
+		</g>
+	</svg>
 </template>

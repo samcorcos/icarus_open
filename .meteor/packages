@@ -12,4 +12,9 @@ matb33:collection-hooks
 d0minikk:materialize-meteor
 sacha:spin
 less
+d3
+accounts-base
+accounts-password
+accounts-ui
+fortawesome:fontawesome
 
