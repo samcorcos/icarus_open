@@ -24,4 +24,5 @@ Router.map(function () {
 	this.route("calculator", {path: "/calculator", controller: "CalculatorController"});
 	this.route("contact", {path: "/contact", controller: "ContactController"});
 	this.route("login", {path: "/login", controller: "LoginController"});
+	this.route("properties", {path: "/properties", controller: "PropertiesController"});
 });

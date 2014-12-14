@@ -9,9 +9,6 @@ createMap = function() {
     width: width
   })
 
-  svg.append("rect")
-    .attr("width", 100)
-    .attr("height", 200)
-    .attr("fill", "orange")
+
 
 }
