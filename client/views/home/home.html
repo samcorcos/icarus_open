@@ -1,16 +1,31 @@
 <template name="home">
 	{{> firstPane}}
-	<div class="red-break"></div>
-		<div class="row home-statistics">
-			<h1>This is the part where we put in the d3 stats</h1>
-		</div>
-	<div class="red-break"></div>
-		{{> secondPane}}
 	<div class="white-break"></div>
 		<div class="row home-statistics-red">
-			<h1>This is where we put more stats</h1>
+			<div class="container">
+				<div class="row">
+					<div class="col s6 m3 l3">
+						<p class="stats-over-red">12.4%</p>
+						<p class="stats-over-red-subtitle">Average investor return</p>
+					</div>
+					<div class="col s6 m3 l3">
+						<p class="stats-over-red">7.8%</p>
+						<p class="stats-over-red-subtitle">Average lender return</p>
+					</div>
+					<div class="col s12 m6 l6">
+						<p class="stats-over-red-large">${{investedCapital}}</p>
+						<p class="stats-over-red-subtitle">Total returns to investors</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	<div class="white-break"></div>
+		{{> secondPane}}
+	<div class="red-break"></div>
+		<div class="row home-statistics">
+			<h1>This is where we put more stats</h1>
+		</div>
+	<div class="red-break"></div>
 		{{> thirdPane}}
 </template>
 
