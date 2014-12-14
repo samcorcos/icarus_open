@@ -21,4 +21,5 @@ if(Meteor.isClient) {
 Router.map(function () {
 	this.route("home", {path: "/", controller: "HomeController"});
 	this.route("about", {path: "/about", controller: "AboutController"});
+	this.route("calculator", {path: "/calculator", controller: "CalculatorController"});
 });

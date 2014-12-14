@@ -24,3 +24,7 @@ To Do
 
 1. Create a page that updates and scales like this page: http://zerotoonebook.com/
 2. Parallax for background images
+
+##Calculator
+
+1. Create an investment calculator that will calculate CAP rate

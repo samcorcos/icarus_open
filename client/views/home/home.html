@@ -27,9 +27,8 @@
 				<div class="col offset-m3 offset-l3 s12 m6 l6">
 					<div class="card intro-card">
 						<div class="card-content">
-							<h2>Card Title</h2>
-							<p>I am a very simple card. I am good at containing small bits of information.
-								I am convenient because I require little markup to use effectively.</p>
+							<h2>Building Passive Income</h2>
+							<p>Icarus Investment Group, LLC explores many different ways of building passive income for people, mainly through real estate investment cash flow positive properties that yield better than a 10% cash on cash return to investors.</p>
 						</div>
 						<div class="row">
 							<a class="col m6 l6" href="#">This is a link</a>
@@ -64,7 +63,7 @@
 						</div>
 					</div>
 					<div class="col s12 m4 l4">
-						<div class="card res-com-rental">
+						<div class="card commercial-card res-com-rental">
 							<div class="card-image">
 								<i class="fa fa-building"></i>
 							</div>
@@ -78,7 +77,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col s12 m4 l4">
+					<div class="col s12 m4 l4 ">
 						<div class="card res-com-rental">
 							<div class="card-image">
 								{{> forRent}}
@@ -101,7 +100,7 @@
 
 <template name='thirdPane'>
 	<div class="third-intro-image">
-
+		{{> introductionMap}}
 	</div>
 </template>
 
@@ -125,4 +124,9 @@
 			</text>
 		</g>
 	</svg>
+</template>
+
+
+<template name='introductionMap'>
+	<h1>This is going to be a D3 map that shows circles relative to the number of investments in an area</h1>
 </template>
