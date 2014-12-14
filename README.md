@@ -1,6 +1,9 @@
 #Icarus Investment Group
 
-##To Do
+To Do
+============
+
+##For investors
 
 1. Create users for each investor
 2. Make it possible for users to see the properties they've invested in
@@ -16,3 +19,8 @@
 4. Give the admin the ability to see stats on all other users
 5. Admin must be able to add properties to other users accounts
 6. Must be able to update user data (ROI, etc)
+
+###Homepage
+
+1. Create a page that updates and scales like this page: http://zerotoonebook.com/
+2. Parallax for background images
