@@ -1,5 +1,6 @@
 Template.home.rendered = function() {
   Session.set("investedCapital", 812344);
+  createMap();
 };
 
 Number.prototype.formatMoney = function(c, d, t){
