@@ -49,14 +49,14 @@ createPropertiesMap = function() {
 
 
     ///Populating stateHeat for use in heatmap below
-    // var stateHeat={};
-    // var paths = d3.selectAll('path')[0];
-    // paths.forEach(function(path){
-    //   //Getting state abbreviation out of DOM
-    //   var classString = path.className.animVal;
-    //   var state = classString.slice(classString.length-2)
-    //   stateHeat[state]=0;
-    // })
+    var location = {};
+    var paths = d3.selectAll('path')[0];
+    paths.forEach(function(path){
+      //Getting state abbreviation out of DOM
+      var classString = path.className.animVal;
+      var state = classString.slice(classString.length-2)
+      location[state]=0;
+    })
 
     //////Added dot in the middle of the state
     /////////////Working with Bubbles
@@ -65,8 +65,8 @@ createPropertiesMap = function() {
       .selectAll("circle")
       .data(topojson.feature(us, us.objects.subunits).features) // this is probably where the error is
       .enter().append("circle")
-      .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-      .attr("r", 1.5);
+        .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+        .attr("r", 1.5);
 
 
     var radius = d3.scale.sqrt()
@@ -74,10 +74,32 @@ createPropertiesMap = function() {
       .range([0, 15]);
 
 
-    d3.json("locations.json", function(error, us) {
+    d3.json("locations.json", function(error, location) {
       if (error) return console.error(error);
 
     })
+
+
+    // /////////////////////////
+    // /////Bringing in other json
+    // d3.json("data.json",function(error,datum){
+    //   //Datum.nodes is an array of people with keys
+    //   //name, occupation, location, gender, marital_status
+    //   var people = datum.nodes
+    //
+    //   people.forEach(function(person){
+    //     var state =person.location;
+    //     var thisState = d3.select('path[class*='+state+']')
+    //     stateHeat[state]+=1;
+    //   });
+    //
+    //
+    //   svg.selectAll(".subunit")
+    //   .style('fill',function(d){
+    //     var abbrev = d.id.split('-').pop();
+    //
+    //     return color(stateHeat[abbrev])
+    //   })
 
     // svg.append("g")
     //     .attr("class", "bubble")

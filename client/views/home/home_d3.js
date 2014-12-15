@@ -4,7 +4,7 @@ createHomepageMap = function() {
   var height = 600,
       width = 1000;
 
-
+  var color = d3.scale.category10();
 
   var projection = d3.geo.albersUsa()
     .scale(1000)
@@ -49,14 +49,14 @@ createHomepageMap = function() {
 
 
     ///Populating stateHeat for use in heatmap below
-    // var stateHeat={};
-    // var paths = d3.selectAll('path')[0];
-    // paths.forEach(function(path){
-    //   //Getting state abbreviation out of DOM
-    //   var classString = path.className.animVal;
-    //   var state = classString.slice(classString.length-2)
-    //   stateHeat[state]=0;
-    // })
+    var locationConcentration = {};
+    var paths = d3.selectAll('path')[0];
+    paths.forEach(function(path){
+      //Getting state abbreviation out of DOM
+      var classString = path.className.animVal;
+      var state = classString.slice(classString.length-2)
+      locationConcentration[state] = 0;
+    })
 
     //////Added dot in the middle of the state
     /////////////Working with Bubbles
@@ -74,8 +74,21 @@ createHomepageMap = function() {
       .range([0, 15]);
 
 
-      d3.json("locations.json", function(error, us) {
+      d3.json("locations.json", function(error, data) {
         if (error) return console.error(error);
+        var locations = data.locations;
+
+        locations.forEach(function(location){
+          var state = location.state;
+          var thisState = d3.select('path[class*='+state+']');
+          locationConcentration[state] += 1;
+        })
+
+        svg.selectAll(".subunit")
+          .style("fill", function(d) {
+            var abbrev = d.id.split('-').pop();
+            return color(locationConcentration[abbrev])
+          })
 
       })
 
@@ -87,9 +100,32 @@ createHomepageMap = function() {
     //   .enter().append("circle")
     //     .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
     //     .attr("r", function(d) { return radius(d.properties.population); });
-
-
     ////////End Bubbles///////
+
+
+
+    // /////////////////////////
+    // /////Bringing in other json
+    //
+    //   svg.selectAll(".subunit") --
+    //   .style('fill',function(d){
+    //     var abbrev = d.id.split('-').pop();
+    //
+    //     return color(stateHeat[abbrev])
+    //   })
+
+    // svg.append("g")
+    //     .attr("class", "bubble")
+    //   .selectAll("circle")
+    //     .data(topojson.feature(us, us.objects.subunits).features
+    //       .sort(function(a, b) { return b.properties.population - a.properties.population; }))
+    //   .enter().append("circle")
+    //     .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+    //     .attr("r", function(d) { return radius(d.properties.population); });
+
+//////////////End other json
+
+
 
 
 
