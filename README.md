@@ -5,10 +5,10 @@ To Do
 
 ##For investors
 
-1. Create users for each investor
-2. Make it possible for users to see the properties they've invested in
+1. ~~Create users for each investor~~
+2. ~~Make it possible for users to see the properties they've invested in~~
 3. Show the properties on a map using the Google Maps API
-4. Show the purchase price, rehab cost
+4. ~~Show the purchase price, rehab cost~~
 5. Show the return on investment using D3 visualizations
 
 ##For admin
@@ -22,7 +22,7 @@ To Do
 
 ###Homepage
 
-1. Create a page that updates and scales like this page: http://zerotoonebook.com/
+1. ~~Create a page that updates and scales like this page: http://zerotoonebook.com/~~
 2. Parallax for background images
 
 ##Calculator
