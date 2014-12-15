@@ -176,7 +176,10 @@ background-color: lighten(@icarus-red, 10%);
 }
 
 .res-com-rental {
-  height: 30rem;
+  min-height: 32rem;
+  h2 {
+    text-align: center;
+  }
 }
 
 .calculator-card {
@@ -184,11 +187,20 @@ background-color: lighten(@icarus-red, 10%);
 }
 
 .card-image {
+  span {
+    text-align: center;
+  }
   i {
-    margin-top: 10%;
-    margin-left: 25%;
-    font-size: 8em;
+    position: relative;
+    font-size: 10em;
     color: @icarus-red;
+    margin: 2rem 2rem 0 2rem;
+  }
+  svg {
+    margin: 2rem 2rem 0 2rem;
+  }
+  p {
+    text-align: center;
   }
 }
 
