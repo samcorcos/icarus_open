@@ -341,11 +341,32 @@ footer {
   margin: 0 auto;
 }
 
-.add-property-hidden {
-  display: none;
+
+/* This is all the CSS for the add property transition */
+div.add-flex-div-show {
+  max-height: 500px;
+  transition: max-height 0.5s ease-in;
 }
 
+div.add-red-break-show {
+  height: 0.5rem;
+  transition: height 0.15s ease-in;
+}
 
+.flex-white-div-property {
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+  background-color: white;
+  overflow: hidden;
+}
+
+.red-break-property {
+  height: 0;
+  width: 100%;
+  background-color: @icarus-red;
+  transition: height 0.5s ease-out;
+}
+/* End add property transition */
 
 
 /* Styles for Map Visualization */

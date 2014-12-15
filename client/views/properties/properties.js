@@ -21,7 +21,8 @@ Template.propertyPanel2.helpers({
 
 Template.properties.events({
   'click #add-property-button': function(e,t) {
-    $(".add-property-hidden").removeClass("add-property-hidden")
+    $(".flex-white-div-property").toggleClass("add-flex-div-show")
+    $(".red-break-property").toggleClass("add-red-break-show")
   }
 });
 
