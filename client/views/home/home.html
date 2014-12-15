@@ -1,23 +1,28 @@
 <template name="home">
 	{{> firstPane}}
 	<div class="white-break"></div>
-		<div class="row home-statistics-red">
+		<div class="row flex-red-div">
+			<div class="three-rem-spacer"></div>
 			<div class="container">
 				<div class="row">
 					<div class="col s6 m3 l3">
-						<p class="stats-over-red">12.4%</p>
+						<p class="stats-over-red flow-text">12.4%</p>
+						<div class="one-rem-spacer"></div>
 						<p class="stats-over-red-subtitle">Average investor return</p>
 					</div>
 					<div class="col s6 m3 l3">
-						<p class="stats-over-red">7.8%</p>
+						<p class="stats-over-red flow-text">7.8%</p>
+						<div class="one-rem-spacer"></div>
 						<p class="stats-over-red-subtitle">Average lender return</p>
 					</div>
 					<div class="col s12 m6 l6">
-						<p class="stats-over-red-large">${{investedCapital}}</p>
+						<p class="stats-over-red-large flow-text">${{investedCapital}}</p>
+						<div class="one-rem-spacer"></div>
 						<p class="stats-over-red-subtitle">Total returns to investors</p>
 					</div>
 				</div>
 			</div>
+			<div class="two-rem-spacer"></div>
 		</div>
 	<div class="white-break"></div>
 		{{> secondPane}}
@@ -31,7 +36,7 @@
 
 
 <template name='firstPane'>
-	<div class="introduction">
+	<div class="homepage-background-one">
 		<div class="container">
 			<div class="row">
 				<div class="col offset-m3 offset-l3 s12 m6 l6">
@@ -54,9 +59,10 @@
 
 
 <template name='secondPane'>
-	<div class="verbose-intro">
+	<div class="homepage-background-two">
 		<div class="container">
 			<div class="row">
+				<div class="five-rem-spacer"></div>
 				<div class="col s12 m4 l4">
 					<div class="card res-com-rental">
 						<div class="card-image">
@@ -73,7 +79,7 @@
 						</div>
 					</div>
 					<div class="col s12 m4 l4">
-						<div class="card commercial-card res-com-rental">
+						<div class="card res-com-rental">
 							<div class="card-image">
 								<i class="fa fa-building"></i>
 							</div>
@@ -103,13 +109,14 @@
 						</div>
 					</div>
 				</div>
+				<div class="five-rem-spacer"></div>
 			</div>
 		</div>
 </template>
 
 
 <template name='thirdPane'>
-	<div class="third-intro-image">
+	<div class="homepage-background-one">
 		{{> introductionMap}}
 	</div>
 </template>

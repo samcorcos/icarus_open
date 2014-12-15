@@ -1,8 +1,8 @@
 <template name='properties'>
   <div class="properties-background">
-    <div class="properties-page-spacer"></div>
+    <div class="five-rem-spacer"></div>
     {{>propertyPanel2}}
-    <div class="properties-page-spacer"></div>
+    <div class="five-rem-spacer"></div>
   </div>
   <div class="red-break"></div>
   <div class="property-panel-two">
@@ -19,7 +19,7 @@
       <div class="col s12 m6 l6">
         <div class="card property-card">
           <div class="card-content">
-            <h2><a href="/properties/{{_id}}" style="text-decoration: none;">{{address}}</a></h2>
+            <h2><a href="{{pathFor 'singleProperty'}}" style="text-decoration: none;">{{address}}</a></h2>
             <p>Purchase Price: ${{purchasePrice}}</p>
           </div>
           <div class="row">

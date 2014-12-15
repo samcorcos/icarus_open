@@ -43,7 +43,7 @@ background-color: lighten(@icarus-red, 10%);
   background-size: cover;
 } */
 
-.introduction {
+.homepage-background-one {
   height: 100vh;
   width: 100%;
   background: url(/background/houses.jpg) no-repeat center center;
@@ -82,8 +82,8 @@ background-color: lighten(@icarus-red, 10%);
   background-color: white;
 }
 
-.home-statistics-red {
-  height: 20rem;
+.flex-red-div {
+  height: auto;
   width: 100%;
   background-color: @icarus-red;
 }
@@ -100,8 +100,8 @@ background-color: lighten(@icarus-red, 10%);
   background-color: white;
 }
 
-.verbose-intro {
-  height: 50rem;
+.homepage-background-two {
+  height: auto;
   width: 100%;
   background: url(/background/more_houses.jpeg) no-repeat center center;
   -webkit-background-size: cover;
@@ -111,7 +111,7 @@ background-color: lighten(@icarus-red, 10%);
   position: relative;
 }
 
-.about-background {
+.about-background, .single-property-background {
   height: 50rem;
   width: 100%;
   background: url(/background/new_york.jpg) no-repeat center center;
@@ -175,14 +175,11 @@ background-color: lighten(@icarus-red, 10%);
 
 .intro-card {
   margin-top: 50%;
+  margin-bottom: 50%;
 }
 
 .res-com-rental {
-  margin-top: 50%;
-}
-
-.commercial-card {
-  margin-top: 62%;
+  height: 30rem;
 }
 
 .calculator-card {
@@ -212,7 +209,7 @@ background-color: lighten(@icarus-red, 10%);
   margin-left: 10%;
 }
 
-.third-intro-image {
+.homepage-background-three {
   height: 50rem;
   width: 100%;
   background: url(/background/ny-filtered.jpg) no-repeat center center;
@@ -270,7 +267,6 @@ footer {
   color: white;
   font-size: 5em;
   margin: 0;
-  margin-top: 35%;
   text-align: center;
 }
 
@@ -279,7 +275,6 @@ footer {
   font-size: 5em;
   margin: 0;
   text-align: center;
-  margin-top: 16%;
 }
 
 .stats-over-red-subtitle {
@@ -325,6 +320,18 @@ footer {
 //   stroke-linecap: round;
 // }
 
-.properties-page-spacer {
+.one-rem-spacer {
+  height: 1rem;
+}
+.two-rem-spacer {
+  height: 2rem;
+}
+.three-rem-spacer {
+  height: 3rem;
+}
+.four-rem-spacer {
+  height: 4rem;
+}
+.five-rem-spacer {
   height: 5rem;
 }

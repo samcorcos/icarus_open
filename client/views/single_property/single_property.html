@@ -1,3 +1,42 @@
 <template name='singleProperty'>
-  <h1>{{address}}</h1>
+  <div class="single-property-background">
+    <div class="five-rem-spacer"></div>
+    <div class="container">
+      <div class="row">
+        {{> singlePropertyMap}}
+        {{> singlePropertyPictures}}
+      </div>
+    </div>
+  </div>
+  <div class="five-rem-spacer"></div>
+  <div class="red-break"></div>
+</template>
+
+<template name='singlePropertyMap'>
+  <div class="col offset-m1 offset-l1 s12 m10 l10">
+    <div class="card">
+      <div class="card-content">
+        <h2><a href="" style="text-decoration: none;">{{address}}</a></h2>
+        <p>This is where a google map is going to go</p>
+      </div>
+      <div class="row">
+        <a class="col m6 l6" href="#">This is a link</a>
+        <a class="col m6 l6" href='#'>This is a link</a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name='singlePropertyPictures'>
+  <div class="col offset-m1 offset-l1 s12 m10 l10">
+    <div class="card">
+      <div class="card-content">
+        <p>This is where the pictures go</p>
+      </div>
+      <div class="row">
+        <a class="col m6 l6" href="#">This is a link</a>
+        <a class="col m6 l6" href='#'>This is a link</a>
+      </div>
+    </div>
+  </div>
 </template>
