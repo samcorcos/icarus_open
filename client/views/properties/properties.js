@@ -28,7 +28,7 @@ Template.newPropertyForm.events({
   'click #submit-new-property': function(e,t) {
     //if it's only numbers, else, throw error.
     if (Number($("#purchase-price").val())) {
-      Properties.insert({ owner: $("#user-id").val(), address: $("#property-address").val(), price: Number($("#purchase-price").val()) });
+      Properties.insert({ owner: $("#user-id").val(), address: $("#property-address").val(), price: Number($("#purchase-price").val()), state: $(".add-property-state-dropdown").val()});
       $("#property-address").val("");
       $("#purchase-price").val("");
     }
@@ -39,7 +39,7 @@ Template.newPropertyForm.events({
 });
 
 Template.newPropertyForm.helpers({
-  
+
 });
 
 
