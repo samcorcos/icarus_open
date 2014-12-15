@@ -33,7 +33,7 @@ createHomepageMap = function() {
       .attr("class", function(d) { return "subunit " + d.id; })
       //added id in above line to use as selector: ex US-NY
       .attr("d", path)
-      .style('fill','#797979')
+      .style('fill','#aaa')
 
 
 
@@ -42,7 +42,7 @@ createHomepageMap = function() {
       .datum(topojson.feature(us, us.objects.subunits,function(a, b) { return a !== b; }))
       .attr('class','state-boundary')
       .attr("d", path)
-      // .attr('stroke','#FFF')
+      .attr('stroke','#FFF')
       .style('fill','none')
 
 
