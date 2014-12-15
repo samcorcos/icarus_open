@@ -1,7 +1,9 @@
 Template.properties.rendered = function() {
+
   createPropertiesMap();
   $('.modal-trigger').leanModal();
   $('.modal-close').leanModal();
+
   // $('.datepicker').pickadate();
 };
 
@@ -31,6 +33,7 @@ Template.newPropertyForm.events({
       Properties.insert({ owner: $("#user-id").val(), address: $("#property-address").val(), price: Number($("#purchase-price").val()), state: $(".add-property-state-dropdown").val()});
       $("#property-address").val("");
       $("#purchase-price").val("");
+      $(".add-property-state-dropdown").val("");
     }
     else {
       alert("Please enter only numbers for the purchase price.")

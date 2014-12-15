@@ -25,26 +25,26 @@ createPropertiesMap = function() {
     if (error) return console.error(error);
 
     svg.append("path")
-    .datum(topojson.feature(us, us.objects.subunits))
-    .attr("d", path);
+      .datum(topojson.feature(us, us.objects.subunits))
+      .attr("d", path);
 
     svg.selectAll(".subunit")
-    .data(topojson.feature(us, us.objects.subunits).features)
-    .enter().append("path")
-    .attr("class", function(d) { return "subunit " + d.id; })
-    //added id in above line to use as selector: ex US-NY
-    .attr("d", path)
-    .style('fill','#aaa')
+      .data(topojson.feature(us, us.objects.subunits).features)
+      .enter().append("path")
+        .attr("class", function(d) { return "subunit " + d.id; })
+        //added id in above line to use as selector: ex US-NY
+        .attr("d", path)
+        .style('fill','#aaa')
 
 
 
     /////////Gives state boundary line
     svg.insert('path','.graticule')
-    .datum(topojson.feature(us, us.objects.subunits,function(a, b) { return a !== b; }))
-    .attr('class','state-boundary')
-    .attr("d", path)
-    .attr('stroke','#FFF')
-    .style('fill','none')
+      .datum(topojson.feature(us, us.objects.subunits,function(a, b) { return a !== b; }))
+      .attr('class','state-boundary')
+      .attr("d", path)
+      .attr('stroke','#FFF')
+      .style('fill','none')
 
 
     ///Populating stateHeat for use in heatmap below
@@ -57,27 +57,23 @@ createPropertiesMap = function() {
       locationConcentration[state] = 0;
     })
 
+    var getMyProperties = function() {
+      var myProperties = [];
 
-
-    d3.json("locations.json", function(error, data) {
-      if (error) return console.error(error);
-      var locations = data.locations;
-
-      locations.forEach(function(location){
-        var state = location.state;
-        var thisState = d3.select('path[class*='+state+']');
-        locationConcentration[state] += 1;
+      var temp = Properties.find().fetch();
+      temp.forEach(function(x) {
+        myProperties.push(x["state"]);
       })
 
-      //////Added dot in the middle of the state
-      /////////////Working with Bubbles
-
-
+      myProperties.forEach(function(state){
+        var thisState = d3.select('path[class*='+state+']');
+        locationConcentration[state] += 1; 
+      })
 
       svg.append("g")
       .attr("class", "bubble")
       .selectAll("circle")
-      .data(topojson.feature(us, us.objects.subunits).features) // this is probably where the error is
+      .data(topojson.feature(us, us.objects.subunits).features)
       .enter().append("circle")
       .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
       .attr("r", function(d) {
@@ -87,14 +83,17 @@ createPropertiesMap = function() {
         }
 
         var radius = d3.scale.sqrt()
-        .range([d3.min(tempArray), d3.max(tempArray)]);
+        .range([d3.min(tempArray), d3.max(tempArray)*5]); //I'm arbitrarily making the circles bigger here
 
         var abbrev = d.id.split('-').pop();
 
         return radius(locationConcentration[abbrev]);
       });
 
-    })
+    }
+
+    getMyProperties();
+
 
 
 
