@@ -1,5 +1,6 @@
 Template.properties.rendered = function() {
   createPropertyMap();
+  $('.modal-trigger').leanModal();
   // var test = Properties.find().fetch();
   // console.log(Properties.find().fetch())
 };

@@ -2,7 +2,10 @@
   <div class="properties-background">
     <div class="five-rem-spacer"></div>
     {{>propertyPanel2}}
-    <div class="five-rem-spacer"></div>
+    <div class="two-rem-spacer"></div>
+      <a class="modal-trigger" href="#modal1"><button id="add-property-button" name="add-property" class="btn">Add Property</button></a>
+      {{> modal}}
+    <div class="two-rem-spacer"></div>
   </div>
   <div class="red-break"></div>
   <div class="property-panel-two">
@@ -29,6 +32,45 @@
         </div>
       </div>
       {{/each}}
+    </div>
+  </div>
+</template>
+
+<template name='modal'>
+  <div id="modal1" class="modal">
+    <h4>New Property</h4>
+    <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="first_name" type="text" required>
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text" required>
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="username" type="text" required>
+            <label for="username">Username</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" required>
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" required>
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <a href="" class="btn-flat modal-close">Agree</a>
+      </form>
     </div>
   </div>
 </template>
