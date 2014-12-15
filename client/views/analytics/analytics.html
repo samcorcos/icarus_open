@@ -2,37 +2,54 @@
   <div class="analytics-background">
     <div class="container">
       <div class="five-rem-spacer"></div>
-      {{> analyticsRowOne}}
-      {{> analyticsTimeline}}
+      <div class="row">
+        {{> assetAllocation}}
+        {{> returnOnInvestment}}
+        {{> analyticsTimeline}}
+      </div>
+    </div>
+  </div>
+  <div class="red-break"></div>
+</template>
+
+
+<template name="returnOnInvestment">
+  <div class="col s12 m6 l6">
+    <div class="card analytics-card">
+      <div class="card-content">
+        <h2>Return on Investment</h2>
+        <p>Cool Graphic on ROI</p>
+      </div>
+      <div class="row">
+        <a class="col m6 l6" href="#">This is a link</a>
+        <a class="col m6 l6" href='#'>This is a link</a>
+      </div>
     </div>
   </div>
 </template>
 
-
-<template name="analyticsRowOne">
-  <div class="row">
-    <div class="col s12 m6 l6">
-      <div class="card analytics-card">
-        <div class="card-content">
-          <h2>Return on Investment</h2>
-          <p>Cool Graphic on ROI</p>
+<template name="assetAllocation">
+  <div class="col s12 m6 l6">
+    <div class="card analytics-card">
+      <div class="card-content">
+        <h2>Asset Allocation</h2>
+        <div class="asset-allocation-data">
+          <div class="row">
+            <div class="col s12 m6 l6">
+              <h3>Percent </h3>100%
+            </div>
+            <div class="col s12 m6 l6">
+              <h3>Total </h3>$200,000
+            </div>
+          </div>
+          <div class="one-rem-spacer"></div>
         </div>
-        <div class="row">
-          <a class="col m6 l6" href="#">This is a link</a>
-          <a class="col m6 l6" href='#'>This is a link</a>
-        </div>
+        <div id="analytics-asset-allocation"></div>
+        <p> Pie chart, split between debt and equity</p>
       </div>
-    </div>
-    <div class="col s12 m6 l6">
-      <div class="card analytics-card">
-        <div class="card-content">
-          <h2>Asset Allocation</h2>
-          <p> Pie chart, split between debt and equity</p>
-        </div>
-        <div class="row">
-          <a class="col m6 l6" href="#">This is a link</a>
-          <a class="col m6 l6" href='#'>This is a link</a>
-        </div>
+      <div class="row">
+        <a class="col m6 l6" href="#">This is a link</a>
+        <a class="col m6 l6" href='#'>This is a link</a>
       </div>
     </div>
   </div>
@@ -46,6 +63,7 @@
         <div class="card-content">
           <h2>Return Over Time</h2>
           <p>Scroll-over-able return over time, scaled</p>
+          <div id="analytics-timeline"></div>
         </div>
         <div class="row">
           <a class="col m6 l6" href="#">This is a link</a>

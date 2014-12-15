@@ -1,5 +1,6 @@
 Template.analytics.rendered = function() {
-
+  createTimeline();
+  createAssetAllocation();
 };
 
 Template.analytics.helpers({
