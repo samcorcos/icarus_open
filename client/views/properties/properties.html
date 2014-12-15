@@ -1,10 +1,12 @@
 <template name='properties'>
   <div class="properties-background">
-    <div id="property-map">d3 map</div>
+    <div class="properties-page-spacer"></div>
+    {{>propertyPanel2}}
+    <div class="properties-page-spacer"></div>
   </div>
   <div class="red-break"></div>
   <div class="property-panel-two">
-    {{>propertyPanel2}}
+    <div id="property-map">d3 map</div>
   </div>
   <div class="red-break"></div>
 </template>
@@ -13,12 +15,11 @@
 <template name='propertyPanel2'>
   <div class="container">
     <div class="row">
-      <h1>Your Properties</h1>
       {{#each properties}}
       <div class="col s12 m6 l6">
         <div class="card property-card">
           <div class="card-content">
-            <h2><a href="/properties/{{_id}}">{{address}}</a></h2>
+            <h2><a href="/properties/{{_id}}" style="text-decoration: none;">{{address}}</a></h2>
             <p>Purchase Price: ${{purchasePrice}}</p>
           </div>
           <div class="row">
