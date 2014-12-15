@@ -14,7 +14,7 @@ createHomepageMap = function() {
 
 
   var svg = d3.select("#concentration-map").append("svg")
-    .attr("viewBox", "0 0 1000 600")
+    .attr("viewBox", "0 50 1000 550")
     .attr("preserveAspectRatio", "xMinYMin meet");
 
   ///////////////////////////////
