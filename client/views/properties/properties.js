@@ -22,6 +22,9 @@ var createPropertyMap = function() {
 Template.propertyPanel2.helpers({
   properties: function() {
     return Properties.find();
+  },
+  purchasePrice: function() {
+    return this.price.formatMoney(0);
   }
 });
 

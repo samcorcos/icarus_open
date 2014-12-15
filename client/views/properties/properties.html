@@ -11,11 +11,23 @@
 
 
 <template name='propertyPanel2'>
-  <h1>property panel 2</h1>
-  {{#each properties}}
-    <h1>{{address}}</h1>
-    <h1>{{owner}}</h1>
-    <h1>{{currentUser.username}}</h1>
-    <h1>{{currentUser.profile.name}}</h1>
-  {{/each}}
+  <div class="container">
+    <div class="row">
+      <h1>Your Properties</h1>
+      {{#each properties}}
+      <div class="col s12 m6 l6">
+        <div class="card property-card">
+          <div class="card-content">
+            <h2><a href="/properties/{{_id}}">{{address}}</a></h2>
+            <p>Purchase Price: ${{purchasePrice}}</p>
+          </div>
+          <div class="row">
+            <a class="col m6 l6" href="#">This is a link</a>
+            <a class="col m6 l6" href='#'>This is a link</a>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+  </div>
 </template>
