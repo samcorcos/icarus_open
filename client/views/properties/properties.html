@@ -15,10 +15,12 @@
     <div class="two-rem-spacer"></div>
   </div>
   <div class="red-break"></div>
-  <div class="flex-white-div add-property-form">
-    {{> newPropertyForm}}
+  <div class="flex-white-div add-property-hidden">
+    <div class="container">
+      {{> newPropertyForm}}
+    </div>
   </div>
-  <div class="red-break add-property-form"></div>
+  <div class="red-break add-property-hidden"></div>
   <div class="property-panel-two">
     <div id="property-map">d3 map</div>
   </div>
@@ -85,6 +87,7 @@
 
 
 <template name='newPropertyForm'>
+  <div class="two-rem-spacer"></div>
   <h4>New Property</h4>
   <div class="row">
     <form class="col s12">
@@ -114,4 +117,5 @@
     </form>
     <button class="btn">Add Property</button>
   </div>
+  <div class="two-rem-spacer"></div>
 </template>

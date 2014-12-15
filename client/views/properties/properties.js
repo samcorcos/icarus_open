@@ -19,6 +19,6 @@ Template.propertyPanel2.helpers({
 
 Template.properties.events({
   'click #add-property-button': function(e,t) {
-    
+    $(".add-property-hidden").removeClass("add-property-hidden").transition("all 0.5s ease")
   }
 });
