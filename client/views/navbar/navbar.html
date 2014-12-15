@@ -5,11 +5,18 @@
         {{> whiteNavbarLogo}}
       </a>
       <ul id="nav-mobile" class="right side-nav">
+        {{#if currentUser}}
         <li><a href="/properties">Properties</a></li>
+        {{/if}}
         <li><a href="/about">About</a></li>
         <li><a href="/calculator">Calculator</a></li>
         <li><a href="/contact">Contact</a></li>
-        <li class="login-button"><a href="/login">Login</a></li>
+        {{#if currentUser}}
+          <li class="login-button"><a href="/login">{{currentUser.username}}</a></li>
+        {{else}}
+          <li class="login-button"><a href="/login">Login</a></li>
+        {{/if}}
+
       </ul>
       <a class="button-collapse" href="#" data-activates="nav-mobile"><i class="mdi-navigation-menu"></i></a>
     </div>
