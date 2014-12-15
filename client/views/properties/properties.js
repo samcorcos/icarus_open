@@ -1,7 +1,7 @@
 Template.properties.rendered = function() {
   createPropertyMap();
   // var test = Properties.find().fetch();
-  console.log(Properties.find().fetch())
+  // console.log(Properties.find().fetch())
 };
 
 Meteor.subscribe("properties");

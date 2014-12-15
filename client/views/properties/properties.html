@@ -13,6 +13,9 @@
 <template name='propertyPanel2'>
   <h1>property panel 2</h1>
   {{#each properties}}
-    <h1>test</h1>
+    <h1>{{address}}</h1>
+    <h1>{{owner}}</h1>
+    <h1>{{currentUser.username}}</h1>
+    <h1>{{currentUser.profile.name}}</h1>
   {{/each}}
 </template>

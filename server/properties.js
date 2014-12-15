@@ -10,8 +10,8 @@
 //   });
 // })
 
-Meteor.publish("properties", function () { //owner
+Meteor.publish("properties", function (userId) { //owner
   // console.log(this.userId);
   // console.log(Properties.find({ owner: this.userId }))
-  return Properties.find(); //
+  return Properties.find({ owner: this.userId}); //
 });
