@@ -1,7 +1,7 @@
 NewProperty = new Mongo.Collection(null);
 
 Template.properties.rendered = function() {
-  createPropertyMap();
+  createPropertiesMap();
   $('.modal-trigger').leanModal();
   $('.modal-close').leanModal();
   // $('.datepicker').pickadate();

@@ -1,6 +1,6 @@
 Template.home.rendered = function() {
   Session.set("investedCapital", 812344);
-  createMap();
+  createHomepageMap();
 };
 
 Template.home.events({

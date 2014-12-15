@@ -1,6 +1,6 @@
 
 
-createMap = function() {
+createHomepageMap = function() {
   var height = 600,
       width = 1000;
 
