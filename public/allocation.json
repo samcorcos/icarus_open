@@ -1,5 +1,12 @@
 {
   "allocation": [
-    {"debt": 20000, "equity": 35000}
+    {
+      "type": "debt",
+      "total": 20000
+    },
+    {
+      "type": "equity",
+      "total": 35000
+    }
   ]
 }
