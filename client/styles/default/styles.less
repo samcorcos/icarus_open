@@ -428,10 +428,15 @@ div.add-red-break-show {
   stroke-width: .5px;
 }
 
+.bubble :hover {
+  stroke: #000;
+}
+
 /* End styles for map */
 
 
 #homepage-map-header {
+  margin-bottom: -3rem;
   text-align: center;
 }
 
@@ -449,4 +454,17 @@ div.add-red-break-show {
 .analytics-chart > svg {
   display: block;
   margin: auto;
+}
+
+.homepage-concentration-map > svg {
+  margin: 0 3rem;
+}
+
+.home-concentration-map {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
 }

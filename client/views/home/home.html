@@ -28,11 +28,9 @@
 		{{> secondPane}}
 	<div class="red-break"></div>
 		<div class="row flex-white-div">
-			<div class="container">
-				<div class="three-rem-spacer"></div>
-				<h2 id='homepage-map-header'>Properties</h2>
-				{{> introductionMap}}
-			</div>
+			<div class="three-rem-spacer"></div>
+			<h2 id='homepage-map-header'>Properties</h2>
+			{{> introductionMap}}
 		</div>
 	<div class="red-break"></div>
 		{{> thirdPane}}
@@ -163,5 +161,5 @@
 
 
 <template name='introductionMap'>
-	<div id="concentration-map"></div>
+	<div class="homepage-concentration-map" id="concentration-map"></div>
 </template>

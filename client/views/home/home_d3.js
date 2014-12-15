@@ -14,8 +14,8 @@ createHomepageMap = function() {
 
 
   var svg = d3.select("#concentration-map").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+    .attr("viewBox", "0 0 1000 600")
+    .attr("preserveAspectRatio", "xMinYMin meet");
 
   ///////////////////////////////
   //Building Map
@@ -57,74 +57,42 @@ createHomepageMap = function() {
     })
 
 
-      d3.json("locations.json", function(error, data) {
-        if (error) return console.error(error);
-        var locations = data.locations;
+    d3.json("locations.json", function(error, data) {
+      if (error) return console.error(error);
+      var locations = data.locations;
 
-        locations.forEach(function(location){
-          var state = location.state;
-          var thisState = d3.select('path[class*='+state+']');
-          locationConcentration[state] += 1;
-        })
-
-        //////Added dot in the middle of the state
-        /////////////Working with Bubbles
-
-
-
-        svg.append("g")
-          .attr("class", "bubble")
-          .selectAll("circle")
-          .data(topojson.feature(us, us.objects.subunits).features) // this is probably where the error is
-          .enter().append("circle")
-            .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-            .attr("r", function(d) {
-              var tempArray = [];
-              for (var num in locationConcentration) {
-                tempArray.push(locationConcentration[num])
-              }
-
-              var radius = d3.scale.sqrt()
-                .range([d3.min(tempArray), d3.max(tempArray)]);
-
-              var abbrev = d.id.split('-').pop();
-
-              return radius(locationConcentration[abbrev]);
-            });
-
-        // svg.selectAll(".subunit")
-        //   .style("fill", function(d) {
-        //     var abbrev = d.id.split('-').pop();
-        //     return color(locationConcentration[abbrev])
-        //   })
-
+      locations.forEach(function(location){
+        var state = location.state;
+        var thisState = d3.select('path[class*='+state+']');
+        locationConcentration[state] += 1;
       })
 
+      //////Added dot in the middle of the state
+      /////////////Working with Bubbles
 
-    ////////End Bubbles///////
 
 
+      svg.append("g")
+        .attr("class", "bubble")
+        .selectAll("circle")
+        .data(topojson.feature(us, us.objects.subunits).features) // this is probably where the error is
+        .enter().append("circle")
+          .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+          .attr("r", function(d) {
+            var tempArray = [];
+            for (var num in locationConcentration) {
+              tempArray.push(locationConcentration[num])
+            }
 
-    // /////////////////////////
-    // /////Bringing in other json
-    //
-    //   svg.selectAll(".subunit") --
-    //   .style('fill',function(d){
-    //     var abbrev = d.id.split('-').pop();
-    //
-    //     return color(stateHeat[abbrev])
-    //   })
+            var radius = d3.scale.sqrt()
+              .range([d3.min(tempArray), d3.max(tempArray)]);
 
-    // svg.append("g")
-    //     .attr("class", "bubble")
-    //   .selectAll("circle")
-    //     .data(topojson.feature(us, us.objects.subunits).features
-    //       .sort(function(a, b) { return b.properties.population - a.properties.population; }))
-    //   .enter().append("circle")
-    //     .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-    //     .attr("r", function(d) { return radius(d.properties.population); });
+            var abbrev = d.id.split('-').pop();
 
-//////////////End other json
+            return radius(locationConcentration[abbrev]);
+          });
+
+      })
 
 
 
