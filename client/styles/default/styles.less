@@ -65,8 +65,9 @@ background-color: lighten(@icarus-red, 10%);
   position: relative;
 }
 
-.contact-page {
-  height: 100vh;
+.contact-background {
+  min-height: 100vh;
+  height: auto;
   width: 100%;
   background: url(/background/another_ny.jpg) no-repeat center center;
   -webkit-background-size: cover;
@@ -112,6 +113,7 @@ background-color: lighten(@icarus-red, 10%);
 }
 
 .about-background, .single-property-background {
+  min-height: 100vh;
   height: auto;
   width: 100%;
   background: url(/background/new_york.jpg) no-repeat center center;
@@ -184,10 +186,6 @@ background-color: lighten(@icarus-red, 10%);
 
 .calculator-card {
   margin-top: 25%;
-}
-
-.contact-card {
-  margin-top: 10%;
 }
 
 .card-image {
