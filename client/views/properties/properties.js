@@ -22,3 +22,9 @@ Template.properties.events({
     $(".add-property-hidden").removeClass("add-property-hidden").transition("all 0.5s ease")
   }
 });
+
+Template.newPropertyForm.events({
+  'click #submit-new-property': function(e,t) {
+    
+  }
+});

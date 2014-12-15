@@ -11,6 +11,12 @@ Template.login.events({
   'click #accountForm': function(e,t) {
     Session.set('creatingAccount', true);
   },
+  // 'keypress input': function(e,t) { // At some point it would be good to implement an "enter" key press as well as a click
+  //   if (e.keyCode === 13) {
+  //     Session.set("category", e.currentTarget.value);
+  //     e.currentTarget.value = "";
+  //   }
+  // },
   'click #createAccount': function(e,t) {
     Session.set('creatingAccount', false); // If the user logs out, we want them to see the login form, instead of the create account form next time they click on the button.
       Accounts.createUser({                 // If we pass the following into the "createUser" function, which Meteor gives us, we will not only create a user, but the user will also be logged in.
