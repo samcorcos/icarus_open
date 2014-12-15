@@ -19,7 +19,7 @@ var createPropertyMap = function() {
 }
 
 
-Template.properties.helpers({
+Template.propertyPanel2.helpers({
   properties: function() {
     return Properties.find();
   }
