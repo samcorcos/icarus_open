@@ -27,8 +27,12 @@
 	<div class="white-break"></div>
 		{{> secondPane}}
 	<div class="red-break"></div>
-		<div class="row home-statistics">
-			<h1>This is where we put more stats</h1>
+		<div class="row flex-white-div">
+			<div class="container">
+				<div class="three-rem-spacer"></div>
+				<h2 id='homepage-map-header'>Properties</h2>
+				{{> introductionMap}}
+			</div>
 		</div>
 	<div class="red-break"></div>
 		{{> thirdPane}}
@@ -118,8 +122,19 @@
 <template name='thirdPane'>
 	<div class="homepage-background-three">
 		<div class="container">
-			{{> introductionMap}}
+			<div class="row">
+				<div class="four-rem-spacer"></div>
+				<div class="col offset-m1 offset-l1 s12 m10 l10">
+					<div class="card contact-card">
+						<div class="card-content">
+							{{> contactPageLogo}}
+							<div class="two-rem-spacer"></div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
+		<div class="four-rem-spacer"></div>
 	</div>
 </template>
 

@@ -35,7 +35,7 @@ createMap = function() {
       .attr("class", function(d) { return "subunit " + d.id; })
       //added id in above line to use as selector: ex US-NY
       .attr("d", path)
-      .style('fill','#ddd')
+      .style('fill','#797979')
 
 
 
@@ -77,7 +77,7 @@ createMap = function() {
       d3.json("locations.json", function(error, us) {
         if (error) return console.error(error);
 
-      }
+      })
 
     // svg.append("g")
     //     .attr("class", "bubble")
