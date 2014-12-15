@@ -4,8 +4,6 @@ createHomepageMap = function() {
   var height = 600,
       width = 1000;
 
-  var color = d3.scale.category10();
-
   var projection = d3.geo.albersUsa()
     .scale(1000)
     .translate([width / 2, height / 2]);
@@ -58,16 +56,6 @@ createHomepageMap = function() {
       locationConcentration[state] = 0;
     })
 
-    //////Added dot in the middle of the state
-    /////////////Working with Bubbles
-    svg.append("g")
-      .attr("class", "bubble")
-      .selectAll("circle")
-      .data(topojson.feature(us, us.objects.subunits).features) // this is probably where the error is
-      .enter().append("circle")
-      .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-      .attr("r", 1.5);
-
 
     var radius = d3.scale.sqrt()
       .domain([0, 1e6])
@@ -84,22 +72,34 @@ createHomepageMap = function() {
           locationConcentration[state] += 1;
         })
 
-        svg.selectAll(".subunit")
-          .style("fill", function(d) {
-            var abbrev = d.id.split('-').pop();
-            return color(locationConcentration[abbrev])
-          })
+        //////Added dot in the middle of the state
+        /////////////Working with Bubbles
+
+
+
+        svg.append("g")
+          .attr("class", "bubble")
+          .selectAll("circle")
+          .data(topojson.feature(us, us.objects.subunits).features) // this is probably where the error is
+          .enter().append("circle")
+            .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+            .attr("r", function(d) {
+              var abbrev = d.id.split('-').pop();
+              console.log(locationConcentration[abbrev]);
+              // console.log(radius(locationConcentration[abbrev]);
+              // return radius(locationConcentration[abbrev]);
+              return locationConcentration[abbrev];
+            });
+
+        // svg.selectAll(".subunit")
+        //   .style("fill", function(d) {
+        //     var abbrev = d.id.split('-').pop();
+        //     return color(locationConcentration[abbrev])
+        //   })
 
       })
 
-    // svg.append("g")
-    //     .attr("class", "bubble")
-    //   .selectAll("circle")
-    //     .data(topojson.feature(us, us.objects.subunits).features
-    //       .sort(function(a, b) { return b.properties.population - a.properties.population; }))
-    //   .enter().append("circle")
-    //     .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-    //     .attr("r", function(d) { return radius(d.properties.population); });
+
     ////////End Bubbles///////
 
 
