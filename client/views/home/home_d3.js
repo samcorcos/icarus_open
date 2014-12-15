@@ -59,6 +59,7 @@ createMap = function() {
     // })
 
     //////Added dot in the middle of the state
+    /////////////Working with Bubbles
     svg.append("g")
       .attr("class", "bubble")
       .selectAll("circle")
@@ -68,37 +69,61 @@ createMap = function() {
       .attr("r", 1.5);
 
 
-    ////////////////Tooltips
-    var tooltip = d3.select('body').append('div')
-    .style('position', 'absolute')
-    .style('padding', '0 10px')
-    .style('background', 'black')
-    .style('color','white')
-    .style('opacity', 0) // setting to 0 because we dont want it to show when the graphic first loads
+    var radius = d3.scale.sqrt()
+      .domain([0, 1e6])
+      .range([0, 15]);
 
-    d3.selectAll('path').on('mouseover', function(d) {
-      if(d3.select(this).attr('class')==='state-boundary'){
-        return;  //Handles mouseover state boundary lines
+
+      d3.json("locations.json", function(error, us) {
+        if (error) return console.error(error);
+
       }
-      var stateAbbrev = d.id.split('-')[1];
-      d3.select(this)
-      .style('opacity', 0.5)
-      tooltip.transition()
-      .style('opacity', .9)
-      tooltip.html(stateAbbrev)
-      // tooltip.html(stateAbbrev+'<br>'+stateHeat[stateAbbrev])
-      .style('left', (d3.event.pageX -15) + 'px')
-      .style('top', (d3.event.pageY - 30) + 'px')
-    })
+
+    // svg.append("g")
+    //     .attr("class", "bubble")
+    //   .selectAll("circle")
+    //     .data(topojson.feature(us, us.objects.subunits).features
+    //       .sort(function(a, b) { return b.properties.population - a.properties.population; }))
+    //   .enter().append("circle")
+    //     .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+    //     .attr("r", function(d) { return radius(d.properties.population); });
 
 
-    .on('mouseout', function(d) {
-      d3.select(this)
-      .style('opacity', 1)
-      tooltip.transition().duration(500)
-      .style('opacity', 0)
+    ////////End Bubbles///////
 
-    })    ////////////End tooltip
+
+
+    ////////////////Tooltips
+    // var tooltip = d3.select('body').append('div')
+    //   .style('position', 'absolute')
+    //   .style('padding', '0 10px')
+    //   .style('background', 'black')
+    //   .style('color','white')
+    //   .style('opacity', 0) // setting to 0 because we dont want it to show when the graphic first loads
+    //
+    // d3.selectAll('path').on('mouseover', function(d) {
+    //   if(d3.select(this).attr('class')==='state-boundary'){
+    //     return;  //Handles mouseover state boundary lines
+    //   }
+    //   var stateAbbrev = d.id.split('-')[1];
+    //   d3.select(this)
+    //   .style('opacity', 0.5)
+    //   tooltip.transition()
+    //   .style('opacity', .9)
+    //   tooltip.html(stateAbbrev)
+    //   // tooltip.html(stateAbbrev+'<br>'+stateHeat[stateAbbrev])
+    //   .style('left', (d3.event.pageX -15) + 'px')
+    //   .style('top', (d3.event.pageY - 30) + 'px')
+    // })
+    //
+    //
+    // .on('mouseout', function(d) {
+    //   d3.select(this)
+    //   .style('opacity', 1)
+    //   tooltip.transition().duration(500)
+    //   .style('opacity', 0)
+    //
+    // })    ////////////End tooltip
 
   })
   ///////////////////////////////
