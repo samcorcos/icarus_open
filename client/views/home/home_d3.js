@@ -57,11 +57,6 @@ createHomepageMap = function() {
     })
 
 
-    var radius = d3.scale.sqrt()
-      .domain([0, 1e6])
-      .range([0, 15]);
-
-
       d3.json("locations.json", function(error, data) {
         if (error) return console.error(error);
         var locations = data.locations;
@@ -84,11 +79,17 @@ createHomepageMap = function() {
           .enter().append("circle")
             .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
             .attr("r", function(d) {
+              var tempArray = [];
+              for (var num in locationConcentration) {
+                tempArray.push(locationConcentration[num])
+              }
+
+              var radius = d3.scale.sqrt()
+                .range([d3.min(tempArray), d3.max(tempArray)]);
+
               var abbrev = d.id.split('-').pop();
-              console.log(locationConcentration[abbrev]);
-              // console.log(radius(locationConcentration[abbrev]);
-              // return radius(locationConcentration[abbrev]);
-              return locationConcentration[abbrev];
+
+              return radius(locationConcentration[abbrev]);
             });
 
         // svg.selectAll(".subunit")
