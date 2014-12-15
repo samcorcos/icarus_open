@@ -4,14 +4,21 @@
     {{>propertyPanel2}}
     <div class="two-rem-spacer"></div>
       {{#if currentUser}}
-        <a class="modal-trigger" href="#modal1"><button id="add-property-button" name="add-property" class="btn">Add Property</button></a>
-        {{> modal}}
+        <button id="add-property-button" class="btn">Add Property</button>
+      <!-- When the modal starts working, this will be cool -->
+      <!-- <a class="modal-trigger" href="#modal1"><button id="add-property-button" name="add-property" class="btn">Add Property</button></a>
+        <div id="modal1" class="modal">
+        {{> modal}} -->
       {{else}}
         <h2>Please Log In or Sign Up</h2>
       {{/if}}
     <div class="two-rem-spacer"></div>
   </div>
   <div class="red-break"></div>
+  <div class="flex-white-div add-property-form">
+    {{> newPropertyForm}}
+  </div>
+  <div class="red-break add-property-form"></div>
   <div class="property-panel-two">
     <div id="property-map">d3 map</div>
   </div>
@@ -40,6 +47,7 @@
   </div>
 </template>
 
+
 <template name='modal'>
   <div id="modal1" class="modal">
     <h4>New Property</h4>
@@ -47,34 +55,63 @@
       <form class="col s12">
         <div class="row">
           <div class="input-field col s6">
-            <input id="first_name" type="text" required>
-            <label for="first_name">First Name</label>
+            <input id="profile-name" type="text" value="{{currentUser.profile.name}}" required disabled>
           </div>
           <div class="input-field col s6">
-            <input id="last_name" type="text" required>
-            <label for="last_name">Last Name</label>
+            <input id="user-id" type="text" value="{{currentUser._id}}" required disabled>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="username" type="text" required>
-            <label for="username">Username</label>
+            <input id="property-address" type="text" placeholder="Property Address" required>
           </div>
         </div>
+        <!-- <div class="row">
+          <div class="input-field col s12">
+            <input type="date" class="datepicker">
+          </div>
+        </div> -->
         <div class="row">
           <div class="input-field col s12">
-            <input id="password" type="password" required>
-            <label for="password">Password</label>
+            <input id="purchase-price" type="text" placeholder="Purchase Price (numbers only)" required>
           </div>
         </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="email" type="email" required>
-            <label for="email">Email</label>
-          </div>
-        </div>
-        <a href="" class="btn-flat modal-close">Agree</a>
       </form>
+      <!-- <a href="#" class="btn-flat modal-close">Agree</a> -->
+      <button class="btn modal-close">Agree</button>
     </div>
+  </div>
+</template>
+
+
+<template name='newPropertyForm'>
+  <h4>New Property</h4>
+  <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="profile-name" type="text" value="{{currentUser.profile.name}}" required disabled>
+        </div>
+        <div class="input-field col s6">
+          <input id="user-id" type="text" value="{{currentUser._id}}" required disabled>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="property-address" type="text" placeholder="Property Address" required>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <div class="input-field col s12">
+          <input type="date" class="datepicker">
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="purchase-price" type="text" placeholder="Purchase Price (numbers only)" required>
+        </div>
+      </div>
+    </form>
+    <button class="btn">Add Property</button>
   </div>
 </template>
