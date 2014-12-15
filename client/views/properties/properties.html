@@ -3,8 +3,12 @@
     <div class="five-rem-spacer"></div>
     {{>propertyPanel2}}
     <div class="two-rem-spacer"></div>
-      <a class="modal-trigger" href="#modal1"><button id="add-property-button" name="add-property" class="btn">Add Property</button></a>
-      {{> modal}}
+      {{#if currentUser}}
+        <a class="modal-trigger" href="#modal1"><button id="add-property-button" name="add-property" class="btn">Add Property</button></a>
+        {{> modal}}
+      {{else}}
+        <h2>Please Log In or Sign Up</h2>
+      {{/if}}
     <div class="two-rem-spacer"></div>
   </div>
   <div class="red-break"></div>
