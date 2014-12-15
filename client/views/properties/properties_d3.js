@@ -1,10 +1,9 @@
 
 
 createPropertiesMap = function() {
+
   var height = 600,
   width = 1000;
-
-
 
   var projection = d3.geo.albersUsa()
   .scale(1000)
@@ -16,8 +15,8 @@ createPropertiesMap = function() {
 
 
   var svg = d3.select("#property-map").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+  .attr("viewBox", "0 50 1000 550")
+  .attr("preserveAspectRatio", "xMinYMin meet");
 
   ///////////////////////////////
   //Building Map
@@ -30,88 +29,74 @@ createPropertiesMap = function() {
     .attr("d", path);
 
     svg.selectAll(".subunit")
-      .data(topojson.feature(us, us.objects.subunits).features)
-      .enter().append("path")
-      .attr("class", function(d) { return "subunit " + d.id; })
-      //added id in above line to use as selector: ex US-NY
-      .attr("d", path)
-      .style('fill','#797979')
+    .data(topojson.feature(us, us.objects.subunits).features)
+    .enter().append("path")
+    .attr("class", function(d) { return "subunit " + d.id; })
+    //added id in above line to use as selector: ex US-NY
+    .attr("d", path)
+    .style('fill','#aaa')
 
 
 
     /////////Gives state boundary line
     svg.insert('path','.graticule')
-      .datum(topojson.feature(us, us.objects.subunits,function(a, b) { return a !== b; }))
-      .attr('class','state-boundary')
-      .attr("d", path)
-      // .attr('stroke','#FFF')
-      .style('fill','none')
+    .datum(topojson.feature(us, us.objects.subunits,function(a, b) { return a !== b; }))
+    .attr('class','state-boundary')
+    .attr("d", path)
+    .attr('stroke','#FFF')
+    .style('fill','none')
 
 
     ///Populating stateHeat for use in heatmap below
-    var location = {};
+    var locationConcentration = {};
     var paths = d3.selectAll('path')[0];
     paths.forEach(function(path){
       //Getting state abbreviation out of DOM
       var classString = path.className.animVal;
       var state = classString.slice(classString.length-2)
-      location[state]=0;
+      locationConcentration[state] = 0;
     })
 
-    //////Added dot in the middle of the state
-    /////////////Working with Bubbles
-    svg.append("g")
+
+
+    d3.json("locations.json", function(error, data) {
+      if (error) return console.error(error);
+      var locations = data.locations;
+
+      locations.forEach(function(location){
+        var state = location.state;
+        var thisState = d3.select('path[class*='+state+']');
+        locationConcentration[state] += 1;
+      })
+
+      //////Added dot in the middle of the state
+      /////////////Working with Bubbles
+
+
+
+      svg.append("g")
       .attr("class", "bubble")
       .selectAll("circle")
       .data(topojson.feature(us, us.objects.subunits).features) // this is probably where the error is
       .enter().append("circle")
-        .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-        .attr("r", 1.5);
+      .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+      .attr("r", function(d) {
+        var tempArray = [];
+        for (var num in locationConcentration) {
+          tempArray.push(locationConcentration[num])
+        }
 
+        var radius = d3.scale.sqrt()
+        .range([d3.min(tempArray), d3.max(tempArray)]);
 
-    var radius = d3.scale.sqrt()
-      .domain([0, 1e6])
-      .range([0, 15]);
+        var abbrev = d.id.split('-').pop();
 
-
-    d3.json("locations.json", function(error, location) {
-      if (error) return console.error(error);
+        return radius(locationConcentration[abbrev]);
+      });
 
     })
 
 
-    // /////////////////////////
-    // /////Bringing in other json
-    // d3.json("data.json",function(error,datum){
-    //   //Datum.nodes is an array of people with keys
-    //   //name, occupation, location, gender, marital_status
-    //   var people = datum.nodes
-    //
-    //   people.forEach(function(person){
-    //     var state =person.location;
-    //     var thisState = d3.select('path[class*='+state+']')
-    //     stateHeat[state]+=1;
-    //   });
-    //
-    //
-    //   svg.selectAll(".subunit")
-    //   .style('fill',function(d){
-    //     var abbrev = d.id.split('-').pop();
-    //
-    //     return color(stateHeat[abbrev])
-    //   })
-
-    // svg.append("g")
-    //     .attr("class", "bubble")
-    //   .selectAll("circle")
-    //     .data(topojson.feature(us, us.objects.subunits).features
-    //       .sort(function(a, b) { return b.properties.population - a.properties.population; }))
-    //   .enter().append("circle")
-    //     .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-    //     .attr("r", function(d) { return radius(d.properties.population); });
-
-
-    ////////End Bubbles///////
 
 
 
@@ -151,6 +136,8 @@ createPropertiesMap = function() {
   ///////////////////////////////
   //End Map
   ///////////////////////////////
+
+
 
 
 

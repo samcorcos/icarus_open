@@ -105,7 +105,7 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="property-address" type="text" value="{{newPropertyAddress}}" placeholder="Property Address" required>
+          <input id="property-address" type="text" placeholder="Property Street Address" required>
         </div>
       </div>
       <!-- <div class="row">
@@ -114,12 +114,72 @@
         </div>
       </div> -->
       <div class="row">
-        <div class="input-field col s12">
-          <input id="purchase-price" type="text" value="{{newPurcahsePrice}}" placeholder="Purchase Price (numbers only)" required>
+        <div class="col s6">
+          <select class="disabled add-property-state-dropdown">
+            <option value="" disabled selected>Property State</option>
+            {{> addPropertyDropdownOptions}}
+          </select>
+        </div>
+        <div class="input-field col s6">
+          <input id="purchase-price" type="text" placeholder="Purchase Price (numbers only)" required>
         </div>
       </div>
     </form>
     <button id="submit-new-property" class="btn">Add Property</button>
   </div>
   <div class="two-rem-spacer"></div>
+</template>
+
+
+<template name="addPropertyDropdownOptions">
+  <option value="1">AL</option>
+  <option value="1">AK</option>
+  <option value="1">AZ</option>
+  <option value="1">AR</option>
+  <option value="1">CA</option>
+  <option value="1">CO</option>
+  <option value="1">CT</option>
+  <option value="1">DE</option>
+  <option value="1">FL</option>
+  <option value="1">GA</option>
+  <option value="1">HI</option>
+  <option value="1">ID</option>
+  <option value="1">IL</option>
+  <option value="1">IN</option>
+  <option value="1">IA</option>
+  <option value="1">KS</option>
+  <option value="1">KY</option>
+  <option value="1">LA</option>
+  <option value="1">ME</option>
+  <option value="1">MD</option>
+  <option value="1">MA</option>
+  <option value="1">MI</option>
+  <option value="1">MN</option>
+  <option value="1">MS</option>
+  <option value="1">MO</option>
+  <option value="1">MT</option>
+  <option value="1">NE</option>
+  <option value="1">NV</option>
+  <option value="1">NH</option>
+  <option value="1">NJ</option>
+  <option value="1">NM</option>
+  <option value="1">NY</option>
+  <option value="1">NC</option>
+  <option value="1">ND</option>
+  <option value="1">OH</option>
+  <option value="1">OK</option>
+  <option value="1">OR</option>
+  <option value="1">PA</option>
+  <option value="1">RI</option>
+  <option value="1">SC</option>
+  <option value="1">SD</option>
+  <option value="1">TN</option>
+  <option value="1">TX</option>
+  <option value="1">UT</option>
+  <option value="1">VT</option>
+  <option value="1">VA</option>
+  <option value="1">WA</option>
+  <option value="1">WV</option>
+  <option value="1">WI</option>
+  <option value="1">WY</option>
 </template>

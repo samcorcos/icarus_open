@@ -1,5 +1,3 @@
-NewProperty = new Mongo.Collection(null);
-
 Template.properties.rendered = function() {
   createPropertiesMap();
   $('.modal-trigger').leanModal();
@@ -41,9 +39,7 @@ Template.newPropertyForm.events({
 });
 
 Template.newPropertyForm.helpers({
-  newPurcahsePrice: function() {
-    return NewProperty.price;
-  }
+  
 });
 
 
