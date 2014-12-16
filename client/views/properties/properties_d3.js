@@ -67,7 +67,7 @@ createPropertiesMap = function() {
 
       myProperties.forEach(function(state){
         var thisState = d3.select('path[class*='+state+']');
-        locationConcentration[state] += 1; 
+        locationConcentration[state] += 1;
       })
 
       svg.append("g")
@@ -83,7 +83,7 @@ createPropertiesMap = function() {
         }
 
         var radius = d3.scale.sqrt()
-        .range([d3.min(tempArray), d3.max(tempArray)*5]); //I'm arbitrarily making the circles bigger here
+        .range([d3.min(tempArray), 25]); //I'm arbitrarily making the circles bigger here
 
         var abbrev = d.id.split('-').pop();
 
