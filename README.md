@@ -19,6 +19,8 @@ To Do
 4. Give the admin the ability to see stats on all other users
 5. Admin must be able to add properties to other users accounts
 6. Must be able to update user data (ROI, etc)
+7. Toast for successful addition of new property
+8. Get D3 maps to load responsively
 
 ###Homepage
 
