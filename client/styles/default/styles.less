@@ -504,17 +504,18 @@ div.add-red-break-show {
 #carousel {
   border:   2px solid @icarus-red;
   border-radius: 5px;
-  width: 100%;
-  height: 300px;
+  height: 100%;
   position: relaitve;
 }
 
 #carousel div {
-  width:    200px;
+  /* height: 100%; */
 }
 
+
+
 .slick-prev:before, .slick-next:before {
-  color:    silver;
+  color:    @icarus-grey;
 }
 
 /* End Carousel */
@@ -525,4 +526,16 @@ div.add-red-break-show {
 
 .image-spacer {
   margin: 1rem 2rem;
+}
+
+/*
+@media (min-width: 768px)
+@media (min-width: 992px) {
+@media (min-width: 1200px) {
+@media (max-device-width: 480px) and (orientation: landscape) {
+@media screen and (min-width: 768px) {
+*/
+
+div#carousel > div img {
+  position: relative;
 }
