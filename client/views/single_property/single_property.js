@@ -8,20 +8,13 @@ Template.singleProperty.helpers({
 
 });
 
+console.log()
+
 Template.singleProperty.events({
   'click #add-property-image': function(e,t) {
     filepicker.pick(
       function(Blob){
-        Images.insert({ "owner": Meteor.userId(), "propertyImage": Blob.url, "date": Date() }, function(err, inserted) {
-          if (err) {
-            console.log(err)
-          } else {
-            console.log("success")
-            console.log(inserted)
-          }
-        })
-        // console.log(Meteor.userId()) // this is the correct way to get the ID
-        console.log(Blob.url);
+        Images.insert({ "owner": Meteor.userId(), "property": Session.get("currentId")._id, "bloburl": Blob.url, "date": Date() })
       }
     );
   }
