@@ -26,6 +26,7 @@ Router.map(function () {
 	this.route("login", {path: "/login", controller: "LoginController"});
 	this.route("properties", {path: "/properties", controller: "PropertiesController"});
 	this.route("analytics", {path: "/analytics", controller: "AnalyticsController"});
+	this.route("upload", {path: "/upload", controller: "UploadController"});
 });
 
 
