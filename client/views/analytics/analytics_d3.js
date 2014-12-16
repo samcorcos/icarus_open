@@ -69,6 +69,7 @@ createAssetAllocation = function() {
       .attr("dy", ".35em")
       .style("text-anchor", "middle")
       .style("fill", "white")
+      .style("opacity", "0.9")
       .text(function(d) { return d.data.type; });
 
     var element = d3.selectAll('svg')
