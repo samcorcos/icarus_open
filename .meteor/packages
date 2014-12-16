@@ -17,9 +17,4 @@ accounts-base
 accounts-password
 fortawesome:fontawesome
 mrt:topojson
-dbarrett:dropzonejs
-cfs:standard-packages
-cfs:filesystem
-cfs:gridfs
 mrt:googlemaps
-

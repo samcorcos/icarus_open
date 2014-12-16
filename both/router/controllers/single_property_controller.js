@@ -4,7 +4,7 @@ this.SinglePropertyController = RouteController.extend({
 		/*YIELD_TEMPLATES*/
 	},
 	onBeforeAction: function() {
-		/*BEFORE_FUNCTION*/
+		filepicker.setKey('ACZTMJqmFR7K1eeuAVsurz');
 		this.next();
 	},
 	action: function() {

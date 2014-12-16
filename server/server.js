@@ -7,5 +7,4 @@ Meteor.startup(function() {
 	}
 
 
-
 });
