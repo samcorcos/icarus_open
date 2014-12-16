@@ -1,17 +1,21 @@
 <template name='properties'>
+  <div class="property-panel-two">
+    <div class="container">
+      <div class="three-rem-spacer"></div>
+      <h2 style="text-align:center;">Your Properties</h2>
+      <div id="property-map"></div>
+    </div>
+  </div>
+  <div class="red-break"></div>
   <div class="properties-background">
     <div class="five-rem-spacer"></div>
-    {{>propertyPanel2}}
+    {{> propertyPanel2}}
     <div class="two-rem-spacer"></div>
-      {{#if currentUser}}
-        <button id="add-property-button" class="btn">Add Property</button>
-      <!-- When the modal starts working, this will be cool -->
-      <!-- <a class="modal-trigger" href="#modal1"><button id="add-property-button" name="add-property" class="btn">Add Property</button></a>
-        <div id="modal1" class="modal">
-        {{> modal}} -->
-      {{else}}
-        <h2>Please Log In or Sign Up</h2>
-      {{/if}}
+    {{#if currentUser}}
+    <button id="add-property-button" class="btn">Add Property</button>
+    {{else}}
+    <h2>Please Log In or Sign Up</h2>
+    {{/if}}
     <div class="two-rem-spacer"></div>
   </div>
   <div class="red-break"></div>
@@ -20,13 +24,15 @@
       {{> newPropertyForm}}
     </div>
   </div>
+  <div class="two-rem-spacer"></div>
   <div class="red-break-property"></div>  <!--  add-property-hidden -->
-  <div class="property-panel-two">
-    <div class="container">
-      <div class="three-rem-spacer"></div>
-      <h2 style="text-align:center;">Your Properties</h2>
-      <div id="property-map"></div>
-    </div>
+  <div class="flex-white-div">
+    <h1>Something goes here</h1>
+    <div class="five-rem-spacer"></div>
+    <div class="five-rem-spacer"></div>
+    <div class="five-rem-spacer"></div>
+    <div class="five-rem-spacer"></div>
+    <div class="five-rem-spacer"></div>
   </div>
   <div class="red-break"></div>
 </template>
@@ -39,8 +45,9 @@
       <div class="col s12 m6 l6">
         <div class="card property-card">
           <div class="card-content">
-            <h2><a href="{{pathFor 'singleProperty'}}" style="text-decoration: none;">{{address}}</a></h2>
-            <h2>{{state}}</h2>
+            <h2><a href="{{pathFor 'singleProperty'}}" style="text-decoration:none;">{{address}}</a></h2>
+            <div style="height: 0.5rem"></div>
+            <h3 class="properties">{{state}}</h3>
             <p>Purchase Price: ${{purchasePrice}}</p>
           </div>
           <div class="row">
@@ -54,41 +61,6 @@
   </div>
 </template>
 
-
-<template name='modal'>
-  <div id="modal1" class="modal">
-    <h4>New Property</h4>
-    <div class="row">
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s6">
-            <input id="profile-name" type="text" value="{{currentUser.profile.name}}" required disabled>
-          </div>
-          <div class="input-field col s6">
-            <input id="user-id" type="text" value="{{currentUser._id}}" required disabled>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="property-address" type="text" placeholder="Property Address" required>
-          </div>
-        </div>
-        <!-- <div class="row">
-          <div class="input-field col s12">
-            <input type="date" class="datepicker">
-          </div>
-        </div> -->
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="purchase-price" type="text" placeholder="Purchase Price (numbers only)" required>
-          </div>
-        </div>
-      </form>
-      <!-- <a href="#" class="btn-flat modal-close">Agree</a> -->
-      <button class="btn modal-close">Agree</button>
-    </div>
-  </div>
-</template>
 
 
 <template name='newPropertyForm'>
@@ -105,8 +77,11 @@
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <input id="property-address" type="text" placeholder="Property Street Address" required>
+        <div class="input-field col s6">
+          <input id="property-address" type="text" placeholder="Address Line 1" required>
+        </div>
+        <div class="input-field col s6">
+          <input id="city" type="text" placeholder="City" required>
         </div>
       </div>
       <!-- <div class="row">
@@ -115,20 +90,45 @@
         </div>
       </div> -->
       <div class="row">
+        <div class="input-field col s6">
+          <input id="zip-code" type="text" placeholder="ZIP Code" required>
+        </div>
         <div class="col s6">
           <select class="disabled add-property-state-dropdown">
             <option value="" disabled selected>Property State</option>
             {{> addPropertyDropdownOptions}}
           </select>
         </div>
+      </div>
+      <div class="one-rem-spacer"></div>
+      <h4>Additional Details</h4>
+      <div class="row">
         <div class="input-field col s6">
           <input id="purchase-price" type="text" placeholder="Purchase Price (numbers only)" required>
         </div>
       </div>
+
+      <div class="row">
+        <p class="range-field">
+          <input type="range" id="test5" />
+        </p>
+      </div>
+      <div class="row">
+        <p class="range-field">
+          <input type="range" id="test5" min="0" max="100" />
+        </p>
+      </div>
+
+
+
+
+
+
+      <div class="one-rem-spacer"></div>
     </form>
-    <button id="submit-new-property" class="btn">Add Property</button>
+    <button id="submit-new-property" class="btn">Add to Database</button>
   </div>
-  <div class="two-rem-spacer"></div>
+
 </template>
 
 
