@@ -15,3 +15,8 @@ Meteor.publish("properties", function (userId) { //owner
   // console.log(Properties.find({ owner: this.userId }))
   return Properties.find({ owner: this.userId}); //
 });
+
+
+Meteor.publish("images", function () {
+  return Images.find({ owner: this.userId});
+});
