@@ -33,7 +33,7 @@ Template.singleProperty.events({
 
 
 Template.singlePropertyImageCarousel.helpers({
-  propertyImages: function() {
+  propertyImages: function() { // Maybe I can solve this with Meteor._wrapAsync??
     var currentPropertyImages = [];
     var currentPropertyId = window.location.href.match(/(\/properties\/)(\w+)/)[2];
     var allImages = Images.find().fetch();
@@ -45,10 +45,15 @@ Template.singlePropertyImageCarousel.helpers({
         currentPropertyImages.push(temp);
       }
     })
-    console.log(currentPropertyImages);
-    return currentPropertyImages;
+    // console.log(currentPropertyImages);
+
+    if (currentPropertyImages.length > 0) {
+      return console.log(currentPropertyImages), currentPropertyImages;
+    }
   }
 });
+
+
 
 Template.singlePropertyImageCarousel.rendered = function() {
   // var urlId = window.location.href.match(/(\/properties\/)(\w+)/);
@@ -56,6 +61,7 @@ Template.singlePropertyImageCarousel.rendered = function() {
     dots: true,
     arrows: true
   });
+
 }
 
 
