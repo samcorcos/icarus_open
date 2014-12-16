@@ -7,6 +7,9 @@ createTimeline = function() {
 
 };
 
+Session.setDefault("activeTotal", 0);
+Session.setDefault("activePercentage", 0);
+
 
 createAssetAllocation = function() {
 
@@ -17,11 +20,11 @@ createAssetAllocation = function() {
   var color = d3.scale.ordinal()
     .range(["#D1122B", "#E43C53", "#F4667A", "#A7061C", "#820012"]);
 
-  var arc = d3.svg.arc()
+  arc = d3.svg.arc()
     .outerRadius(radius - 10)
     .innerRadius(radius*.4);
 
-  var transitionArc = d3.svg.arc()
+  transitionArc = d3.svg.arc()
     .outerRadius(radius)
     .innerRadius(radius*.5);
 
@@ -30,12 +33,11 @@ createAssetAllocation = function() {
     .sort(null)
     .value(function(d) { return d.total; }); // layout.pie() must take in an array of objects.
 
-  var sum = 0;
+  sum = 0;
 
   d3.json("allocation.json", function(error, allocation) {
     var data = allocation.allocation;
     if (error) return console.error(error);
-    console.log(data)
 
     for(var i = 0; i<data.length;i++){
       sum += data[i]['total'];
@@ -57,13 +59,71 @@ createAssetAllocation = function() {
 
     g.append("path")
       .attr("d", arc)
-      .attr("funding",function(d){return d.data.total})
+      .attr("total",function(d){return d.data.total})
       .style("fill", function(d) {
         return color(d.data.type);
       });
 
+    g.append("text")
+      .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
+      .attr("dy", ".35em")
+      .style("text-anchor", "middle")
+      .style("fill", "white")
+      .text(function(d) { return d.data.type; });
 
+    var element = d3.selectAll('svg')
+    element = element[0][0];
+    var bbox = element.getBBox();
+      d3.selectAll('path').on('click', function(d) {
+        pieSliceToggle(this);
+        populateSummary();  //populating summary
+
+      })
+      .on('mouseover', function(d) {
+        d3.select(this)
+        .style('opacity', .8)
+      })
+      .on('mouseout', function(d) {
+        d3.select(this)
+        .style('opacity', 1)
+      })
 
     });
 
 };
+
+var assetAllocationPercentage = 0;
+
+function pieSliceToggle(element){
+  var thisPath = d3.select(element);
+  if(thisPath.attr('active')==='true'){
+    thisPath.transition().attr('d', arc)
+    thisPath.attr('active',false)
+  } else {
+    thisPath.transition().attr('d', transitionArc)
+    thisPath.attr('active',true)
+  }
+};
+
+Template.assetAllocation.helpers({
+  percentage: function() {
+    return Session.get("activePercentage");
+  },
+  total: function() {
+    var tempNum = Session.get("activeTotal")
+    return tempNum.formatMoney(0);
+  }
+});
+
+
+function populateSummary(){
+
+  var activeTotal = 0;
+
+  $('path[active="true"]').each(function(i,val){
+    activeTotal += +$(val).attr('total');
+  });
+
+  Session.set("activeTotal", activeTotal);
+  Session.set("activePercentage", +(activeTotal*100/sum).toFixed(2))
+}
