@@ -24,7 +24,7 @@ Template.singleProperty.events({
   'click #add-property-image': function(e,t) {
     filepicker.pick(
       function(Blob){
-        Images.insert({ "owner": Meteor.userId(), "property": Session.get("currentId")._id, "bloburl": Blob.url, "date": Date() })
+        Images.insert({ "owner": Meteor.userId(), "property": window.location.href.match(/(\/properties\/)(\w+)/)[2], "bloburl": Blob.url, "date": Date() }) // I think I'm going to have to get this Session.get from the params, rather than the Session variable inc ase seomeone goes straight to the individual property page.
       }
     );
   }
@@ -32,7 +32,26 @@ Template.singleProperty.events({
 
 
 
+Template.singlePropertyImageCarousel.helpers({
+  propertyImages: function() {
+    var currentPropertyImages = [];
+    var currentPropertyId = window.location.href.match(/(\/properties\/)(\w+)/)[2];
+    var allImages = Images.find().fetch();
+
+    allImages.forEach(function(image) {
+      var temp = {};
+      if (image.property == currentPropertyId && image.property != undefined) {
+        temp.url = image.bloburl;
+        currentPropertyImages.push(temp);
+      }
+    })
+    console.log(currentPropertyImages);
+    return currentPropertyImages;
+  }
+});
+
 Template.singlePropertyImageCarousel.rendered = function() {
+  // var urlId = window.location.href.match(/(\/properties\/)(\w+)/);
   $('#carousel').slick({
     dots: true,
     arrows: true

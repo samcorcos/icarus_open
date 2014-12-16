@@ -50,8 +50,11 @@
 
 <template name="singlePropertyImageCarousel">
   <div id="carousel">
-    <div><img  src="https://www.filepicker.io/api/file/VZkj0oG7TKerRQ9vIba1" width="100%" /></div>
-    <div><img src="https://www.filepicker.io/api/file/VZkj0oG7TKerRQ9vIba1" width="100%" /></div>
-    <div><img src="https://www.filepicker.io/api/file/VZkj0oG7TKerRQ9vIba1" width="100%" /></div>
+    {{#each propertyImages}}
+      <div><img src="{{url}}"></div>
+    {{/each}}
+    <!-- <div><img  src="https://www.filepicker.io/api/file/VZkj0oG7TKerRQ9vIba1"/></div>
+    <div><img src="https://www.filepicker.io/api/file/VZkj0oG7TKerRQ9vIba1"/></div>
+    <div><img src="https://www.filepicker.io/api/file/VZkj0oG7TKerRQ9vIba1"/></div> -->
   </div>
 </template>
