@@ -17,7 +17,9 @@
     <div class="card">
       <div class="card-content">
         <h2><a href="" style="text-decoration: none;">{{address}}</a></h2>
-        <div id="map-canvas" style="width:100%;height:50vh;position:relative;border:3px solid #D1122B;border-radius:5px;"></div>
+        <div class="map-spacer">
+          <div id="map-canvas" style="width:100%;height:50vh;position:relative;border:3px solid #D1122B;border-radius:5px;"></div>
+        </div>
       </div>
       <div class="row">
         <a class="col m6 l6" href="#">This is a link</a>
@@ -31,12 +33,25 @@
   <div class="col offset-m1 offset-l1 s12 m10 l10">
     <div class="card">
       <div class="card-content">
-        <button class="btn" id="add-property-image">Add Image</button>
+        <div class="image-spacer">
+          {{> singlePropertyImageCarousel}}
+        </div>
+        <div class="one-rem-spacer"></div>
+        <button style="display:block;margin:auto;" class="btn" id="add-property-image">Add Image</button>
       </div>
       <div class="row">
         <a class="col m6 l6" href="#">This is a link</a>
         <a class="col m6 l6" href='#'>This is a link</a>
       </div>
     </div>
+  </div>
+</template>
+
+
+<template name="singlePropertyImageCarousel">
+  <div id="carousel">
+    <div><img src="https://www.filepicker.io/api/file/VZkj0oG7TKerRQ9vIba1" width="200px" /></div>
+    <div><img src="https://www.filepicker.io/api/file/VZkj0oG7TKerRQ9vIba1" width="200px" /></div>
+    <div><img src="https://www.filepicker.io/api/file/VZkj0oG7TKerRQ9vIba1" width="200px" /></div>
   </div>
 </template>
