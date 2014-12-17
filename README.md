@@ -7,9 +7,10 @@ To Do
 
 1. ~~Create users for each investor~~
 2. ~~Make it possible for users to see the properties they've invested in~~
-3. Show the properties on a map using the Google Maps API
+3. ~~Show the properties on a map using the Google Maps API~~
+  1. Needs to convert location into points on the map
 4. ~~Show the purchase price, rehab cost~~
-5. Show the return on investment using D3 visualizations
+
 
 ##For admin
 
@@ -22,11 +23,28 @@ To Do
 7. Toast for successful addition of new property
 8. Get D3 maps to load responsively
 
+###Properties
+
+1. D3 visualization should re-render circle radius with new inputs
+  1. On hover of the state, all properties listed in the state should pop up in tooltip
+  2. The properties should be clickable, and should redirect to the individual property page
+2. Terms sheet link
+3. Analytics spreadsheet-equivalent for admin: https://github.com/ongoworks/meteor-google-spreadsheets
+
 ###Homepage
 
 1. ~~Create a page that updates and scales like this page: http://zerotoonebook.com/~~
-2. Parallax for background images
+2. ~~D3 map with all properties~~
+  1. Tooltip?
 
-##Calculator
+
+###Calculator
 
 1. Create an investment calculator that will calculate CAP rate
+
+###Analytics
+
+1. Show the return on investment using D3 visualizations
+2. ~~Show asset allocation~~
+  1. Link to database
+3. Return over time

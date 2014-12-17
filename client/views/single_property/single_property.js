@@ -67,3 +67,29 @@ Template.singlePropertyImageCarousel.rendered = function() {
 
 
 Meteor.subscribe("images");
+
+
+
+// Total Price
+// Down Payment Percentage
+// Down Payment Amt
+// Closing Costs + Repairs Estimate
+// COST OF ADDITIONAL FINANICING
+// TOTAL INVESTMENT
+// APR
+// Monthly Mortgage Expense
+// Taxes
+// Monthly Tax Average
+// HOA for condo
+// Insurance Approximation
+// Operating Expenses
+// RESERVE 5%
+// Monthly Cost of Ownership
+// Rent Price Full
+// Square Footage
+// CASHFLOW RENTED
+// CASHFLOW OCCUPIED
+// CASHFLOW UNOCCUPIED
+// AFTER TAX WITH RENTERS
+// AFTER TAX UN-OCCUPIED
+// FREE CASH FLOW (w/o prp tax)

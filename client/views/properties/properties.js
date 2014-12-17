@@ -29,7 +29,7 @@ Template.properties.events({
 Template.newPropertyForm.events({
   'click #submit-new-property': function(e,t) {
     //if it's only numbers, else, throw error.
-    if (Number($("#purchase-price").val())) {
+    if (Number($("#purchase-price").val())) { // && Bed is a number, && bath, && square feet
       Properties.insert({ owner: $("#user-id").val(), address: $("#property-address").val(), price: Number($("#purchase-price").val()), state: $(".add-property-state-dropdown").val()});
       $("#property-address").val("");
       $("#purchase-price").val("");
@@ -118,7 +118,7 @@ Template.newPropertyForm.rendered = function() {
 
 
   });
-  
+
 };
 
 // "change input#supplied-armor": function (events, template) {
