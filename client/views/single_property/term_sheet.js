@@ -3,17 +3,14 @@ Meteor.subscribe("termSheet");
 Template.singlePropertyTermSheet.rendered = function() {
 
   var currentPropertyId = window.location.href.match(/(\/properties\/)(\w+)/)[2];
-  if (TermSheet.find({propertyId: currentPropertyId}).fetch()[0] !== undefined ) {
+  if (TermSheet.find({property: currentPropertyId}).fetch()[0] !== undefined ) {
     Session.set("termSheetActive", false);
   } else { Session.set("termSheetActive", true); }
 
-  // Session.set("termSheetActive", function() {
-  //   return true;
-  //   // var currentPropertyId = window.location.href.match(/(\/properties\/)(\w+)/)[2];
-  //   // if (TermSheet.find({propertyId: currentPropertyId}).fetch() == []) {
-  //   //   return true;
-  //   // } else { return false; }
-  // })
+  if (TermSheet.find({property: currentPropertyId}).fetch()[0] !== undefined ) {
+    $(".flex-white-div-term-sheet").toggleClass("add-flex-div-show");
+    $(".red-break-term-sheet").toggleClass("add-red-break-show");
+  }
 
 };
 
@@ -35,8 +32,11 @@ Template.singlePropertyTermSheet.events({
     alert(e.currentTarget.value);
   },
   'click #add-term-sheet-button': function(e,t) {
-    $(".flex-white-div-term-sheet").toggleClass("add-flex-div-show")
-    $(".red-break-term-sheet").toggleClass("add-red-break-show")
+    $(".flex-white-div-term-sheet").toggleClass("add-flex-div-show");
+    $(".red-break-term-sheet").toggleClass("add-red-break-show");
+    TermSheet.insert({"owner": Meteor.userId(), "property": window.location.href.match(/(\/properties\/)(\w+)/)[2]});
+    $(".flex-white-div-term-sheet-button").toggleClass("add-flex-div-hide");
+    $(".red-break-term-sheet-button").toggleClass("add-red-break-hide");
   }
 });
 

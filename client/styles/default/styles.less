@@ -90,6 +90,12 @@ background-color: lighten(@icarus-red, 10%);
   background-color: white;
 }
 
+.flex-white-div-term-sheet-button {
+  max-height: 10rem;
+  width: 100%;
+  background-color: white;
+}
+
 .property-panel-two {
   height: auto;
   width: 100%;
@@ -120,6 +126,12 @@ background-color: lighten(@icarus-red, 10%);
 }
 
 .red-break {
+  height: 0.5rem;
+  width: 100%;
+  background-color: @icarus-red;
+}
+
+.red-break-term-sheet-button {
   height: 0.5rem;
   width: 100%;
   background-color: @icarus-red;
@@ -372,7 +384,20 @@ div.add-red-break-show {
   transition: height 0.15s ease-in;
 }
 
+div.add-red-break-hide {
+  height: 0rem;
+  transition: height 0.5s ease-in;
+}
+
 .flex-white-div-property, .flex-white-div-term-sheet {
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+  background-color: white;
+  overflow: hidden;
+}
+
+
+div.add-flex-div-hide {
   max-height: 0;
   transition: max-height 0.5s ease-out;
   background-color: white;
@@ -385,6 +410,8 @@ div.add-red-break-show {
   background-color: @icarus-red;
   transition: height 0.5s ease-out;
 }
+
+
 /* End add property transition */
 
 
