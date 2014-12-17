@@ -6,5 +6,6 @@ Meteor.startup(function() {
 		}
 	}
 
+	console.log(TermSheet.find().fetch());
 
 });

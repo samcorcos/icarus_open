@@ -1,0 +1,57 @@
+<template name="singlePropertyTermSheet">
+  <div class="flex-white-div">
+    <div class="two-rem-spacer"></div>
+    <div class="container">
+      <h1 style="text-align:center;">Term Sheet</h1>
+      <div class="two-rem-spacer"></div>
+      <div class="row">
+
+        <div class="input-field col s4">
+          {{#if editing}}
+            <input id="total-price" type="text" placeholder="Total Price" required>
+          {{else}}
+            <div class="term-sheet-item">
+              <h4>Total Price</h4>
+              <span>{{totalPrice}}</span>
+            </div>
+          {{/if}}
+        </div>
+        <div class="input-field col s4">
+          <input id="down-payment" type="text" placeholder="Down Payment %" required>
+        </div>
+        <div class="input-field col s4">
+          <input id="closing-repair" type="text" placeholder="Closing &#38; Repair" required>
+        </div>
+
+        <div class="input-field col s4">
+          <input id="apr" type="text" placeholder="APR" required>
+        </div>
+        <div class="input-field col s4">
+          <input id="taxes" type="text" placeholder="Taxes" required>
+        </div>
+        <div class="input-field col s4">
+          <input id="hoa" type="text" placeholder="HOA" required>
+        </div>
+
+        <div class="input-field col s4">
+          <input id="insurance" type="text" placeholder="Insurance" required>
+        </div>
+        <div class="input-field col s4">
+          <input id="rent-price" type="text" placeholder="Rent Price" required>
+        </div>
+        <div class="input-field col s4">
+          <input id="square-footage" type="text" placeholder="Square Footage" required>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="five-rem-spacer"></div>
+    <div class="five-rem-spacer"></div>
+    <div class="five-rem-spacer"></div>
+    <div class="five-rem-spacer"></div>
+    <div class="five-rem-spacer"></div>
+  </div>
+  <div class="red-break"></div>
+</template>
