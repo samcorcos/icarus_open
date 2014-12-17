@@ -34,7 +34,7 @@ Template.singlePropertyTermSheet.helpers({
 });
 
 Template.singlePropertyTermSheet.events({
-  'click .term-sheet-item': function(e,t) {
+  'click #total-price-div': function(e,t) {
     alert(e.currentTarget.value);
   },
   'click #add-term-sheet-button': function(e,t) {
