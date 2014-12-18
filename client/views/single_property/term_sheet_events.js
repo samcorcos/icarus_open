@@ -16,6 +16,16 @@ Template.singlePropertyTermSheet.events({
   'click #hoa-div': function(e,t) { Session.set("editingHOA", true); },
   'click #insurance-div': function(e,t) { Session.set("editingInsurance", true); },
   'click #rent-price-div': function(e,t) { Session.set("editingRentPrice", true); },
-  'click #square-footage-div': function(e,t) { Session.set("editingSquareFootage", true); }
+  'click #square-footage-div': function(e,t) { Session.set("editingSquareFootage", true); },
+
+  'keypress input#rent-price': function(e,t) {
+    if (e.keyCode === 13) {
+      console.log(this._id);
+      Session.set("editingRentPrice", false);
+      TermSheet.update({ _id: this._id }, { $set: { rentPrice: e.currentTarget.value }});
+      // People.update({_id: person._id}, {$set: {name: e.currentTarget.value}});
+      // Session.set("edit-" + t.data._id, false);
+    }
+  },
 
 });
