@@ -51,7 +51,7 @@ Template.equityInvestorModal.helpers({
   downPaymentAmount: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
     var equitySold = Number(temp[0].equitySold);
-    var downPaymentAmount = (Number(temp[0].totalPrice) * Number(temp[0].downPayment) / 100 * equitySold / 100);
+    var downPaymentAmount = (Number(temp[0].totalPrice) * Number(temp[0].downPayment) / 100);
     var percentCapitalNeeded = Number(temp[0].percentCapitalNeeded / 100);
 
     return (downPaymentAmount * percentCapitalNeeded).formatMoney(0);
@@ -175,7 +175,7 @@ Template.equityInvestorModal.helpers({
 
     var reserve = (Number(temp[0].rentPrice) * 0.05) * equitySold / 100;
 
-    return ;
+    return reserve.formatMoney(0);
   },
   costOfOwnership: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
