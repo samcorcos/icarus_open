@@ -1,11 +1,11 @@
 Meteor.subscribe("termSheet");
 
-// return TermSheet.find({ property: window.location.href.match(/(\/properties\/)(\w+)/)[2]});
+// return TermSheet.find({ property: Session.get("currentId")._id });
 
 
 Template.singlePropertyTermSheet.rendered = function() {
 
-  var currentPropertyId = window.location.href.match(/(\/properties\/)(\w+)/)[2];
+  var currentPropertyId = Session.get("currentId")._id;
   if (TermSheet.find({property: currentPropertyId}).fetch()[0] !== undefined ) {
     Session.set("termSheetActive", false);
   } else { Session.set("termSheetActive", true); }
@@ -17,38 +17,4 @@ Template.singlePropertyTermSheet.rendered = function() {
 
 };
 
-// var currentPropertyId = window.location.href.match(/(\/properties\/)(\w+)/)[2];
-
-
-
-
-
-
-
-
-
-
-
-// Total Price
-// Down Payment Percentage
-// Down Payment Amt
-// Closing Costs + Repairs Estimate
-// COST OF ADDITIONAL FINANICING
-// TOTAL INVESTMENT
-// APR
-// Monthly Mortgage Expense
-// Taxes
-// Monthly Tax Average
-// HOA for condo
-// Insurance Approximation
-// Operating Expenses
-// RESERVE 5%
-// Monthly Cost of Ownership
-// Rent Price Full
-// Square Footage
-// CASHFLOW RENTED
-// CASHFLOW OCCUPIED
-// CASHFLOW UNOCCUPIED
-// AFTER TAX WITH RENTERS
-// AFTER TAX UN-OCCUPIED
-// FREE CASH FLOW (w/o prp tax)
+// var currentPropertyId = Session.get("currentId")._id;

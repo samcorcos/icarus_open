@@ -32,6 +32,6 @@ Router.map(function () {
 
 Router.route("/properties/:_id", {
 	name: 'singleProperty',
-	data: function() { return Properties.findOne(this.params._id); },  // Session.set("currentId", Properties.findOne(this.params._id));
+	data: function() { Session.set("currentId", Properties.findOne(this.params._id)); return Properties.findOne(this.params._id); }, 
 	controller: "SinglePropertyController"
 });

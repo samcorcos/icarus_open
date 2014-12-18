@@ -14,6 +14,7 @@ Template.singleProperty.rendered = function() {
       map.setCenter(new google.maps.LatLng( 41.870302, -87.764084 )); // This is going to have to be a function based on some calculation that gets the lat and long... good luck! ...Or just https://developers.google.com/maps/documentation/geocoding/
     }
   );
+
 };
 
 Template.singleProperty.helpers({
@@ -24,18 +25,17 @@ Template.singleProperty.events({
   'click #add-property-image': function(e,t) {
     filepicker.pick(
       function(Blob){
-        Images.insert({ "owner": Meteor.userId(), "property": window.location.href.match(/(\/properties\/)(\w+)/)[2], "bloburl": Blob.url, "date": Date() }) // I think I'm going to have to get this Session.get from the params, rather than the Session variable inc ase seomeone goes straight to the individual property page.
+        Images.insert({ "owner": Meteor.userId(), "property": t.data._id, "bloburl": Blob.url, "date": Date() }) // I think I'm going to have to get this Session.get from the params, rather than the Session variable inc ase seomeone goes straight to the individual property page.
       }
     );
   }
 });
 
 
-
 Template.singlePropertyImageCarousel.helpers({
   propertyImages: function() { // Maybe I can solve this with Meteor._wrapAsync??
     var currentPropertyImages = [];
-    var currentPropertyId = window.location.href.match(/(\/properties\/)(\w+)/)[2];
+    var currentPropertyId = Session.get("currentId")._id;
     var allImages = Images.find().fetch();
 
     allImages.forEach(function(image) {
@@ -56,7 +56,6 @@ Template.singlePropertyImageCarousel.helpers({
 
 
 Template.singlePropertyImageCarousel.rendered = function() {
-  // var urlId = window.location.href.match(/(\/properties\/)(\w+)/);
   $('#carousel').slick({
     dots: true,
     arrows: true
