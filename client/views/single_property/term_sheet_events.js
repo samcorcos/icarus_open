@@ -18,14 +18,60 @@ Template.singlePropertyTermSheet.events({
   'click #rent-price-div': function(e,t) { Session.set("editingRentPrice", true); },
   'click #square-footage-div': function(e,t) { Session.set("editingSquareFootage", true); },
 
-  'keypress input#rent-price': function(e,t) {
+  'keypress input#total-price': function(e,t) {
     if (e.keyCode === 13) {
-      console.log(this._id);
-      Session.set("editingRentPrice", false);
-      TermSheet.update({ _id: this._id }, { $set: { rentPrice: e.currentTarget.value }});
-      // People.update({_id: person._id}, {$set: {name: e.currentTarget.value}});
-      // Session.set("edit-" + t.data._id, false);
+      Session.set("editingTotalPrice", false);
+      TermSheet.update({ _id: this._id }, { $set: { totalPrice: e.currentTarget.value }});
     }
   },
+  'keypress input#down-payment': function(e,t) {
+    if (e.keyCode === 13) {
+      Session.set("editingDownPayment", false);
+      TermSheet.update({ _id: this._id }, { $set: { downPayment: e.currentTarget.value }});
+    }
+  },
+  'keypress input#closing-repair': function(e,t) {
+    if (e.keyCode === 13) {
+      Session.set("editingClosingRepair", false);
+      TermSheet.update({ _id: this._id }, { $set: { closingRepair: e.currentTarget.value }});
+    }
+  },
+  'keypress input#apr': function(e,t) {
+    if (e.keyCode === 13) {
+      Session.set("editingAPR", false);
+      TermSheet.update({ _id: this._id }, { $set: { apr: e.currentTarget.value }});
+    }
+  },
+  'keypress input#taxes': function(e,t) {
+    if (e.keyCode === 13) {
+      Session.set("editingTaxes", false);
+      TermSheet.update({ _id: this._id }, { $set: { taxes: e.currentTarget.value }});
+    }
+  },
+  'keypress input#hoa': function(e,t) {
+    if (e.keyCode === 13) {
+      Session.set("editingHOA", false);
+      TermSheet.update({ _id: this._id }, { $set: { hoa: e.currentTarget.value }});
+    }
+  },
+  'keypress input#insurance': function(e,t) {
+    if (e.keyCode === 13) {
+      Session.set("editingInsurance", false);
+      TermSheet.update({ _id: this._id }, { $set: { insurance: e.currentTarget.value }});
+    }
+  },
+  'keypress input#rent-price': function(e,t) {
+    if (e.keyCode === 13) {
+      Session.set("editingRentPrice", false);
+      TermSheet.update({ _id: this._id }, { $set: { rentPrice: e.currentTarget.value }});
+    }
+  },
+  'keypress input#square-footage': function(e,t) {
+    if (e.keyCode === 13) {
+      Session.set("editingSquareFootage", false);
+      TermSheet.update({ _id: this._id }, { $set: { squareFootage: e.currentTarget.value }});
+    }
+  }
+
 
 });

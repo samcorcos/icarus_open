@@ -19,5 +19,5 @@ Meteor.publish("images", function () {
 });
 
 Meteor.publish("termSheet", function () {
-  return TermSheet.find({ owner: this.userId});
+  return TermSheet.find({ owner: this.userId })
 });
