@@ -10,13 +10,20 @@ Template.equityInvestorModal.helpers({
     return (totalInvestment * equitySold / 100).formatMoney(0);
   },
   closingRepair: function() {
-    return ;
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var equitySold = Number(temp[0].equitySold);
+    var closingRepair = Number(temp[0].closingRepair) * equitySold / 100;
+    return closingRepair.formatMoney(0);
   },
   taxes: function() {
-    return ;
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var taxes = Number(temp[0].taxes);
+    return taxes.formatMoney(0);
   },
   insurance: function() {
-    return ;
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var insurance = Number(temp[0].insurance);
+    return insurance.formatMoney(0);
   },
   downPaymentPercentage: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
@@ -26,15 +33,28 @@ Template.equityInvestorModal.helpers({
     return (downPaymentPercentage * percentCapitalNeeded / 100).formatMoney(2);
   },
   totalInvestment: function() {
-    return ;
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var equitySold = Number(temp[0].equitySold);
+    var downPaymentAmount = (Number(temp[0].totalPrice) * Number(temp[0].downPayment) / 100 * equitySold / 100);
+    var equitySold = Number(temp[0].equitySold);
+    var closingRepair = Number(temp[0].closingRepair) * equitySold / 100;
+
+    var totalInvestment = closingRepair + downPaymentAmount;
+
+    return totalInvestment.formatMoney(0);
   },
   hoa: function() {
-    return ;
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var hoa = Number(temp[0].hoa);
+    return hoa.formatMoney(0);
   },
   downPaymentAmount: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
-    var downPaymentAmount = (Number(temp[0].totalPrice) * Number(temp[0].downPayment) / 100);
+    var equitySold = Number(temp[0].equitySold);
+    var downPaymentAmount = (Number(temp[0].totalPrice) * Number(temp[0].downPayment) / 100 * equitySold / 100);
     var percentCapitalNeeded = Number(temp[0].percentCapitalNeeded / 100);
+
+
 
     return (downPaymentAmount * percentCapitalNeeded).formatMoney(0);
   },
