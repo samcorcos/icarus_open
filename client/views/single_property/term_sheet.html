@@ -23,40 +23,111 @@
       {{#each termSheet}}
 
         <div class="input-field col s4">
-          {{#if editing}}
+          {{#if editingTotalPrice}}
+          <h4>Total Price</h4>
           <input id="total-price" type="text" value="{{totalPrice}}" required>
           {{else}}
           <div class="term-sheet-item" id="total-price-div">
             <h4>Total Price</h4>
-            <p class="flow-text" style="line-height:1;margin:0;">${{totalPrice}}</p>
+            <p class="flow-text">${{totalPrice}}</p>
           </div>
           {{/if}}
         </div>
+
         <div class="input-field col s4">
-          <input id="down-payment" type="text" placeholder="Down Payment %" required>
-        </div>
-        <div class="input-field col s4">
-          <input id="closing-repair" type="text" placeholder="Closing &#38; Repair" required>
+          {{#if editingDownPayment}}
+          <h4>Down Payment</h4>
+          <input id="down-payment" type="text" value="{{downPayment}}" required>
+          {{else}}
+          <div class="term-sheet-item" id="down-payment-div">
+            <h4>Down Payment</h4>
+            <p class="flow-text">${{downPayment}}</p>
+          </div>
+          {{/if}}
         </div>
 
         <div class="input-field col s4">
-          <input id="apr" type="text" placeholder="APR" required>
-        </div>
-        <div class="input-field col s4">
-          <input id="taxes" type="text" placeholder="Taxes" required>
-        </div>
-        <div class="input-field col s4">
-          <input id="hoa" type="text" placeholder="HOA" required>
+          {{#if editingClosingRepair}}
+          <h4>Closing &#38; Repair</h4>
+          <input id="closing-repair" type="text" value={{closingRepair}} required>
+          {{else}}
+          <div class="term-sheet-item" id="closing-repair-div">
+            <h4>Closing &#38; Repair</h4>
+            <p class="flow-text">${{closingRepair}}</p>
+          </div>
+          {{/if}}
         </div>
 
         <div class="input-field col s4">
-          <input id="insurance" type="text" placeholder="Insurance" required>
+          {{#if editingAPR}}
+          <h4>APR</h4>
+          <input id="apr" type="text" value={{apr}} required>
+          {{else}}
+          <div class="term-sheet-item" id="apr-div">
+            <h4>APR</h4>
+            <p class="flow-text">{{apr}}%</p>
+          </div>
+          {{/if}}
         </div>
+
         <div class="input-field col s4">
-          <input id="rent-price" type="text" placeholder="Rent Price" required>
+          {{#if editingTaxes}}
+          <h4>Taxes</h4>
+          <input id="taxes" type="text" value={{taxes}} required>
+          {{else}}
+          <div class="term-sheet-item" id="taxes-div">
+            <h4>Taxes</h4>
+            <p class="flow-text">${{taxes}}</p>
+          </div>
+          {{/if}}
         </div>
+
         <div class="input-field col s4">
-          <input id="square-footage" type="text" placeholder="Square Footage" required>
+          {{#if editingHOA}}
+          <h4>HOA</h4>
+          <input id="hoa" type="text" value={{hoa}} required>
+          {{else}}
+          <div class="term-sheet-item" id="hoa-div">
+            <h4>HOA</h4>
+            <p class="flow-text">${{hoa}}</p>
+          </div>
+          {{/if}}
+        </div>
+
+        <div class="input-field col s4">
+          {{#if editingInsurance}}
+          <h4>Insurance</h4>
+          <input id="insurance" type="text" value={{insurance}} required>
+          {{else}}
+          <div class="term-sheet-item" id="insurance-div">
+            <h4>Insurance</h4>
+            <p class="flow-text">${{insurance}}</p>
+          </div>
+          {{/if}}
+        </div>
+
+        <div class="input-field col s4">
+          {{#if editingRentPrice}}
+          <h4>Rent Price</h4>
+          <input id="rent-price" type="text" value={{rentPrice}} required>
+          {{else}}
+          <div class="term-sheet-item" id="rent-price-div">
+            <h4>Rent Price</h4>
+            <p class="flow-text">${{rentPrice}}</p>
+          </div>
+          {{/if}}
+        </div>
+
+        <div class="input-field col s4">
+          {{#if editingSquareFootage}}
+          <h4>Square Footage</h4>
+          <input id="square-footage" type="text" value={{squareFootage}} required>
+          {{else}}
+          <div class="term-sheet-item" id="square-footage-div">
+            <h4>Square Footage</h4>
+            <p class="flow-text">${{squareFootage}}</p>
+          </div>
+          {{/if}}
         </div>
 
       {{/each}}
