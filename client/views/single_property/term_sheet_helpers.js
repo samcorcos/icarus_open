@@ -139,10 +139,119 @@ Template.termSheetOutputs.helpers({
 
     var monthlyTaxAverage = (temp[0].taxes / 12);
 
-    var freeCashflow = cashflowOccupied + monthlyTaxAverage;
+    var freeCashflow = cashflowOccupied + monthlyTaxAverage; // Are you sure you want to add tax, not subtract it?
     return freeCashflow.formatMoney(0);
   }
 
+});
 
+Template.termSheetReturns.helpers({
+  termSheet: function() {
+    return TermSheet.find({ property: Session.get("currentId")._id });
+  },
 
+  annualRevenue: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var rentPrice = Number(temp[0].rentPrice);
+    var annualRevenue = rentPrice * 12;
+    return annualRevenue.formatMoney(0);
+  },
+  annualCost: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
+    var annualCost = monthlyCostOfOwnership * 12;
+    return annualCost.formatMoney(0);
+  },
+  annualProfit: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var rentPrice = Number(temp[0].rentPrice);
+    var annualRevenue = rentPrice * 12;
+
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
+    var annualCost = monthlyCostOfOwnership * 12;
+
+    var annualProfit = annualRevenue - annualCost;
+    return annualProfit.formatMoney(0);
+  },
+  annualProfitAfterTax: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var depreciation = (Number(temp[0].totalPrice) * 0.8 / 360);
+    var tax = Number(temp[0].taxes) / 12;
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var additionalFinancing = 0;               // Not filled in
+    var monthlyMortgageExpense = 0;            // Not filled in
+    var unoccupied = (Number(monthlyMortgageExpense) * 0.73) + operatingExpenses + depreciation + additionalFinancing;
+    var rented = (unoccupied - Number(temp[0].rentPrice));
+    var rentedWriteoffs = Number(rented) * 0.35;
+    var unoccupiedWriteoffs = Number(unoccupied) * 0.35;
+
+    var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
+    var rentPrice = Number(temp[0].rentPrice);
+    var cashflowRented = rentPrice - monthlyCostOfOwnership;
+
+    var afterTaxWithRenters = cashflowRented + rentedWriteoffs;
+
+    var annualProfitAfterTax = afterTaxWithRenters * 12;
+    return annualProfitAfterTax.formatMoney(0);
+  },
+  annualROIBeforeTax: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var rentPrice = Number(temp[0].rentPrice);
+    var annualRevenue = rentPrice * 12;
+
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
+    var annualCost = monthlyCostOfOwnership * 12;
+
+    var annualProfit = annualRevenue - annualCost;
+
+    var totalInvestment = (Number(temp[0].totalPrice) + Number(temp[0].closingRepair))
+
+    var annualROIBeforeTax = annualProfit / totalInvestment;
+    return (annualROIBeforeTax * 100).formatMoney(2);
+  },
+  annualROIAfterTax: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var depreciation = (Number(temp[0].totalPrice) * 0.8 / 360);
+    var tax = Number(temp[0].taxes) / 12;
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var additionalFinancing = 0;               // Not filled in
+    var monthlyMortgageExpense = 0;            // Not filled in
+    var unoccupied = (Number(monthlyMortgageExpense) * 0.73) + operatingExpenses + depreciation + additionalFinancing;
+    var rented = (unoccupied - Number(temp[0].rentPrice));
+    var rentedWriteoffs = Number(rented) * 0.35;
+    var unoccupiedWriteoffs = Number(unoccupied) * 0.35;
+
+    var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
+    var rentPrice = Number(temp[0].rentPrice);
+    var cashflowRented = rentPrice - monthlyCostOfOwnership;
+
+    var afterTaxWithRenters = cashflowRented + rentedWriteoffs;
+
+    var annualProfitAfterTax = afterTaxWithRenters * 12;
+
+    var totalInvestment = (Number(temp[0].totalPrice) + Number(temp[0].closingRepair))
+
+    var annualROIAfterTax = annualProfitAfterTax / totalInvestment;
+    return (annualROIAfterTax * 100).formatMoney(2);
+  },
+  annualOperatingExpense: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var annualOperatingExpense = operatingExpenses * 12;
+    return annualOperatingExpense.formatMoney(0);
+  },
+  netOperatingIncome: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var rentPrice = Number(temp[0].rentPrice);
+    var annualRevenue = rentPrice * 12;
+
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var annualOperatingExpense = operatingExpenses * 12;
+
+    var netOperatingIncome = annualRevenue - annualOperatingExpense;
+    return netOperatingIncome.formatMoney(0);
+  }
 });
