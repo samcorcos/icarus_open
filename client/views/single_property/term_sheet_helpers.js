@@ -50,8 +50,6 @@ Template.termSheetOutputs.helpers({
   termSheet: function() {
     return TermSheet.find({ property: Session.get("currentId")._id });
   },
-
-
   downPaymentAmount: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
     var downPaymentAmount = (Number(temp[0].totalPrice) * Number(temp[0].downPayment) / 100);

@@ -1,5 +1,21 @@
 Template.equityInvestorModal.helpers({
-  
+  totalPrice: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var totalInvestment = (Number(temp[0].totalPrice) + Number(temp[0].closingRepair));
+
+    var equitySold = Number(temp[0].equitySold);
+
+    return (totalInvestment * equitySold / 100).formatMoney(0);
+  },
+  downPaymentPercentage: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var downPaymentPercentage = Number(temp[0].downPayment);
+    console.log(downPaymentPercentage)
+    var percentCapitalNeeded = Number(temp[0].percentCapitalNeeded);
+    console.log(percentCapitalNeeded)
+
+    return (downPaymentPercentage * percentCapitalNeeded / 100).formatMoney(2);
+  }
 });
 
 
