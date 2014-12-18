@@ -14,15 +14,43 @@
 </template>
 
 
+
+
 <template name="returnOnInvestment">
   <div class="col s12 m6 l6">
     <div class="card analytics-card">
       <div class="card-content">
-        <h2>Return on Investment</h2>
-        <p>Cool Graphic on ROI</p>
+        <div class="row">
+          <h2>Return on Investment</h2>
+
+          <div class="col s12 m6 l6">
+            <div class="roi-box z-depth-1 tooltipped" data-position="botton" data-tooltip="Total Asset Appreciation (%)">
+              <p class="flow-text">0%</p>
+            </div>
+            <div class="roi-box z-depth-1 tooltipped" data-position="botton" data-tooltip="Total Asset Appreciation ($)">
+              <p class="flow-text">$0</p>
+            </div>
+          </div>
+
+          <div class="col s12 m6 l6">
+            <div class="roi-box z-depth-1 tooltipped" data-position="botton" data-tooltip="Average Monthly Rental Returns">
+              <p class="flow-text">$0</p>
+            </div>
+            <div class="roi-box z-depth-1 tooltipped" data-position="botton" data-tooltip="Average Monthly Loan Returns">
+              <p class="flow-text">$0</p>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
       </div>
+
       <div class="row">
-        <a class="col m6 l6" href="#">This is a link</a>
+        <a class="col m6 l6" href="#">Check price on Zillow</a>
         <a class="col m6 l6" href='#'>This is a link</a>
       </div>
     </div>

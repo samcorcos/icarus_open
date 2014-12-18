@@ -48,6 +48,7 @@ To Do
 2. ~~Show asset allocation~~
   1. Link to database
 3. Return over time
+4. Show rental income over time, as well as asset appreciation from Zillow API
 
 
 When offline, comment out controller and templates.
