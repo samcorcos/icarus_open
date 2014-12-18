@@ -1,7 +1,7 @@
 {
   "allocation": [
     {
-      "type": "debt",
+      "type": "loan",
       "total": 20000
     },
     {
