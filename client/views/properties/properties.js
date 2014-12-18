@@ -50,6 +50,9 @@ Template.newPropertyForm.events({
       $("#bath-count").val("");
       $("#sqft-count").val("");
       toast('Successfully Added To Database!', 3000)
+      $("#property-map").remove();
+      $("#append-map-here").append("<div id='property-map'></div>")
+      createPropertiesMap();
     }
     else {
       alert("Please enter only numbers for the purchase price.")
