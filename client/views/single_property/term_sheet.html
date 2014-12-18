@@ -1,6 +1,6 @@
 <template name="singlePropertyTermSheet">
   {{> termSheetButton}}
-  <div class="three-rem-spacer"></div>
+
 
   {{> termSheetDashboard}}
 
@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div class="red-break"></div>
+  <div class="red-break-term-sheet"></div>
 
     {{> termSheetInputs}}
 
@@ -25,7 +25,7 @@
 
     {{> termSheetReturns}}
 
-  <div class="red-break"></div>
+  <div class="red-break-term-sheet"></div>
 </template>
 
 
@@ -164,19 +164,19 @@
           {{else}}
           <div class="term-sheet-item" id="equity-sold-div">
             <h4>Equity Being Sold</h4>
-            <p class="flow-text">{{equitySold}}</p>
+            <p class="flow-text">{{equitySold}}%</p>
           </div>
           {{/if}}
         </div>
 
         <div class="term-sheet-input input-field col s4">
-          {{#if editingPercentEquityNeeded}}
-          <h4>Percent Equity Needed</h4>
-          <input id="percent-equity-needed" type="text" value={{percentEquityNeeded}} required>
+          {{#if editingPercentCapitalNeeded}}
+          <h4>Percent Capital Needed</h4>
+          <input id="percent-capital-needed" type="text" value={{percentCapitalNeeded}} required>
           {{else}}
-          <div class="term-sheet-item" id="percent-equity-needed-div">
-            <h4>Percent Equity Needed</h4>
-            <p class="flow-text">{{percentEquityNeeded}}</p>
+          <div class="term-sheet-item" id="percent-capital-needed-div">
+            <h4>Percent Capital Needed</h4>
+            <p class="flow-text">{{percentCapitalNeeded}}%</p>
           </div>
           {{/if}}
         </div>
@@ -350,7 +350,8 @@
 
 
 <template name="termSheetDashboard">
-  <div class="flex-white-div term-sheet-dashboard">
+  <div class="flex-white-div-term-sheet term-sheet-dashboard">
+    <div class="three-rem-spacer"></div>
     <div class="container">
       <div class="row z-depth-1" style="border-radius:5px;">
         <div class="col l4 m4 s12">
