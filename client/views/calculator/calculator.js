@@ -1,6 +1,7 @@
 Calculator = new Mongo.Collection(null);
 
-Template.calculator.created = function() {
+Template.calculator.rendered = function() {
+  Calculator.remove({});
   Calculator.insert({ purchasePrice: 0, closingRepair: 0, monthlyIncome: 0, capRate: 0 });
 };
 
