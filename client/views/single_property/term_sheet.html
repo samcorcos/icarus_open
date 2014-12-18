@@ -12,6 +12,8 @@
 
       {{> termSheetOutputs}}
 
+      {{> termSheetReturns}}
+
     </div>
     <div class="five-rem-spacer"></div>
   </div>
@@ -229,8 +231,33 @@
         <p class="flow-text">${{cashflowUnoccupied}}</p>
       </div>
     </div>
+    <div class="input-field col s4">
+      <div class="term-sheet-item">
+        <h4>After Tax (with Renters)</h4>
+        <p class="flow-text">${{afterTaxWithRenters}}</p>
+      </div>
+    </div>
+    <div class="input-field col s4">
+      <div class="term-sheet-item">
+        <h4>After Tax (Unoccupied)</h4>
+        <p class="flow-text">${{afterTaxUnoccupied}}</p>
+      </div>
+    </div>
+    <div class="input-field col s4">
+      <div class="term-sheet-item">
+        <h4>Free Cash Flow</h4>
+        <p class="flow-text">${{freeCashflow}}</p>
+      </div>
+    </div>
 
 
   </div>
+  {{/each}}
+</template>
+
+
+<template name="termSheetReturns">
+  {{#each termSheet}}
+
   {{/each}}
 </template>

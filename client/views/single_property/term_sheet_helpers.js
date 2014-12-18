@@ -65,24 +65,84 @@ Template.termSheetOutputs.helpers({
   },
   monthlyCostOfOwnership: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
-    var monthlyCostOfOwnership = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05)); // Does not include monthly mortgage expense, or cost of additional financing
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
     return monthlyCostOfOwnership.formatMoney(0);
   },
   cashflowRented: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
-    var cashflowRented = (Number(temp[0].rentPrice) - (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05))); // Does not include monthly mortgage expense, or cost of additional financing
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
+    var rentPrice = Number(temp[0].rentPrice);
+    var cashflowRented = rentPrice - monthlyCostOfOwnership;
     return cashflowRented.formatMoney(0);
   },
   cashflowOccupied: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
-    var cashflowOccupied = (Number(temp[0].rentPrice) - (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05))); // Does not include monthly mortgage expense, or cost of additional financing
+    var rentPrice = Number(temp[0].rentPrice);
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var monthlyCostOfOwnership = operatingExpenses;  // Does not include monthly mortgage expense, or cost of additional financing
+    var cashflowOccupied = rentPrice - monthlyCostOfOwnership;
     return cashflowOccupied.formatMoney(0);
   },
   cashflowUnoccupied: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
-    var cashflowUnoccupied = (-1 * (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05))); // Does not include monthly mortgage expense, or cost of additional financing
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
+    var cashflowUnoccupied =  -1 * monthlyCostOfOwnership;
     return cashflowUnoccupied.formatMoney(0);
+  },
+  afterTaxWithRenters: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var depreciation = (Number(temp[0].totalPrice) * 0.8 / 360);
+    var tax = Number(temp[0].taxes) / 12;
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var additionalFinancing = 0;               // Not filled in
+    var monthlyMortgageExpense = 0;            // Not filled in
+    var unoccupied = (Number(monthlyMortgageExpense) * 0.73) + operatingExpenses + depreciation + additionalFinancing;
+    var rented = (unoccupied - Number(temp[0].rentPrice));
+    var rentedWriteoffs = Number(rented) * 0.35;
+    var unoccupiedWriteoffs = Number(unoccupied) * 0.35;
+
+    var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
+    var rentPrice = Number(temp[0].rentPrice);
+    var cashflowRented = rentPrice - monthlyCostOfOwnership;
+
+    var afterTaxWithRenters = cashflowRented + rentedWriteoffs;
+    return afterTaxWithRenters.formatMoney(0);
+  },
+  afterTaxUnoccupied: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
+    var cashflowUnoccupied =  -1 * monthlyCostOfOwnership;
+
+    var depreciation = (Number(temp[0].totalPrice) * 0.8 / 360);
+    var tax = Number(temp[0].taxes) / 12;
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var additionalFinancing = 0;               // Not filled in
+    var monthlyMortgageExpense = 0;            // Not filled in
+    var unoccupied = (Number(monthlyMortgageExpense) * 0.73) + operatingExpenses + depreciation + additionalFinancing;
+    var rented = (unoccupied - Number(temp[0].rentPrice));
+    var rentedWriteoffs = Number(rented) * 0.35;
+    var unoccupiedWriteoffs = Number(unoccupied) * 0.35;
+
+    var afterTaxUnoccupied = cashflowUnoccupied + unoccupiedWriteoffs;
+    return afterTaxUnoccupied.formatMoney(0);
+  },
+  freeCashflow: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var rentPrice = Number(temp[0].rentPrice);
+    var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
+    var monthlyCostOfOwnership = operatingExpenses;  // Does not include monthly mortgage expense, or cost of additional financing
+    var cashflowOccupied = rentPrice - monthlyCostOfOwnership;
+
+    var monthlyTaxAverage = (temp[0].taxes / 12);
+
+    var freeCashflow = cashflowOccupied + monthlyTaxAverage;
+    return freeCashflow.formatMoney(0);
   }
+
 
 
 });
