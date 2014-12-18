@@ -10,17 +10,33 @@
               <h5>Total Price</h5>
               <p class="flow-text">${{totalPrice}}</p>
             </div>
-
-          </div>
-        </div>
-      </div>
-      <div class="col s12 m6 l4">
-        <div class="row">
-          <div class="col s12">
-
             <div class="investor-modal-item">
-              <h5>Down Payment</h5>
+              <h5>Closing &#38; Repair</h5>
+              <p class="flow-text">${{closingRepair}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Taxes</h5>
+              <p class="flow-text">${{taxes}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Insurance</h5>
+              <p class="flow-text">${{insurance}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Down Payment (%)</h5>
               <p class="flow-text">{{downPaymentPercentage}}%</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Total Investment</h5>
+              <p class="flow-text">${{totalInvestment}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>HOA</h5>
+              <p class="flow-text">${{hoa}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Down Payment ($)</h5>
+              <p class="flow-text">${{downPaymentAmount}}</p>
             </div>
 
           </div>
@@ -31,8 +47,62 @@
           <div class="col s12">
 
             <div class="investor-modal-item">
-              <h5>Down Payment</h5>
-              <p class="flow-text">${{downPaymentAmount}}</p>
+              <h5>Rent Price</h5>
+              <p class="flow-text">${{rentPrice}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Cashflow (Rented)</h5>
+              <p class="flow-text">${{cashflowRented}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Cashflow (Occupied)</h5>
+              <p class="flow-text">${{cashflowOccupied}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Cashflow (Unoccupied)</h5>
+              <p class="flow-text">${{cashflowUnoccupied}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>After Tax (Occupied)</h5>
+              <p class="flow-text">${{afterTaxOccupied}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>After Tax (Unoccupied)</h5>
+              <p class="flow-text">${{afterTaxUnoccupied}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Free Cash Flow</h5>
+              <p class="flow-text">${{freeCashFlow}}</p>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 l4">
+        <div class="row">
+          <div class="col s12">
+
+
+            <div class="investor-modal-item">
+              <h5>Mortgage Expense (m)</h5>
+              <p class="flow-text">${{monthlyMortgageExpense}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Tax Average (m)</h5>
+              <p class="flow-text">${{monthlyTaxAverage}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Operating Expenses (m)</h5>
+              <p class="flow-text">${{operatingExpenses}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Reserve 5% (m)</h5>
+              <p class="flow-text">${{reserve}}</p>
+            </div>
+            <div class="investor-modal-item">
+              <h5>Ownership Cost (m)</h5>
+              <p class="flow-text">${{costOfOwnership}}</p>
             </div>
 
           </div>
@@ -42,3 +112,8 @@
     <a href="#" class="waves-effect btn-flat modal-close">Close</a>
   </div>
 </template>
+
+
+
+<!--
+// FREE CASH FLOW (w/o prp tax) -->
