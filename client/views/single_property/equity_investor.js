@@ -10,11 +10,16 @@ Template.equityInvestorModal.helpers({
   downPaymentPercentage: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
     var downPaymentPercentage = Number(temp[0].downPayment);
-    console.log(downPaymentPercentage)
     var percentCapitalNeeded = Number(temp[0].percentCapitalNeeded);
-    console.log(percentCapitalNeeded)
 
     return (downPaymentPercentage * percentCapitalNeeded / 100).formatMoney(2);
+  },
+  downPaymentAmount: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var downPaymentAmount = (Number(temp[0].totalPrice) * Number(temp[0].downPayment) / 100);
+    var percentCapitalNeeded = Number(temp[0].percentCapitalNeeded / 100);
+
+    return (downPaymentAmount * percentCapitalNeeded).formatMoney(0);
   }
 });
 
