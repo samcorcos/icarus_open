@@ -1,11 +1,14 @@
 Template.singlePropertyTermSheet.helpers({
   termSheet: function() {
     return TermSheet.find({ property: Session.get("currentId")._id });
-  },
-  termSheetActive: function() {
-    return Session.get("termSheetActive");
   }
 
+});
+
+Template.termSheetButton.helpers({
+  termSheetButtonOn: function() {
+    return Session.get("termSheetButtonOn");
+  }
 });
 
 Template.termSheetInputs.helpers({
