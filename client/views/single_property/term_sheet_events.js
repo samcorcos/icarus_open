@@ -9,28 +9,24 @@ Template.singlePropertyTermSheet.events({
 
 
   'click #input-tab': function(e,t) {
-    // Session.set("termSheetDashboard", "inputs"); // If you want instant-render, uncomment and add the if statements back into html
     $(".flex-white-div-inputs").toggleClass("add-flex-div-show");
     $(".flex-white-div-outputs").removeClass("add-flex-div-show");
     $(".flex-white-div-returns").removeClass("add-flex-div-show");
     $(".flex-white-div-additional").removeClass("add-flex-div-show");
   },
   'click #output-tab': function(e,t) {
-    // Session.set("termSheetDashboard", "outputs");
     $(".flex-white-div-outputs").toggleClass("add-flex-div-show");
     $(".flex-white-div-inputs").removeClass("add-flex-div-show");
     $(".flex-white-div-returns").removeClass("add-flex-div-show");
     $(".flex-white-div-additional").removeClass("add-flex-div-show");
   },
-  'click #other-tab': function(e,t) {
-    // Session.set("termSheetDashboard", "other");
+  'click #returns-tab': function(e,t) {
     $(".flex-white-div-returns").toggleClass("add-flex-div-show");
     $(".flex-white-div-outputs").removeClass("add-flex-div-show");
     $(".flex-white-div-inputs").removeClass("add-flex-div-show");
     $(".flex-white-div-additional").removeClass("add-flex-div-show");
   },
   'click #additional-tab': function(e,t) {
-    // Session.set("termSheetDashboard", "additional");
     $(".flex-white-div-additional").toggleClass("add-flex-div-show");
     $(".flex-white-div-outputs").removeClass("add-flex-div-show");
     $(".flex-white-div-returns").removeClass("add-flex-div-show");

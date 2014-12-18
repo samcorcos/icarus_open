@@ -2,53 +2,31 @@
   {{> termSheetButton}}
   <div class="three-rem-spacer"></div>
 
-  <div class="flex-white-div term-sheet-dashboard">
-    <div class="container">
-      <div class="row z-depth-1" style="border-radius: 5px;">
-        <h2 class="col s12 m12 l12">Dashboard</h2>
-        <div class="col s12 m6 l4">Test</div>
-        <div class="col s12 m6 l4">Test</div>
-        <div class="col s12 m6 l4">Test</div>
-      </div>
-    </div>
-  </div>
+  {{> termSheetDashboard}}
 
   <div class="flex-white-div-term-sheet">
     <div class="container">
-      <!-- <h1 style="text-align:center;">Term Sheet</h1> -->
       <hr>
-      <!--       <div class="row">
-  <div class="col s4"><button class="btn term-sheet-modal-buttons">View/Edit Inputs</button></div>
-  <div class="col s4"><button class="btn term-sheet-modal-buttons">View/Edit Something</button></div>
-  <div class="col s4"><button class="btn term-sheet-modal-buttons">View/Edit Else</button></div>
-</div> --> <!-- If you decide to bring back the buttons with modals, uncomment css for the buttons -->
       <div class="row">
         <ul class="tabs">
           <li class="tab col s2"><a id="input-tab" href="">Inputs</a></li>
           <li class="tab col s2"><a id="output-tab" href="">Outputs</a></li>
-          <li class="tab col s2"><a id="other-tab" href="">Other</a></li>
+          <li class="tab col s2"><a id="returns-tab" href="">Returns</a></li>
           <li class="tab col s2"><a id="additional-tab" href="">Additional</a></li>
         </ul>
       </div>
     </div>
   </div>
   <div class="red-break"></div>
-  <!-- {{#if inputsActive}} -->
+
     {{> termSheetInputs}}
-  <!-- {{/if}}
-  {{#if outputsActive}} -->
+
     {{> termSheetOutputs}}
-  <!-- {{/if}}
-  {{#if otherActive}} -->
+
     {{> termSheetReturns}}
-  <!-- {{/if}} -->
+
   <div class="red-break"></div>
-
-  <!-- <div class="red-break-term-sheet"></div> -->
 </template>
-
-
-
 
 
 
@@ -62,7 +40,6 @@
   <div class="red-break-term-sheet-button"></div>
   {{/if}}
 </template>
-
 
 
 <template name="termSheetInputs">
@@ -184,10 +161,6 @@
   </div>
   {{/each}}
 </template>
-
-
-
-
 
 
 <template name="termSheetOutputs">
@@ -347,4 +320,39 @@
     </div>
   </div>
   {{/each}}
+</template>
+
+
+
+<template name="termSheetDashboard">
+  <div class="flex-white-div term-sheet-dashboard">
+    <div class="container">
+      <div class="row z-depth-1" style="border-radius:5px;">
+        <div class="col l4 m4 s12">
+          <div class="row">
+            <div class="col s12">
+              <h4>First thing</h4>
+              <p>one</p>
+            </div>
+          </div>
+        </div>
+        <div class="col l4 m4 s12">
+          <div class="row">
+            <div class="col s12">
+              <h4>Second thing</h4>
+              <p>two</p>
+            </div>
+          </div>
+        </div>
+        <div class="col l4 m4 s12">
+          <div class="row">
+            <div class="col s12">
+              <h4>Third thing</h4>
+              <p>three</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
