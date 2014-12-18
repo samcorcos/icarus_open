@@ -11,8 +11,10 @@
               <div class="row">
                 <div class="col m6 l6">
                   {{#if editingTotalPriceCalc}}
-                  <h4>Purchase Price</h4>
-                  <input id="purchase-price" type="text" value="{{purchasePrice}}" required>
+                  <div class="calculator-item-edit">
+                    <h4>Purchase Price</h4>
+                    <input id="purchase-price" type="text" value="{{purchasePrice}}" required>
+                  </div>
                   {{else}}
                   <div class="calculator-item z-depth-1" id="purchase-price-div">
                     <h4>Purchase Price</h4>
@@ -23,10 +25,12 @@
 
                 <div class="col m6 l6">
                   {{#if editingClosingRepairCalc}}
-                  <h4>Closing &#38; Repair</h4>
-                  <input id="closing-repair" type="text" value="{{closingRepair}}" required>
+                  <div class="calculator-item-edit">
+                    <h4>Closing &#38; Repair</h4>
+                    <input id="closing-repair" type="text" value="{{closingRepair}}" required>
+                  </div>
                   {{else}}
-                  <div class="calculator-item z-depth-1" id="total-price-div">
+                  <div class="calculator-item z-depth-1" id="closing-repair-div">
                     <h4>Closing &#38; Repair</h4>
                     <p class="flow-text">${{closingRepair}}</p>
                   </div>
@@ -35,8 +39,10 @@
 
                 <div class="col m6 l6">
                   {{#if editingMonthlyIncomeCalc}}
-                  <h4>Monthly Income</h4>
-                  <input id="monthly-income" type="text" value="{{monthlyIncome}}" required>
+                  <div class="calculator-item-edit">
+                    <h4>Monthly Income</h4>
+                    <input id="monthly-income" type="text" value="{{monthlyIncome}}" required>
+                  </div>
                   {{else}}
                   <div class="calculator-item z-depth-1" id="monthly-income-div">
                     <h4>Monthly Income</h4>
@@ -47,12 +53,14 @@
 
                 <div class="col m6 l6">
                   {{#if editingCAPRateCalc}}
-                  <h4>CAP Rate</h4>
-                  <input id="cap-rate" type="text" value="{{capRate}}" required>
+                  <div class="calculator-item-edit">
+                    <h4>CAP Rate</h4>
+                    <input id="cap-rate" type="text" value="{{capRate}}" required>
+                  </div>
                   {{else}}
                   <div class="calculator-item z-depth-1" id="cap-rate-div">
                     <h4>CAP Rate</h4>
-                    <p class="flow-text">${{capRate}}</p>
+                    <p class="flow-text">{{capRate}}%</p>
                   </div>
                   {{/if}}
                 </div>
