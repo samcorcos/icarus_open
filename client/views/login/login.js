@@ -28,9 +28,22 @@ Template.login.events({
   'click #login': function(e,t) {
     Meteor.loginWithPassword(t.find("#username").value, t.find("#password").value); // We are using "Meteor.loginWithPassword", which is a built in function, because we can also use things like "Meteor.loginWithTwitter" or any other third party login if you have that set up.
   },
-  'keypress input': function(e,t) {
+  'keypress input.login-password': function(e,t) {
     if (e.keyCode === 13) {
       Meteor.loginWithPassword(t.find("#username").value, t.find("#password").value);
+    }
+  },
+  'keypress input.new-account-password': function(e,t) {
+    if (e.keyCode === 13) {
+      Session.set('creatingAccount', false); // If the user logs out, we want them to see the login form, instead of the create account form next time they click on the button.
+      Accounts.createUser({                 // If we pass the following into the "createUser" function, which Meteor gives us, we will not only create a user, but the user will also be logged in.
+        username: t.find("#username").value,
+        password: t.find("#password").value,
+        email: t.find("#email").value,
+        profile: {
+          name: t.find("#name").value
+        }
+      });
     }
   }
 })

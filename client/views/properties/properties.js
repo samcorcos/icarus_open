@@ -13,9 +13,6 @@ Meteor.subscribe("properties");
 Template.propertyPanel2.helpers({
   properties: function() {
     return Properties.find();
-  },
-  purchasePrice: function() {
-    return this.price.formatMoney(0);
   }
 });
 
