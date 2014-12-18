@@ -5,6 +5,7 @@ Meteor.subscribe("termSheet");
 
 Template.singlePropertyTermSheet.rendered = function() {
   $('ul.tabs').tabs();
+  $('.modal-trigger').leanModal();
 
   // Session.set("termSheetDashboard", "inputs");
   $(".flex-white-div-inputs").toggleClass("add-flex-div-show");

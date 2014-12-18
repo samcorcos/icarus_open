@@ -40,6 +40,7 @@ Template.termSheetInputs.helpers({
   editingInsurance: function() { return Session.get("editingInsurance"); },
   editingRentPrice: function() { return Session.get("editingRentPrice"); },
   editingSquareFootage: function() { return Session.get("editingSquareFootage"); },
+  editingEquitySold: function() { return Session.get("editingEquitySold"); },
   editingPercentCapitalNeeded: function() { return Session.get("editingPercentCapitalNeeded"); },
 
 });
