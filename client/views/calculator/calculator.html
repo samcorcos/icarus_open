@@ -3,23 +3,60 @@
     <div class="container">
       <div class="row">
         <div class="col offset-m2 offset-l2 s12 m8 l8">
+          {{#each calculator}}
           <div class="card calculator-card">
             <div class="card-content">
               <h2>Investment Calculator</h2>
               <p>This is a brief explanation of how ROI and CAP rate are calculated.</p>
               <div class="row">
                 <div class="col m6 l6">
-                  <label for="purchasePrice">Purchase Price</label><br>
-                  $<input type="number" name="purchasePrice" id="purchasePrice" value="{{purchasePrice}}"><br>
-                  <label for="rehabCost">Rehab Cost</label><br>
-                  $<input type="number" name="rehabCost" id="rehabCost" placeholder="{{rehabCost}}"><br>
+                  {{#if editingTotalPriceCalc}}
+                  <h4>Purchase Price</h4>
+                  <input id="purchase-price" type="text" value="{{purchasePrice}}" required>
+                  {{else}}
+                  <div class="calculator-item z-depth-1" id="purchase-price-div">
+                    <h4>Purchase Price</h4>
+                    <p class="flow-text">${{purchasePrice}}</p>
+                  </div>
+                  {{/if}}
                 </div>
+
                 <div class="col m6 l6">
-                  <label for="monthlyIncome">Monthly Income</label><br>
-                  $<input type="number" name="monthlyIncome" id="monthlyIncome" value="{{monthlyIncome}}"><br>
-                  <label for="capRate">CAP Rate</label><br>
-                  <input type="number" name="capRate" id="capRate" value="{{capRate}}">%<br>
+                  {{#if editingClosingRepairCalc}}
+                  <h4>Closing &#38; Repair</h4>
+                  <input id="closing-repair" type="text" value="{{closingRepair}}" required>
+                  {{else}}
+                  <div class="calculator-item z-depth-1" id="total-price-div">
+                    <h4>Closing &#38; Repair</h4>
+                    <p class="flow-text">${{closingRepair}}</p>
+                  </div>
+                  {{/if}}
                 </div>
+
+                <div class="col m6 l6">
+                  {{#if editingMonthlyIncomeCalc}}
+                  <h4>Monthly Income</h4>
+                  <input id="monthly-income" type="text" value="{{monthlyIncome}}" required>
+                  {{else}}
+                  <div class="calculator-item z-depth-1" id="monthly-income-div">
+                    <h4>Monthly Income</h4>
+                    <p class="flow-text">${{monthlyIncome}}</p>
+                  </div>
+                  {{/if}}
+                </div>
+
+                <div class="col m6 l6">
+                  {{#if editingCAPRateCalc}}
+                  <h4>CAP Rate</h4>
+                  <input id="cap-rate" type="text" value="{{capRate}}" required>
+                  {{else}}
+                  <div class="calculator-item z-depth-1" id="cap-rate-div">
+                    <h4>CAP Rate</h4>
+                    <p class="flow-text">${{capRate}}</p>
+                  </div>
+                  {{/if}}
+                </div>
+
               </div>
             </div>
             <div class="row">
@@ -27,16 +64,16 @@
               <a class="col m6 l6" href='#'>This is a link</a>
             </div>
           </div>
+          {{/each}}
         </div>
       </div>
-      {{> calculatorOutput}}
     </div>
   </div>
 </template>
 
 
 
-
+<!--
 <template name="calculatorOutput">
   <div class="row">
     <div class="col offset-m2 offset-l2 s12 m8 l8">
@@ -45,11 +82,11 @@
           <h2>Output</h2>
           <div class="row">
             <div class="col m6 l6">
-              <h3>Purchase Price: ${{purchasePrice}}</h3>
-              <h3>Rehab Cost: ${{rehabCost}}</h3>
+              <h3>Purchase Price: \${{purchasePrice}}</h3>
+              <h3>Rehab Cost: \${{rehabCost}}</h3>
             </div>
             <div class="col m6 l6">
-              <h3>Monthly Income: ${{monthlyIncome}}</h3>
+              <h3>Monthly Income: \${{monthlyIncome}}</h3>
               <h3>CAP Rate: {{capRate}}%</h3>
             </div>
           </div>
@@ -62,3 +99,4 @@
     </div>
   </div>
 </template>
+ -->
