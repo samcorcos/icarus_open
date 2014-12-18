@@ -160,32 +160,34 @@
 <template name="termSheetOutputs">
   {{#each termSheet}}
   <div class="row">
+    <div class="two-rem-spacer"></div>
     <h3 style="text-align:center;">Outputs</h3>
-    <div class="col s4">
+    <div class="one-rem-spacer"></div>
+    <div class="input-field col s4">
       <div class="term-sheet-item">
         <h4>Down Payment Amount</h4>
         <p class="flow-text">${{downPaymentAmount}}</p>
       </div>
     </div>
-    <div class="col s4">
+    <div class="input-field col s4">
       <div class="term-sheet-item">
         <h4>Cost of Additional Financing</h4>
         <p class="flow-text">${{additionalFinancing}}</p>
       </div>
     </div>
-    <div class="col s4">
+    <div class="input-field col s4">
       <div class="term-sheet-item">
         <h4>Total Investment</h4>
         <p class="flow-text">${{totalInvestment}}</p>
       </div>
     </div>
-    <div class="col s4">
+    <div class="input-field col s4">
       <div class="term-sheet-item">
         <h4>Monthly Mortgate Expense</h4>
         <p class="flow-text">${{monthlyMortgageExpense}}</p>
       </div>
     </div>
-    <div class="col s4">
+    <div class="input-field col s4">
       <div class="term-sheet-item">
         <h4>Monthly Tax Average</h4>
         <p class="flow-text">${{monthlyTaxAverage}}</p>
