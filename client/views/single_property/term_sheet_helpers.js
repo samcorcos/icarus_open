@@ -4,7 +4,7 @@ Template.singlePropertyTermSheet.helpers({
   },
 
 
-
+  // Helpers for tabs on term sheet
   inputsActive: function() {
     return (Session.get("termSheetDashboard") == "inputs") ? true : false;
   },
@@ -39,7 +39,8 @@ Template.termSheetInputs.helpers({
   editingHOA: function() { return Session.get("editingHOA"); },
   editingInsurance: function() { return Session.get("editingInsurance"); },
   editingRentPrice: function() { return Session.get("editingRentPrice"); },
-  editingSquareFootage: function() { return Session.get("editingSquareFootage"); }
+  editingSquareFootage: function() { return Session.get("editingSquareFootage"); },
+  editingPercentCapitalNeeded: function() { return Session.get("editingPercentCapitalNeeded"); },
 
 });
 

@@ -156,6 +156,31 @@
           </div>
           {{/if}}
         </div>
+
+        <div class="term-sheet-input input-field col s4">
+          {{#if editingEquitySold}}
+          <h4>Equity Being Sold</h4>
+          <input id="equity-sold" type="text" value={{equitySold}} required>
+          {{else}}
+          <div class="term-sheet-item" id="equity-sold-div">
+            <h4>Equity Being Sold</h4>
+            <p class="flow-text">{{equitySold}}</p>
+          </div>
+          {{/if}}
+        </div>
+
+        <div class="term-sheet-input input-field col s4">
+          {{#if editingPercentEquityNeeded}}
+          <h4>Percent Equity Needed</h4>
+          <input id="percent-equity-needed" type="text" value={{percentEquityNeeded}} required>
+          {{else}}
+          <div class="term-sheet-item" id="percent-equity-needed-div">
+            <h4>Percent Equity Needed</h4>
+            <p class="flow-text">{{percentEquityNeeded}}</p>
+          </div>
+          {{/if}}
+        </div>
+
       </div>
     </div>
   </div>

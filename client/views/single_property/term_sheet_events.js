@@ -2,7 +2,7 @@ Template.singlePropertyTermSheet.events({
   'click #add-term-sheet-button': function(e,t) {
     $(".flex-white-div-term-sheet").toggleClass("add-flex-div-show");
     $(".red-break-term-sheet").toggleClass("add-red-break-show");
-    TermSheet.insert({ "owner": Meteor.userId(), "property": t.data._id, "totalPrice": 0, "downPayment": 0, "closingRepair": 0, "apr": 0, "taxes": 0, "hoa": 0, "insurance": 0, "rentPrice": 0, "squareFootage": 0 });
+    TermSheet.insert({ "owner": Meteor.userId(), "property": t.data._id, "totalPrice": 0, "downPayment": 0, "closingRepair": 0, "apr": 0, "taxes": 0, "hoa": 0, "insurance": 0, "rentPrice": 0, "squareFootage": 0, "equitySold": 0, "percentCapitalNeeded": 0 });
     $(".flex-white-div-term-sheet-button").toggleClass("add-flex-div-hide");
     $(".red-break-term-sheet-button").toggleClass("add-red-break-hide");
   },
@@ -48,6 +48,8 @@ Template.termSheetInputs.events({
   'click #insurance-div': function(e,t) { Session.set("editingInsurance", true); },
   'click #rent-price-div': function(e,t) { Session.set("editingRentPrice", true); },
   'click #square-footage-div': function(e,t) { Session.set("editingSquareFootage", true); },
+  'click #equity-sold-div': function(e,t) { Session.set("editingEquitySold", true); },
+  'click #percent-capital-needed-div': function(e,t) { Session.set("editingPercentCapitalNeeded", true); },
 
   'keypress input#total-price': function(e,t) {
     if (e.keyCode === 13) {
@@ -101,6 +103,18 @@ Template.termSheetInputs.events({
     if (e.keyCode === 13) {
       Session.set("editingSquareFootage", false);
       TermSheet.update({ _id: this._id }, { $set: { squareFootage: e.currentTarget.value }});
+    }
+  },
+  'keypress input#equity-sold': function(e,t) {
+    if (e.keyCode === 13) {
+      Session.set("editingEquitySold", false);
+      TermSheet.update({ _id: this._id }, { $set: { equitySold: e.currentTarget.value }});
+    }
+  },
+  'keypress input#percent-capital-needed': function(e,t) {
+    if (e.keyCode === 13) {
+      Session.set("editingPercentCapitalNeeded", false);
+      TermSheet.update({ _id: this._id }, { $set: { percentCapitalNeeded: e.currentTarget.value }});
     }
   }
 
