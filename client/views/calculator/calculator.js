@@ -17,10 +17,10 @@ Template.calculator.helpers({
   },
   editingMonthlyIncomeCalc: function() {
     return (Session.get("editingMonthlyIncomeCalc"));
-  },
-  editingCAPRateCalc: function() {
-    return (Session.get("editingCAPRateCalc"));
   }
+  // editingCAPRateCalc: function() {
+  //   return (Session.get("editingCAPRateCalc"));
+  // }
 
 
 });
@@ -37,35 +37,31 @@ Template.calculator.events({
   'click #monthly-income-div': function(e,t) {
     Session.set("editingMonthlyIncomeCalc", true);
   },
-  'click #cap-rate-div': function(e,t) {
-    Session.set("editingCAPRateCalc", true);
-  },
+  // 'click #cap-rate-div': function(e,t) {
+  //   Session.set("editingCAPRateCalc", true);
+  // },
 
 
   'keypress input#purchase-price': function(e,t) {
     if (e.keyCode === 13) {
       Session.set("editingTotalPriceCalc", false);
-      Calculator.update({ _id: this._id}, { $set: { purchasePrice: e.currentTarget.value }});
     }
   },
   'keypress input#closing-repair': function(e,t) {
     if (e.keyCode === 13) {
       Session.set("editingClosingRepairCalc", false);
-      Calculator.update({ _id: this._id}, { $set: { closingRepair: e.currentTarget.value }});
     }
   },
   'keypress input#monthly-income': function(e,t) {
     if (e.keyCode === 13) {
       Session.set("editingMonthlyIncomeCalc", false);
-      Calculator.update({ _id: this._id}, { $set: { monthlyIncome: e.currentTarget.value }});
-    }
-  },
-  'keypress input#cap-rate': function(e,t) {
-    if (e.keyCode === 13) {
-      Session.set("editingCAPRateCalc", false);
-      Calculator.update({ _id: this._id}, { $set: { capRate: e.currentTarget.value }});
     }
   }
+  // 'keypress input#cap-rate': function(e,t) {
+  //   if (e.keyCode === 13) {
+  //     Session.set("editingCAPRateCalc", false);
+  //   }
+  // }
 
 
 
