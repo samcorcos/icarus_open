@@ -1,4 +1,6 @@
 Template.equityInvestorModal.helpers({
+
+
   totalPrice: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
     var totalInvestment = (Number(temp[0].totalPrice) + Number(temp[0].closingRepair));
@@ -7,6 +9,15 @@ Template.equityInvestorModal.helpers({
 
     return (totalInvestment * equitySold / 100).formatMoney(0);
   },
+  closingRepair: function() {
+    return ;
+  },
+  taxes: function() {
+    return ;
+  },
+  insurance: function() {
+    return ;
+  },
   downPaymentPercentage: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
     var downPaymentPercentage = Number(temp[0].downPayment);
@@ -14,13 +25,58 @@ Template.equityInvestorModal.helpers({
 
     return (downPaymentPercentage * percentCapitalNeeded / 100).formatMoney(2);
   },
+  totalInvestment: function() {
+    return ;
+  },
+  hoa: function() {
+    return ;
+  },
   downPaymentAmount: function() {
     var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
     var downPaymentAmount = (Number(temp[0].totalPrice) * Number(temp[0].downPayment) / 100);
     var percentCapitalNeeded = Number(temp[0].percentCapitalNeeded / 100);
 
     return (downPaymentAmount * percentCapitalNeeded).formatMoney(0);
-  }
+  },
+  rentPrice: function() {
+    return ;
+  },
+  cashflowRented: function() {
+    return ;
+  },
+  cashflowOccupied: function() {
+    return ;
+  },
+  cashflowUnoccupied: function() {
+    return ;
+  },
+  afterTaxOccupied: function() {
+    return ;
+  },
+  afterTaxUnoccupied: function() {
+    return ;
+  },
+  freeCashFlow: function() {
+    return ;
+  },
+  monthlyMortgageExpense: function() {
+    return ;
+  },
+  monthlyTaxAverage: function() {
+    return ;
+  },
+  operatingExpenses: function() {
+    return ;
+  },
+  reserve: function() {
+    return ;
+  },
+  costOfOwnership: function() {
+    return ;
+  },
+
+
+
 });
 
 
