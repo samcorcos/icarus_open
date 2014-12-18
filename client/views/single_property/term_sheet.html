@@ -43,7 +43,7 @@
   <div class="row">
     <h3 style="text-align:center;">Inputs</h3>
     <div class="one-rem-spacer"></div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       {{#if editingTotalPrice}}
       <h4>Total Price</h4>
       <input id="total-price" type="text" value="{{totalPrice}}" required>
@@ -55,7 +55,7 @@
       {{/if}}
     </div>
 
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       {{#if editingDownPayment}}
       <h4>Down Payment</h4>
       <input id="down-payment" type="text" value="{{downPayment}}" required>
@@ -67,7 +67,7 @@
       {{/if}}
     </div>
 
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       {{#if editingClosingRepair}}
       <h4>Closing &#38; Repair</h4>
       <input id="closing-repair" type="text" value={{closingRepair}} required>
@@ -79,7 +79,7 @@
       {{/if}}
     </div>
 
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       {{#if editingAPR}}
       <h4>APR</h4>
       <input id="apr" type="text" value={{apr}} required>
@@ -91,7 +91,7 @@
       {{/if}}
     </div>
 
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       {{#if editingTaxes}}
       <h4>Taxes</h4>
       <input id="taxes" type="text" value={{taxes}} required>
@@ -103,7 +103,7 @@
       {{/if}}
     </div>
 
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       {{#if editingHOA}}
       <h4>HOA</h4>
       <input id="hoa" type="text" value={{hoa}} required>
@@ -115,7 +115,7 @@
       {{/if}}
     </div>
 
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       {{#if editingInsurance}}
       <h4>Insurance</h4>
       <input id="insurance" type="text" value={{insurance}} required>
@@ -127,7 +127,7 @@
       {{/if}}
     </div>
 
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       {{#if editingRentPrice}}
       <h4>Rent Price</h4>
       <input id="rent-price" type="text" value={{rentPrice}} required>
@@ -139,7 +139,7 @@
       {{/if}}
     </div>
 
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       {{#if editingSquareFootage}}
       <h4>Square Footage</h4>
       <input id="square-footage" type="text" value={{squareFootage}} required>
@@ -165,85 +165,85 @@
     <div class="one-rem-spacer"></div>
     <h3 style="text-align:center;">Outputs</h3>
     <div class="one-rem-spacer"></div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Down Payment Amount</h4>
         <p class="flow-text">${{downPaymentAmount}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Cost of Additional Financing</h4>
         <p class="flow-text">${{additionalFinancing}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Total Investment</h4>
         <p class="flow-text">${{totalInvestment}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Monthly Mortgate Expense</h4>
         <p class="flow-text">${{monthlyMortgageExpense}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Monthly Tax Average</h4>
         <p class="flow-text">${{monthlyTaxAverage}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Monthly Operating Expenses</h4>
         <p class="flow-text">${{operatingExpenses}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Reserve (5%)</h4>
         <p class="flow-text">${{reserve}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Monthly Cost of Ownership</h4>
         <p class="flow-text">${{monthlyCostOfOwnership}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Cashflow Rented</h4>
         <p class="flow-text">${{cashflowRented}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Cashflow Occupied</h4>
         <p class="flow-text">${{cashflowOccupied}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Cashflow Unoccupied</h4>
         <p class="flow-text">${{cashflowUnoccupied}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>After Tax (with Renters)</h4>
         <p class="flow-text">${{afterTaxWithRenters}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>After Tax (Unoccupied)</h4>
         <p class="flow-text">${{afterTaxUnoccupied}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Free Cash Flow</h4>
         <p class="flow-text">${{freeCashflow}}</p>
@@ -262,49 +262,49 @@
     <div class="one-rem-spacer"></div>
     <h3 style="text-align:center;">Returns</h3>
     <div class="one-rem-spacer"></div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Annual Revenue</h4>
         <p class="flow-text">${{annualRevenue}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Annual Cost</h4>
         <p class="flow-text">${{annualCost}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Annual Profit</h4>
         <p class="flow-text">${{annualProfit}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Annual Profit (After Tax)</h4>
         <p class="flow-text">${{annualProfitAfterTax}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Annual ROI (Before Tax)</h4>
         <p class="flow-text">{{annualROIBeforeTax}}%</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Annual ROI (After Tax)</h4>
         <p class="flow-text">{{annualROIAfterTax}}%</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Annual Operating Expense</h4>
         <p class="flow-text">${{annualOperatingExpense}}</p>
       </div>
     </div>
-    <div class="input-field col s4">
+    <div class="term-sheet-input input-field col s4">
       <div class="term-sheet-item">
         <h4>Net Operating Income</h4>
         <p class="flow-text">${{netOperatingIncome}}</p>
