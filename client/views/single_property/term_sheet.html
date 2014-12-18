@@ -1,23 +1,50 @@
 <template name="singlePropertyTermSheet">
   {{> termSheetButton}}
+  <div class="three-rem-spacer"></div>
+
+  <div class="flex-white-div term-sheet-dashboard">
+    <div class="container">
+      <div class="row z-depth-1" style="border-radius: 5px;">
+        <h2 class="col s12 m12 l12">Dashboard</h2>
+        <div class="col s12 m6 l4">Test</div>
+        <div class="col s12 m6 l4">Test</div>
+        <div class="col s12 m6 l4">Test</div>
+      </div>
+    </div>
+  </div>
 
   <div class="flex-white-div-term-sheet">
-    <div class="two-rem-spacer"></div>
     <div class="container">
-      <h1 style="text-align:center;">Term Sheet</h1>
+      <!-- <h1 style="text-align:center;">Term Sheet</h1> -->
       <hr>
-      <div class="two-rem-spacer"></div>
-
-      {{> termSheetInputs}}
-
-      {{> termSheetOutputs}}
-
-      {{> termSheetReturns}}
-
+      <!--       <div class="row">
+  <div class="col s4"><button class="btn term-sheet-modal-buttons">View/Edit Inputs</button></div>
+  <div class="col s4"><button class="btn term-sheet-modal-buttons">View/Edit Something</button></div>
+  <div class="col s4"><button class="btn term-sheet-modal-buttons">View/Edit Else</button></div>
+</div> --> <!-- If you decide to bring back the buttons with modals, uncomment css for the buttons -->
+      <div class="row">
+        <ul class="tabs">
+          <li class="tab col s2"><a id="input-tab" href="">Inputs</a></li>
+          <li class="tab col s2"><a id="output-tab" href="">Outputs</a></li>
+          <li class="tab col s2"><a id="other-tab" href="">Other</a></li>
+          <li class="tab col s2"><a id="additional-tab" href="">Additional</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="five-rem-spacer"></div>
   </div>
-  <div class="red-break-term-sheet"></div>
+  <div class="red-break"></div>
+  <!-- {{#if inputsActive}} -->
+    {{> termSheetInputs}}
+  <!-- {{/if}}
+  {{#if outputsActive}} -->
+    {{> termSheetOutputs}}
+  <!-- {{/if}}
+  {{#if otherActive}} -->
+    {{> termSheetReturns}}
+  <!-- {{/if}} -->
+  <div class="red-break"></div>
+
+  <!-- <div class="red-break-term-sheet"></div> -->
 </template>
 
 
@@ -40,115 +67,119 @@
 
 <template name="termSheetInputs">
   {{#each termSheet}}
-  <div class="row">
-    <h3 style="text-align:center;">Inputs</h3>
-    <div class="one-rem-spacer"></div>
-    <div class="term-sheet-input input-field col s4">
-      {{#if editingTotalPrice}}
-      <h4>Total Price</h4>
-      <input id="total-price" type="text" value="{{totalPrice}}" required>
-      {{else}}
-      <div class="term-sheet-item" id="total-price-div">
-        <h4>Total Price</h4>
-        <p class="flow-text">${{totalPrice}}</p>
-      </div>
-      {{/if}}
-    </div>
+  <div class="flex-white-div-inputs">
+    <div class="container">
+      <div class="row">
+        <h3 style="text-align:center;">Inputs</h3>
+        <div class="one-rem-spacer"></div>
+        <div class="term-sheet-input input-field col s4">
+          {{#if editingTotalPrice}}
+          <h4>Total Price</h4>
+          <input id="total-price" type="text" value="{{totalPrice}}" required>
+          {{else}}
+          <div class="term-sheet-item" id="total-price-div">
+            <h4>Total Price</h4>
+            <p class="flow-text">${{totalPrice}}</p>
+          </div>
+          {{/if}}
+        </div>
 
-    <div class="term-sheet-input input-field col s4">
-      {{#if editingDownPayment}}
-      <h4>Down Payment</h4>
-      <input id="down-payment" type="text" value="{{downPayment}}" required>
-      {{else}}
-      <div class="term-sheet-item" id="down-payment-div">
-        <h4>Down Payment</h4>
-        <p class="flow-text">{{downPayment}}%</p>
-      </div>
-      {{/if}}
-    </div>
+        <div class="term-sheet-input input-field col s4">
+          {{#if editingDownPayment}}
+          <h4>Down Payment</h4>
+          <input id="down-payment" type="text" value="{{downPayment}}" required>
+          {{else}}
+          <div class="term-sheet-item" id="down-payment-div">
+            <h4>Down Payment</h4>
+            <p class="flow-text">{{downPayment}}%</p>
+          </div>
+          {{/if}}
+        </div>
 
-    <div class="term-sheet-input input-field col s4">
-      {{#if editingClosingRepair}}
-      <h4>Closing &#38; Repair</h4>
-      <input id="closing-repair" type="text" value={{closingRepair}} required>
-      {{else}}
-      <div class="term-sheet-item" id="closing-repair-div">
-        <h4>Closing &#38; Repair</h4>
-        <p class="flow-text">${{closingRepair}}</p>
-      </div>
-      {{/if}}
-    </div>
+        <div class="term-sheet-input input-field col s4">
+          {{#if editingClosingRepair}}
+          <h4>Closing &#38; Repair</h4>
+          <input id="closing-repair" type="text" value={{closingRepair}} required>
+          {{else}}
+          <div class="term-sheet-item" id="closing-repair-div">
+            <h4>Closing &#38; Repair</h4>
+            <p class="flow-text">${{closingRepair}}</p>
+          </div>
+          {{/if}}
+        </div>
 
-    <div class="term-sheet-input input-field col s4">
-      {{#if editingAPR}}
-      <h4>APR</h4>
-      <input id="apr" type="text" value={{apr}} required>
-      {{else}}
-      <div class="term-sheet-item" id="apr-div">
-        <h4>APR</h4>
-        <p class="flow-text">{{apr}}%</p>
-      </div>
-      {{/if}}
-    </div>
+        <div class="term-sheet-input input-field col s4">
+          {{#if editingAPR}}
+          <h4>APR</h4>
+          <input id="apr" type="text" value={{apr}} required>
+          {{else}}
+          <div class="term-sheet-item" id="apr-div">
+            <h4>APR</h4>
+            <p class="flow-text">{{apr}}%</p>
+          </div>
+          {{/if}}
+        </div>
 
-    <div class="term-sheet-input input-field col s4">
-      {{#if editingTaxes}}
-      <h4>Taxes</h4>
-      <input id="taxes" type="text" value={{taxes}} required>
-      {{else}}
-      <div class="term-sheet-item" id="taxes-div">
-        <h4>Taxes</h4>
-        <p class="flow-text">${{taxes}}</p>
-      </div>
-      {{/if}}
-    </div>
+        <div class="term-sheet-input input-field col s4">
+          {{#if editingTaxes}}
+          <h4>Taxes</h4>
+          <input id="taxes" type="text" value={{taxes}} required>
+          {{else}}
+          <div class="term-sheet-item" id="taxes-div">
+            <h4>Taxes</h4>
+            <p class="flow-text">${{taxes}}</p>
+          </div>
+          {{/if}}
+        </div>
 
-    <div class="term-sheet-input input-field col s4">
-      {{#if editingHOA}}
-      <h4>HOA</h4>
-      <input id="hoa" type="text" value={{hoa}} required>
-      {{else}}
-      <div class="term-sheet-item" id="hoa-div">
-        <h4>HOA</h4>
-        <p class="flow-text">${{hoa}}</p>
-      </div>
-      {{/if}}
-    </div>
+        <div class="term-sheet-input input-field col s4">
+          {{#if editingHOA}}
+          <h4>HOA</h4>
+          <input id="hoa" type="text" value={{hoa}} required>
+          {{else}}
+          <div class="term-sheet-item" id="hoa-div">
+            <h4>HOA</h4>
+            <p class="flow-text">${{hoa}}</p>
+          </div>
+          {{/if}}
+        </div>
 
-    <div class="term-sheet-input input-field col s4">
-      {{#if editingInsurance}}
-      <h4>Insurance</h4>
-      <input id="insurance" type="text" value={{insurance}} required>
-      {{else}}
-      <div class="term-sheet-item" id="insurance-div">
-        <h4>Insurance</h4>
-        <p class="flow-text">${{insurance}}</p>
-      </div>
-      {{/if}}
-    </div>
+        <div class="term-sheet-input input-field col s4">
+          {{#if editingInsurance}}
+          <h4>Insurance</h4>
+          <input id="insurance" type="text" value={{insurance}} required>
+          {{else}}
+          <div class="term-sheet-item" id="insurance-div">
+            <h4>Insurance</h4>
+            <p class="flow-text">${{insurance}}</p>
+          </div>
+          {{/if}}
+        </div>
 
-    <div class="term-sheet-input input-field col s4">
-      {{#if editingRentPrice}}
-      <h4>Rent Price</h4>
-      <input id="rent-price" type="text" value={{rentPrice}} required>
-      {{else}}
-      <div class="term-sheet-item" id="rent-price-div">
-        <h4>Rent Price</h4>
-        <p class="flow-text">${{rentPrice}}</p>
-      </div>
-      {{/if}}
-    </div>
+        <div class="term-sheet-input input-field col s4">
+          {{#if editingRentPrice}}
+          <h4>Rent Price</h4>
+          <input id="rent-price" type="text" value={{rentPrice}} required>
+          {{else}}
+          <div class="term-sheet-item" id="rent-price-div">
+            <h4>Rent Price</h4>
+            <p class="flow-text">${{rentPrice}}</p>
+          </div>
+          {{/if}}
+        </div>
 
-    <div class="term-sheet-input input-field col s4">
-      {{#if editingSquareFootage}}
-      <h4>Square Footage</h4>
-      <input id="square-footage" type="text" value={{squareFootage}} required>
-      {{else}}
-      <div class="term-sheet-item" id="square-footage-div">
-        <h4>Square Footage</h4>
-        <p class="flow-text">{{squareFootage}}</p>
+        <div class="term-sheet-input input-field col s4">
+          {{#if editingSquareFootage}}
+          <h4>Square Footage</h4>
+          <input id="square-footage" type="text" value={{squareFootage}} required>
+          {{else}}
+          <div class="term-sheet-item" id="square-footage-div">
+            <h4>Square Footage</h4>
+            <p class="flow-text">{{squareFootage}}</p>
+          </div>
+          {{/if}}
+        </div>
       </div>
-      {{/if}}
     </div>
   </div>
   {{/each}}
@@ -161,96 +192,97 @@
 
 <template name="termSheetOutputs">
   {{#each termSheet}}
-  <div class="row">
-    <div class="one-rem-spacer"></div>
-    <h3 style="text-align:center;">Outputs</h3>
-    <div class="one-rem-spacer"></div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Down Payment Amount</h4>
-        <p class="flow-text">${{downPaymentAmount}}</p>
+  <div class="flex-white-div-outputs">
+    <div class="container">
+      <div class="row">
+        <h3 style="text-align:center;">Outputs</h3>
+        <div class="one-rem-spacer"></div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Down Payment Amount</h4>
+            <p class="flow-text">${{downPaymentAmount}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Cost of Additional Financing</h4>
+            <p class="flow-text">${{additionalFinancing}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Total Investment</h4>
+            <p class="flow-text">${{totalInvestment}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Monthly Mortgate Expense</h4>
+            <p class="flow-text">${{monthlyMortgageExpense}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Monthly Tax Average</h4>
+            <p class="flow-text">${{monthlyTaxAverage}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Monthly Operating Expenses</h4>
+            <p class="flow-text">${{operatingExpenses}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Reserve (5%)</h4>
+            <p class="flow-text">${{reserve}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Monthly Cost of Ownership</h4>
+            <p class="flow-text">${{monthlyCostOfOwnership}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Cashflow Rented</h4>
+            <p class="flow-text">${{cashflowRented}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Cashflow Occupied</h4>
+            <p class="flow-text">${{cashflowOccupied}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Cashflow Unoccupied</h4>
+            <p class="flow-text">${{cashflowUnoccupied}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>After Tax (with Renters)</h4>
+            <p class="flow-text">${{afterTaxWithRenters}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>After Tax (Unoccupied)</h4>
+            <p class="flow-text">${{afterTaxUnoccupied}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Free Cash Flow</h4>
+            <p class="flow-text">${{freeCashflow}}</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Cost of Additional Financing</h4>
-        <p class="flow-text">${{additionalFinancing}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Total Investment</h4>
-        <p class="flow-text">${{totalInvestment}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Monthly Mortgate Expense</h4>
-        <p class="flow-text">${{monthlyMortgageExpense}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Monthly Tax Average</h4>
-        <p class="flow-text">${{monthlyTaxAverage}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Monthly Operating Expenses</h4>
-        <p class="flow-text">${{operatingExpenses}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Reserve (5%)</h4>
-        <p class="flow-text">${{reserve}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Monthly Cost of Ownership</h4>
-        <p class="flow-text">${{monthlyCostOfOwnership}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Cashflow Rented</h4>
-        <p class="flow-text">${{cashflowRented}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Cashflow Occupied</h4>
-        <p class="flow-text">${{cashflowOccupied}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Cashflow Unoccupied</h4>
-        <p class="flow-text">${{cashflowUnoccupied}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>After Tax (with Renters)</h4>
-        <p class="flow-text">${{afterTaxWithRenters}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>After Tax (Unoccupied)</h4>
-        <p class="flow-text">${{afterTaxUnoccupied}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Free Cash Flow</h4>
-        <p class="flow-text">${{freeCashflow}}</p>
-      </div>
-    </div>
-
-
   </div>
   {{/each}}
 </template>
@@ -258,61 +290,61 @@
 
 <template name="termSheetReturns">
   {{#each termSheet}}
-  <div class="row">
-    <div class="one-rem-spacer"></div>
-    <h3 style="text-align:center;">Returns</h3>
-    <div class="one-rem-spacer"></div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Annual Revenue</h4>
-        <p class="flow-text">${{annualRevenue}}</p>
+  <div class="flex-white-div-returns">
+    <div class="container">
+      <div class="row">
+        <h3 style="text-align:center;">Returns</h3>
+        <div class="one-rem-spacer"></div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Annual Revenue</h4>
+            <p class="flow-text">${{annualRevenue}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Annual Cost</h4>
+            <p class="flow-text">${{annualCost}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Annual Profit</h4>
+            <p class="flow-text">${{annualProfit}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Annual Profit (After Tax)</h4>
+            <p class="flow-text">${{annualProfitAfterTax}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Annual ROI (Before Tax)</h4>
+            <p class="flow-text">{{annualROIBeforeTax}}%</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Annual ROI (After Tax)</h4>
+            <p class="flow-text">{{annualROIAfterTax}}%</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Annual Operating Expense</h4>
+            <p class="flow-text">${{annualOperatingExpense}}</p>
+          </div>
+        </div>
+        <div class="term-sheet-input input-field col s4">
+          <div class="term-sheet-item">
+            <h4>Net Operating Income</h4>
+            <p class="flow-text">${{netOperatingIncome}}</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Annual Cost</h4>
-        <p class="flow-text">${{annualCost}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Annual Profit</h4>
-        <p class="flow-text">${{annualProfit}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Annual Profit (After Tax)</h4>
-        <p class="flow-text">${{annualProfitAfterTax}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Annual ROI (Before Tax)</h4>
-        <p class="flow-text">{{annualROIBeforeTax}}%</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Annual ROI (After Tax)</h4>
-        <p class="flow-text">{{annualROIAfterTax}}%</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Annual Operating Expense</h4>
-        <p class="flow-text">${{annualOperatingExpense}}</p>
-      </div>
-    </div>
-    <div class="term-sheet-input input-field col s4">
-      <div class="term-sheet-item">
-        <h4>Net Operating Income</h4>
-        <p class="flow-text">${{netOperatingIncome}}</p>
-      </div>
-    </div>
-
-
-
   </div>
   {{/each}}
 </template>

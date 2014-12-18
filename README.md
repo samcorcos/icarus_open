@@ -48,3 +48,6 @@ To Do
 2. ~~Show asset allocation~~
   1. Link to database
 3. Return over time
+
+
+When offline, comment out controller and templates.

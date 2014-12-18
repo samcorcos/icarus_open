@@ -1,6 +1,21 @@
 Template.singlePropertyTermSheet.helpers({
   termSheet: function() {
     return TermSheet.find({ property: Session.get("currentId")._id });
+  },
+
+
+
+  inputsActive: function() {
+    return (Session.get("termSheetDashboard") == "inputs") ? true : false;
+  },
+  outputsActive: function() {
+    return (Session.get("termSheetDashboard") == "outputs") ? true: false;
+  },
+  otherActive: function() {
+    return (Session.get("termSheetDashboard") == "other") ? true : false;
+  },
+  additionalActive: function() {
+    return (Session.get("termSheetDashboard") == "additional") ? true : false;
   }
 
 });

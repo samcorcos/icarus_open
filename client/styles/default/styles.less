@@ -389,7 +389,7 @@ div.add-red-break-hide {
   transition: height 0.5s ease-in;
 }
 
-.flex-white-div-property, .flex-white-div-term-sheet {
+.flex-white-div-property, .flex-white-div-term-sheet, .flex-white-div-inputs, .flex-white-div-outputs, .flex-white-div-returns {
   max-height: 0;
   transition: max-height 0.5s ease-out;
   background-color: white;
@@ -647,4 +647,42 @@ div.term-sheet-input.col.s4 {
     margin: 1rem;
     padding-bottom: 0.5rem;
   }
+}
+
+/* .term-sheet-modal-buttons {
+  display: block;
+  margin: auto;
+}
+ */
+
+
+/* CSS for tabs */
+
+ul.tabs {
+  position: relative;
+  height: 48px;
+  background-color: #FFF;
+  margin: 0 auto;
+  width: 100%;
+  white-space: nowrap;
+}
+
+ul.tabs li.tab {
+  background-color: #fff;
+}
+ul.tabs li.tab a {
+  color: #000;
+}
+ul.tabs li.tab a:hover {
+  color: lighten(@icarus-red, 10%);
+}
+ul.tabs .indicator {
+  background-color: @icarus-red;
+}
+
+/* End tabs */
+
+
+.term-sheet-dashboard {
+
 }
