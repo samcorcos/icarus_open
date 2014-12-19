@@ -74,11 +74,14 @@
   <div class="row">
     <form class="col s12">
       <div class="row">
-        <div class="input-field col s6">
+        <div class="input-field col s4">
           <input id="profile-name" type="text" value="{{currentUser.profile.name}}" required disabled>
         </div>
-        <div class="input-field col s6">
+        <div class="input-field col s4">
           <input id="user-id" type="text" value="{{currentUser._id}}" required disabled>
+        </div>
+        <div class="input-field col s4">
+          <input id="zpid" type="text" placeholder="ZPID" required>
         </div>
       </div>
       <div class="row">

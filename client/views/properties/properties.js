@@ -26,7 +26,7 @@ Template.properties.events({
 Template.newPropertyForm.events({
   'click #submit-new-property': function(e,t) {
     //if it's only numbers, else, throw error.
-    if ($("#user-id").val()) { // && Bed is a number, && bath, && square feet
+    if ($("#zpid").val()) {
       Properties.insert({
         owner: $("#user-id").val(),
         address: $("#property-address").val(),
@@ -36,7 +36,8 @@ Template.newPropertyForm.events({
         zip: $('#zip-code').val(),
         bed: $("#bed-count").val(),
         bath: $("#bath-count").val(),
-        sqft: $("#sqft-count").val()
+        sqft: $("#sqft-count").val(),
+        zpid: $("#zpid").val()
       });
       $("#property-address").val("");
       $("#purchase-price").val("");
@@ -46,6 +47,7 @@ Template.newPropertyForm.events({
       $("#bed-count").val("");
       $("#bath-count").val("");
       $("#sqft-count").val("");
+      $("#zpid").val("");
       toast('Successfully Added To Database!', 3000)
       $("#property-map").remove();
       $("#append-map-here").append("<div id='property-map'></div>")
