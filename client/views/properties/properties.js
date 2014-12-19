@@ -34,12 +34,7 @@ Template.newPropertyForm.events({
       if (Number($("#zpid").val())) {
         if (Owners.find().fetch()[0] !== undefined) {
 
-          toast('Successfully Added To Database!', 3000);
-
-          var addingZPID = Number($("zpid").val());
-          // Meteor.call("getProperty", "63706372")
-
-          Meteor.call("getProperty", "2117851216", function(err, result) {
+          Meteor.call("getProperty", Number($("#zpid").val()), function(err, result) {
             if (err) { console.log("Error with Zillow API Call") }
             Session.set("propertyData", result);
 
@@ -73,21 +68,6 @@ Template.newPropertyForm.events({
               zpid: zpid
             });
 
-
-
-            // Properties.insert({
-            //   owner: $("#user-id").val(),
-            //   address: $("#property-address").val(),
-            //   // price: Number($("#purchase-price").val()),
-            //   state: $(".add-property-state-dropdown").val(),
-            //   city: $("#city").val(),
-            //   zip: $('#zip-code').val(),
-            //   bed: $("#bed-count").val(),
-            //   bath: $("#bath-count").val(),
-            //   sqft: $("#sqft-count").val(),
-            //   zpid: $("#zpid").val()
-            // });
-
             // Clearing the form and the current owners
             Owners.remove({});
             $("#zpid").val("");
@@ -96,6 +76,8 @@ Template.newPropertyForm.events({
             $("#property-map").remove();
             $("#append-map-here").append("<div id='property-map'></div>")
             createPropertiesMap();
+
+            toast('Successfully Added To Database!', 3000);
 
           })
         } else {
