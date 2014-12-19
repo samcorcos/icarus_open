@@ -47,6 +47,12 @@ Template.newPropertyForm.helpers({
   }
 });
 
+Template.newPropertyForm.events({
+  'click .remove-owner-button': function(e,t) {
+    Owners.remove(this);
+  }
+});
+
 
 function toast(message, displayLength, className) {
   className = className || "";
