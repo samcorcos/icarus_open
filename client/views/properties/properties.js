@@ -24,16 +24,33 @@ Template.properties.events({
   }
 });
 
-// Template.newPropertyForm.events({
-//   'click #submit-new-property': function(e,t) {
-//
-//     toast('Successfully Added To Database!', 3000)
-//     $("#property-map").remove();
-//     $("#append-map-here").append("<div id='property-map'></div>")
-//     createPropertiesMap();
-//      // Also make sure you clear out hte Owners collection
-//
-// });
+Template.newPropertyForm.events({
+  'click #submit-new-property': function(e,t) {
+    // e.preventDefault();
+    if ($("#zpid").val()) {
+      if (Owners.find().fetch()[0] !== undefined) {
+
+        toast('Successfully Added To Database!', 3000);
+
+        // Clearing the form and the current owners
+        Owners.remove({});
+        $("#zpid").val("");
+
+
+        // This is where we re-render the D3 map to reflect the new property
+        $("#property-map").remove();
+        $("#append-map-here").append("<div id='property-map'></div>")
+        createPropertiesMap();
+
+
+      } else {
+        toast("Please add owners.", 3000);
+      }
+    } else {
+      toast("Please enter ZPID.", 3000);
+    }
+  }
+});
 
 Template.usersDropdownList.helpers({
   users: function() {
