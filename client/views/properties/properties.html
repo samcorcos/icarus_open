@@ -74,21 +74,31 @@
   <div class="row">
     <form class="col s12">
       <div class="row">
-        <div class="input-field col s5">
+        <div class="input-field col s10 m5">
           <select class="disabled add-property-state-dropdown">
             <option value="" disabled selected>Add Owners</option>
             {{> usersDropdownList}}
           </select>
+          {{#each owners}}
+          <div class="row owners-list">
+            <div class="col s2 m2">
+              <p style="text-align:right;"><i class="fa fa-times"></i></p>
+            </div>
+            <div class="col s10 m10">
+              <p>{{name}} : {{_id}}</p>
+            </div>
+          </div>
+          {{/each}}
         </div>
-        <div class="col s1">
-          <button class="btn" style="padding:1.5rem 1rem;font-size:2em;margin:auto;line-height:0;">+</button>
+        <div class="col s2 m1">
+          <button type="button" class="btn" style="padding:1.5rem 1rem;font-size:2em;margin:auto;line-height:0;">+</button>
         </div>
-        <div class="input-field col s6">
+        <div class="input-field col s12 m6">
           <input id="zpid" type="text" placeholder="ZPID" required>
         </div>
       </div>
+      <button id="submit-new-property" class="btn">Add to Database</button>
     </form>
-    <button id="submit-new-property" class="btn">Add to Database</button>
   </div>
 </template>
 

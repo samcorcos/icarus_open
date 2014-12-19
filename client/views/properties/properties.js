@@ -1,4 +1,4 @@
-var Owners = new Mongo.Collection(null);
+Owners = new Mongo.Collection(null);
 
 Directory = Meteor.users;
 
@@ -31,12 +31,19 @@ Template.properties.events({
 //     $("#property-map").remove();
 //     $("#append-map-here").append("<div id='property-map'></div>")
 //     createPropertiesMap();
+//      // Also make sure you clear out hte Owners collection
 //
 // });
 
 Template.usersDropdownList.helpers({
   users: function() {
     return Directory.find();
+  }
+});
+
+Template.newPropertyForm.helpers({
+  owners: function() {
+    return Owners.find();
   }
 });
 
