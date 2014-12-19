@@ -37,13 +37,19 @@ Template.newPropertyForm.events({
 
         Meteor.call("getProperty", "63706372", function(err, result) {
           if (err) { console.log("Error with Zillow API Call") }
-
-          Session.set("data", result);
-          console.log(result)
+          Session.set("propertyData", result);
           console.log("Zillow API Call Successful");
 
+          // This is where we are going to set all the new characteristics of the property we just called, adding to Properties collection
+
+          
+
+
+
+
+
         })
-        console.log(Session.get("data"))
+
 
         // Clearing the form and the current owners
         Owners.remove({});

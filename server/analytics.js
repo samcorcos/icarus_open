@@ -2,14 +2,16 @@ Meteor.methods({
   getProperty: function(zpid) {
     var response = Meteor.http.call("GET", "http://www.zillow.com/webservice/GetZestimate.htm?zws-id=X1-ZWz1e01y8ugd8r_1brbp&zpid="+zpid);
     // return response.content.match(/(<zestimate><amount currency="USD">)(\d+)/)[2];
-    var parseString = xml2js.parseString;
     // console.log(parseString);
     // console.log(response);
-    parseString(response.content, function (err, result) {
+    var temp;
+    xml2js.parseString(response.content, function (err, result) {
       if(err) { console.log("error parsing string") }
       console.log(result);
-      return result;
+      // return result;
+      temp = result;
     })
+    return temp;
 
     // var parseString = require('xml2js').parseString;
     // var xml = "<root>Hello xml2js!</root>"
