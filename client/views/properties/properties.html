@@ -75,7 +75,7 @@
     <form class="col s12">
       <div class="row">
         <div class="input-field col s10 m5">
-          <select class="disabled add-property-state-dropdown">
+          <select class="disabled add-owners-dropdown">
             <option value="" disabled selected>Add Owners</option>
             {{> usersDropdownList}}
           </select>
@@ -88,7 +88,7 @@
           {{/each}}
         </div>
         <div class="col s2 m1">
-          <button type="button" class="btn" style="padding:1.5rem 1rem;font-size:2em;margin:auto;line-height:0;">+</button>
+          <button type="button" class="btn add-owner-button">+</button>
         </div>
         <div class="input-field col s12 m6">
           <input id="zpid" type="text" placeholder="ZPID" required>
@@ -101,6 +101,6 @@
 
 <template name="usersDropdownList">
   {{#each users}}
-    <option value="{{_id}}">Name: {{profile.name}}, ID: {{_id}}</option>
+    <option value="{{profile.name}} : {{_id}}">Name: {{profile.name}}, ID: {{_id}}</option>
   {{/each}}
 </template>

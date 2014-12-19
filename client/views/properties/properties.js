@@ -50,6 +50,11 @@ Template.newPropertyForm.helpers({
 Template.newPropertyForm.events({
   'click .remove-owner-button': function(e,t) {
     Owners.remove(this);
+  },
+  'click .add-owner-button': function(e,t) {
+    var temp = $(".add-owners-dropdown").val();
+    var name = temp.match(/(^.+)(\s:\s)(\w+)/)[1];
+    var id = temp.match(/(^.+)(\s:\s)(\w+)/)[3];
   }
 });
 
