@@ -32,15 +32,28 @@ Template.newPropertyForm.events({
 
         toast('Successfully Added To Database!', 3000);
 
+
+        // Meteor.call("getProperty", "63706372")
+
+        Meteor.call("getProperty", "63706372", function(err, result) {
+          if (err) { console.log("Error with Zillow API Call") }
+
+          Session.set("data", result);
+          console.log(result)
+          console.log("Zillow API Call Successful");
+
+        })
+        console.log(Session.get("data"))
+
         // Clearing the form and the current owners
         Owners.remove({});
         $("#zpid").val("");
-
 
         // This is where we re-render the D3 map to reflect the new property
         $("#property-map").remove();
         $("#append-map-here").append("<div id='property-map'></div>")
         createPropertiesMap();
+
 
 
       } else {
