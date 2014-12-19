@@ -7,7 +7,7 @@ Meteor.methods({
     var temp;
     xml2js.parseString(response.content, function (err, result) {
       if(err) { console.log("error parsing string") }
-      console.log(result);
+      // console.log(result);
       // return result;
       temp = result;
     })

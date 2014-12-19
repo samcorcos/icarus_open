@@ -12,9 +12,10 @@ Template.properties.rendered = function() {
 };
 
 Template.propertyPanel2.helpers({
-  properties: function() {
+  propertiesEven: function() {
     return Properties.find();
   }
+  // Should have an "odd or even" helper, so it can be in two columns/rows and stack property!!!!
 });
 
 Template.properties.events({
@@ -39,26 +40,64 @@ Template.newPropertyForm.events({
           if (err) { console.log("Error with Zillow API Call") }
           Session.set("propertyData", result);
           console.log("Zillow API Call Successful");
+          console.log(result);
+
+          var x = result["Zestimate:zestimate"]["response"]["0"];
+
+          var address = x["address"]["0"];
+          var city = address["city"]["0"];
+          var latitude = address["latitude"]["0"];
+          var longitude = address["longitude"]["0"];
+          var state = address["state"]["0"];
+          var street = address["street"]["0"];
+          var zipcode = address["zipcode"]["0"];
+
+          var zestimate = x["zestimate"]["0"]["amount"]["0"]["_"];
+          var zpid = x["zpid"]["0"];
+
+          var owners = Owners.find().fetch();
 
           // This is where we are going to set all the new characteristics of the property we just called, adding to Properties collection
+          Properties.insert({
+            owners: owners,
+            street: street,
+            city: city,
+            lat: latitude,
+            long: longitude,
+            state: state,
+            zip: zipcode,
+            zestimate: zestimate,
+            zpid: zpid
+          });
 
-          
 
 
+              // Properties.insert({
+              //   owner: $("#user-id").val(),
+              //   address: $("#property-address").val(),
+              //   // price: Number($("#purchase-price").val()),
+              //   state: $(".add-property-state-dropdown").val(),
+              //   city: $("#city").val(),
+              //   zip: $('#zip-code').val(),
+              //   bed: $("#bed-count").val(),
+              //   bath: $("#bath-count").val(),
+              //   sqft: $("#sqft-count").val(),
+              //   zpid: $("#zpid").val()
+              // });
 
+          // Clearing the form and the current owners
+          Owners.remove({});
+          $("#zpid").val("");
 
+          // This is where we re-render the D3 map to reflect the new property
+          $("#property-map").remove();
+          $("#append-map-here").append("<div id='property-map'></div>")
+          createPropertiesMap();
 
         })
 
 
-        // Clearing the form and the current owners
-        Owners.remove({});
-        $("#zpid").val("");
 
-        // This is where we re-render the D3 map to reflect the new property
-        $("#property-map").remove();
-        $("#append-map-here").append("<div id='property-map'></div>")
-        createPropertiesMap();
 
 
 

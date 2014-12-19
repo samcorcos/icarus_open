@@ -1,5 +1,6 @@
 Meteor.publish("properties", function () {
-  return Properties.find({ owner: this.userId});
+  // return Properties.find({ owner: this.userId});
+  return Properties.find({});
 });
 
 Meteor.publish("images", function () {

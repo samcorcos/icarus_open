@@ -30,6 +30,7 @@ To Do
   2. The properties should be clickable, and should redirect to the individual property page
 2. Terms sheet link
 3. Analytics spreadsheet-equivalent for admin: https://github.com/ongoworks/meteor-google-spreadsheets
+4. Be sure to change the allow-deny and publish settings once ownership has been refactored
 
 ###Homepage
 
