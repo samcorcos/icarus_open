@@ -55,6 +55,10 @@ Template.newPropertyForm.events({
     var temp = $(".add-owners-dropdown").val();
     var name = temp.match(/(^.+)(\s:\s)(\w+)/)[1];
     var id = temp.match(/(^.+)(\s:\s)(\w+)/)[3];
+    Owners.insert({name: name, _id: id}, function(err) {
+      if(err) { alert("Already selected as owner") }
+    });
+    $(".add-owners-dropdown").val("");
   }
 });
 
