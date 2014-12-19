@@ -81,11 +81,8 @@
           </select>
           {{#each owners}}
           <div class="row owners-list">
-            <div class="col s2 m2">
-              <p style="text-align:right;"><i class="fa fa-times"></i></p>
-            </div>
-            <div class="col s10 m10">
-              <p>{{name}} : {{_id}}</p>
+            <div class="col s12 m12">
+              <p><span><a href="#" class="remove-owner-button"><i class="fa fa-times"></i></a></span>{{name}} : {{_id}}</p>
             </div>
           </div>
           {{/each}}
