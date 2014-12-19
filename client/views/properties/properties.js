@@ -13,7 +13,9 @@ Template.properties.rendered = function() {
 
 Template.propertyPanel2.helpers({
   propertiesEven: function() {
-    return Properties.find();
+    return Properties.find({}, { field: { zestimate: -1 }}) // Returns list of all properties, ordered by cost
+
+    // db.users.find().map( function(u) { return u.name; } );
   }
   // Should have an "odd or even" helper, so it can be in two columns/rows and stack property!!!!
 });
@@ -29,80 +31,78 @@ Template.newPropertyForm.events({
   'click #submit-new-property': function(e,t) {
     // e.preventDefault();
     if ($("#zpid").val()) {
-      if (Owners.find().fetch()[0] !== undefined) {
+      if (Number($("#zpid").val())) {
+        if (Owners.find().fetch()[0] !== undefined) {
 
-        toast('Successfully Added To Database!', 3000);
+          toast('Successfully Added To Database!', 3000);
 
+          var addingZPID = Number($("zpid").val());
+          // Meteor.call("getProperty", "63706372")
 
-        // Meteor.call("getProperty", "63706372")
+          Meteor.call("getProperty", "2117851216", function(err, result) {
+            if (err) { console.log("Error with Zillow API Call") }
+            Session.set("propertyData", result);
 
-        Meteor.call("getProperty", "63706372", function(err, result) {
-          if (err) { console.log("Error with Zillow API Call") }
-          Session.set("propertyData", result);
-          console.log("Zillow API Call Successful");
-          console.log(result);
+            var x = result["Zestimate:zestimate"]["response"]["0"];
 
-          var x = result["Zestimate:zestimate"]["response"]["0"];
+            var address = x["address"]["0"];
+            var city = address["city"]["0"];
+            var latitude = address["latitude"]["0"];
+            var longitude = address["longitude"]["0"];
+            var state = address["state"]["0"];
+            var street = address["street"]["0"];
+            var zipcode = address["zipcode"]["0"];
 
-          var address = x["address"]["0"];
-          var city = address["city"]["0"];
-          var latitude = address["latitude"]["0"];
-          var longitude = address["longitude"]["0"];
-          var state = address["state"]["0"];
-          var street = address["street"]["0"];
-          var zipcode = address["zipcode"]["0"];
+            var zestimate = x["zestimate"]["0"]["amount"]["0"]["_"];
+            var zpid = x["zpid"]["0"];
 
-          var zestimate = x["zestimate"]["0"]["amount"]["0"]["_"];
-          var zpid = x["zpid"]["0"];
+            console.log("Zillow API Call Successful");
 
-          var owners = Owners.find().fetch();
+            var owners = Owners.find().fetch();
 
-          // This is where we are going to set all the new characteristics of the property we just called, adding to Properties collection
-          Properties.insert({
-            owners: owners,
-            street: street,
-            city: city,
-            lat: latitude,
-            long: longitude,
-            state: state,
-            zip: zipcode,
-            zestimate: zestimate,
-            zpid: zpid
-          });
-
-
-
-              // Properties.insert({
-              //   owner: $("#user-id").val(),
-              //   address: $("#property-address").val(),
-              //   // price: Number($("#purchase-price").val()),
-              //   state: $(".add-property-state-dropdown").val(),
-              //   city: $("#city").val(),
-              //   zip: $('#zip-code').val(),
-              //   bed: $("#bed-count").val(),
-              //   bath: $("#bath-count").val(),
-              //   sqft: $("#sqft-count").val(),
-              //   zpid: $("#zpid").val()
-              // });
-
-          // Clearing the form and the current owners
-          Owners.remove({});
-          $("#zpid").val("");
-
-          // This is where we re-render the D3 map to reflect the new property
-          $("#property-map").remove();
-          $("#append-map-here").append("<div id='property-map'></div>")
-          createPropertiesMap();
-
-        })
+            // This is where we are going to set all the new characteristics of the property we just called, adding to Properties collection
+            Properties.insert({
+              owners: owners,
+              street: street,
+              city: city,
+              lat: latitude,
+              long: longitude,
+              state: state,
+              zip: zipcode,
+              zestimate: zestimate,
+              zpid: zpid
+            });
 
 
 
+            // Properties.insert({
+            //   owner: $("#user-id").val(),
+            //   address: $("#property-address").val(),
+            //   // price: Number($("#purchase-price").val()),
+            //   state: $(".add-property-state-dropdown").val(),
+            //   city: $("#city").val(),
+            //   zip: $('#zip-code').val(),
+            //   bed: $("#bed-count").val(),
+            //   bath: $("#bath-count").val(),
+            //   sqft: $("#sqft-count").val(),
+            //   zpid: $("#zpid").val()
+            // });
 
+            // Clearing the form and the current owners
+            Owners.remove({});
+            $("#zpid").val("");
 
+            // This is where we re-render the D3 map to reflect the new property
+            $("#property-map").remove();
+            $("#append-map-here").append("<div id='property-map'></div>")
+            createPropertiesMap();
 
+          })
+        } else {
+          toast("Please add owners.", 3000);
+        }
       } else {
-        toast("Please add owners.", 3000);
+        toast("ZPID can only contain numbers.", 4000)
       }
     } else {
       toast("Please enter ZPID.", 3000);
