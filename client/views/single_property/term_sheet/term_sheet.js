@@ -1,8 +1,3 @@
-Meteor.subscribe("termSheet");
-
-// return TermSheet.find({ property: Session.get("currentId")._id });
-
-
 Template.singlePropertyTermSheet.rendered = function() {
   $('ul.tabs').tabs();
   $('.modal-trigger').leanModal();
