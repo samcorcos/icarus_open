@@ -38,6 +38,8 @@ Template.newPropertyForm.events({
             if (err) { console.log("Error with Zillow API Call") }
             Session.set("propertyData", result);
 
+            console.log(result)
+
             var x = result["Zestimate:zestimate"]["response"]["0"];
 
             var address = x["address"]["0"];
@@ -67,6 +69,19 @@ Template.newPropertyForm.events({
               zestimate: zestimate,
               zpid: zpid
             });
+
+            Meteor.call("getPropertyImages", Number($("#zpid").val()), function(err, result) {
+              if (err) { console.log("Error with Zillow Image API Call") }
+              console.log(result["UpdatedPropertyDetails:updatedPropertyDetails"]);
+              var bath = result["UpdatedPropertyDetails:updatedPropertyDetails"]["editedFacts"]["0"]["bathrooms"]["0"];
+              var bed = result["UpdatedPropertyDetails:updatedPropertyDetails"]["editedFacts"]["0"]["bedrooms"]["0"];
+              var sqft = result["UpdatedPropertyDetails:updatedPropertyDetails"]["editedFacts"]["0"]["finishedSqFt"]["0"];
+              var lotSizeSqFt = result["UpdatedPropertyDetails:updatedPropertyDetails"]["editedFacts"]["0"]["lotSizeSqFt"]["0"];
+              var rooms = result["UpdatedPropertyDetails:updatedPropertyDetails"]["editedFacts"]["0"]["rooms"]["0"];
+              var yearBuilt = result["UpdatedPropertyDetails:updatedPropertyDetails"]["editedFacts"]["0"]["yearBuilt"]["0"];
+
+              var imagesArray = result["UpdatedPropertyDetails:updatedPropertyDetails"]["images"]["0"]["image"]["0"]["url"];
+            })
 
             // Clearing the form and the current owners
             Owners.remove({});
