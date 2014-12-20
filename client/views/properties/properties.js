@@ -38,8 +38,6 @@ Template.newPropertyForm.events({
             if (err) { console.log("Error with Zillow API Call") }
             Session.set("propertyData", result);
 
-            console.log(result)
-
             var x = result["Zestimate:zestimate"]["response"]["0"];
 
             var address = x["address"]["0"];
@@ -72,15 +70,22 @@ Template.newPropertyForm.events({
 
             Meteor.call("getPropertyImages", Number($("#zpid").val()), function(err, result) {
               if (err) { console.log("Error with Zillow Image API Call") }
-              console.log(result["UpdatedPropertyDetails:updatedPropertyDetails"]);
-              var bath = result["UpdatedPropertyDetails:updatedPropertyDetails"]["editedFacts"]["0"]["bathrooms"]["0"];
-              var bed = result["UpdatedPropertyDetails:updatedPropertyDetails"]["editedFacts"]["0"]["bedrooms"]["0"];
-              var sqft = result["UpdatedPropertyDetails:updatedPropertyDetails"]["editedFacts"]["0"]["finishedSqFt"]["0"];
-              var lotSizeSqFt = result["UpdatedPropertyDetails:updatedPropertyDetails"]["editedFacts"]["0"]["lotSizeSqFt"]["0"];
-              var rooms = result["UpdatedPropertyDetails:updatedPropertyDetails"]["editedFacts"]["0"]["rooms"]["0"];
-              var yearBuilt = result["UpdatedPropertyDetails:updatedPropertyDetails"]["editedFacts"]["0"]["yearBuilt"]["0"];
 
-              var imagesArray = result["UpdatedPropertyDetails:updatedPropertyDetails"]["images"]["0"]["image"]["0"]["url"];
+              if (result["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["code"]["0"] === "0") { // This means that the code is "success"
+                var y = result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"]["editedFacts"]["0"];
+
+                if (y["bathrooms"]["0"]) { var bath = y["bathrooms"]["0"]; } else { var bath = "unknown" }
+                if (y["bedrooms"]["0"]) { var bed = y["bedrooms"]["0"]; } else { var bed = "unknown" }
+                if (y["finishedSqFt"]["0"]) { var sqft = y["finishedSqFt"]["0"]; } else { var sqft = "unknown" }
+                if (y["lotSizeSqFt"]["0"]) { var lotSizeSqFt = y["lotSizeSqFt"]["0"]; } else { var lotSizeSqFt = "unknown" }
+                if (y["rooms"]["0"]) { var rooms = y["rooms"]["0"]; } else { var rooms = "unknown" }
+                if (y["yearBuilt"]["0"]) { var yearBuilt = y["yearBuilt"]["0"]; } else { var yearBuilt = "unknown" }
+
+                var imagesArray = result["UpdatedPropertyDetails:updatedPropertyDetails"]["images"]["0"]["image"]["0"]["url"];
+              } else {
+                console.log(result["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["text"]["0"])
+              }
+
             })
 
             // Clearing the form and the current owners
