@@ -67,6 +67,44 @@ Template.termSheetInputs.events({
     TermSheet.update({ _id: this._id }, { $set: { percentCapitalNeeded: $("#percent-capital-needed").val() }});
 
   },
+  'keypress #term-sheet-submit-inputs': function(e,t) {
+    e.preventDefault();
+    if (e.keyCode === 13) {
+      Session.set("editingTotalPrice", false);
+      TermSheet.update({ _id: this._id }, { $set: { totalPrice: $("#total-price").val() }});
+
+      Session.set("editingDownPayment", false);
+      TermSheet.update({ _id: this._id }, { $set: { downPayment: $("#down-payment").val() }});
+
+      Session.set("editingClosingRepair", false);
+      TermSheet.update({ _id: this._id }, { $set: { closingRepair: $("#closing-repair").val() }});
+
+      Session.set("editingAPR", false);
+      TermSheet.update({ _id: this._id }, { $set: { apr: $("#apr").val() }});
+
+      Session.set("editingTaxes", false);
+      TermSheet.update({ _id: this._id }, { $set: { taxes: $("#taxes").val() }});
+
+      Session.set("editingHOA", false);
+      TermSheet.update({ _id: this._id }, { $set: { hoa: $("#hoa").val() }});
+
+      Session.set("editingInsurance", false);
+      TermSheet.update({ _id: this._id }, { $set: { insurance: $("#insurance").val() }});
+
+      Session.set("editingRentPrice", false);
+      TermSheet.update({ _id: this._id }, { $set: { rentPrice: $("#rent-price").val() }});
+
+      Session.set("editingSquareFootage", false);
+      TermSheet.update({ _id: this._id }, { $set: { squareFootage: $("#square-footage").val() }});
+
+      Session.set("editingEquitySold", false);
+      TermSheet.update({ _id: this._id }, { $set: { equitySold: $("#equity-sold").val() }});
+
+      Session.set("editingPercentCapitalNeeded", false);
+      TermSheet.update({ _id: this._id }, { $set: { percentCapitalNeeded: $("#percent-capital-needed").val() }});
+    }
+  },
+
 
   'click #total-price-div': function(e,t) { Session.set("editingTotalPrice", true); },
   'click #down-payment-div': function(e,t) { Session.set("editingDownPayment", true); },
