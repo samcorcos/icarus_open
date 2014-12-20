@@ -56,35 +56,54 @@ Template.newPropertyForm.events({
             var owners = Owners.find().fetch();
 
             // This is where we are going to set all the new characteristics of the property we just called, adding to Properties collection
-            Properties.insert({
-              owners: owners,
-              street: street,
-              city: city,
-              lat: latitude,
-              long: longitude,
-              state: state,
-              zip: zipcode,
-              zestimate: zestimate,
-              zpid: zpid
-            });
 
             Meteor.call("getPropertyImages", Number($("#zpid").val()), function(err, result) {
               if (err) { console.log("Error with Zillow Image API Call") }
+              console.log(result)
 
               if (result["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["code"]["0"] === "0") { // This means that the code is "success"
                 var y = result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"]["editedFacts"]["0"];
 
-                if (y["bathrooms"]["0"]) { var bath = y["bathrooms"]["0"]; } else { var bath = "unknown" }
-                if (y["bedrooms"]["0"]) { var bed = y["bedrooms"]["0"]; } else { var bed = "unknown" }
-                if (y["finishedSqFt"]["0"]) { var sqft = y["finishedSqFt"]["0"]; } else { var sqft = "unknown" }
-                if (y["lotSizeSqFt"]["0"]) { var lotSizeSqFt = y["lotSizeSqFt"]["0"]; } else { var lotSizeSqFt = "unknown" }
-                if (y["rooms"]["0"]) { var rooms = y["rooms"]["0"]; } else { var rooms = "unknown" }
-                if (y["yearBuilt"]["0"]) { var yearBuilt = y["yearBuilt"]["0"]; } else { var yearBuilt = "unknown" }
+                if (y.hasOwnProperty("bathrooms")) { var bath = y["bathrooms"]["0"]; } else { var bath = "unknown" }
+                if (y.hasOwnProperty("bedrooms")) { var bed = y["bedrooms"]["0"]; } else { var bed = "unknown" }
+                if (y.hasOwnProperty("finishedSqFt")) { var sqft = y["finishedSqFt"]["0"]; } else { var sqft = "unknown" }
+                if (y.hasOwnProperty("lotSizeSqFt")) { var lotSizeSqFt = y["lotSizeSqFt"]["0"]; } else { var lotSizeSqFt = "unknown" }
+                if (y.hasOwnProperty("rooms")) { var rooms = y["rooms"]["0"]; } else { var rooms = "unknown" }
+                if (y.hasOwnProperty("yearBuilt")) { var yearBuilt = y["yearBuilt"]["0"]; } else { var yearBuilt = "unknown" }
 
-                var imagesArray = result["UpdatedPropertyDetails:updatedPropertyDetails"]["images"]["0"]["image"]["0"]["url"];
+                // var bath = y["bathrooms"]["0"];
+                // var bed = y["bedrooms"]["0"];
+                // var sqft = y["finishedSqFt"]["0"];
+                // var lotSizeSqFt = y["lotSizeSqFt"]["0"];
+                // var rooms = y["rooms"]["0"];
+                // var yearBuilt = y["yearBuilt"]["0"];
+
+                if (result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"].hasOwnProperty("images")) { var imagesArray = result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"]["images"]["0"]["image"]["0"]["url"]; } else { var imagesArray = [] }
+
               } else {
-                console.log(result["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["text"]["0"])
+                console.log(result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"]["message"]["0"]["text"]["0"])
               }
+
+              Properties.insert({
+                owners: owners,
+                street: street,
+                city: city,
+                lat: latitude,
+                long: longitude,
+                state: state,
+                zip: zipcode,
+                zestimate: zestimate,
+                zpid: zpid,
+                bed: bed,
+                bath: bath,
+                sqft: sqft,
+                lotSizeSqft: lotSizeSqFt,
+                rooms: rooms,
+                yearBuilt: yearBuilt,
+                imagesArray: imagesArray
+              });
+
+              toast('Successfully Added To Database!', 3000);
 
             })
 
@@ -97,7 +116,6 @@ Template.newPropertyForm.events({
             $("#append-map-here").append("<div id='property-map'></div>")
             createPropertiesMap();
 
-            toast('Successfully Added To Database!', 3000);
 
           })
         } else {
