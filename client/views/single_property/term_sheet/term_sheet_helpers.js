@@ -1,6 +1,6 @@
 Template.singlePropertyTermSheet.helpers({
   termSheet: function() {
-    return TermSheet.find({ property: Session.get("currentId")._id });
+    return TermSheet.find({ property: Session.get("currentId") });
   },
 
 
@@ -28,7 +28,7 @@ Template.termSheetButton.helpers({
 
 Template.termSheetInputs.helpers({
   termSheet: function() {
-    return TermSheet.find({ property: Session.get("currentId")._id });
+    return TermSheet.find({ property: Session.get("currentId") });
   },
 
   editingTotalPrice: function() { return (Session.get("editingTotalPrice")); },
@@ -48,10 +48,10 @@ Template.termSheetInputs.helpers({
 
 Template.termSheetOutputs.helpers({
   termSheet: function() {
-    return TermSheet.find({ property: Session.get("currentId")._id });
+    return TermSheet.find({ property: Session.get("currentId") });
   },
   downPaymentAmount: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var downPaymentAmount = (Number(temp[0].totalPrice) * Number(temp[0].downPayment) / 100);
     return downPaymentAmount.formatMoney(0);
   },
@@ -59,7 +59,7 @@ Template.termSheetOutputs.helpers({
     return 0;                                   // Has not been filled in
   },
   totalInvestment: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var totalInvestment = (Number(temp[0].totalPrice) + Number(temp[0].closingRepair))
     return totalInvestment.formatMoney(0);
   },
@@ -67,28 +67,28 @@ Template.termSheetOutputs.helpers({
     return 0;                                 // Has not been filled in
   },
   monthlyTaxAverage: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var monthlyTaxAverage = (temp[0].taxes / 12);
     return monthlyTaxAverage.formatMoney(0);
   },
   operatingExpenses: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
     return operatingExpenses.formatMoney(0);
   },
   reserve: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var reserve = (temp[0].rentPrice * 0.05);
     return reserve.formatMoney(0);
   },
   monthlyCostOfOwnership: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
     var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
     return monthlyCostOfOwnership.formatMoney(0);
   },
   cashflowRented: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
     var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
     var rentPrice = Number(temp[0].rentPrice);
@@ -96,7 +96,7 @@ Template.termSheetOutputs.helpers({
     return cashflowRented.formatMoney(0);
   },
   cashflowOccupied: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var rentPrice = Number(temp[0].rentPrice);
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
     var monthlyCostOfOwnership = operatingExpenses;  // Does not include monthly mortgage expense, or cost of additional financing
@@ -104,14 +104,14 @@ Template.termSheetOutputs.helpers({
     return cashflowOccupied.formatMoney(0);
   },
   cashflowUnoccupied: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
     var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
     var cashflowUnoccupied =  -1 * monthlyCostOfOwnership;
     return cashflowUnoccupied.formatMoney(0);
   },
   afterTaxWithRenters: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var depreciation = (Number(temp[0].totalPrice) * 0.8 / 360);
     var tax = Number(temp[0].taxes) / 12;
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
@@ -130,7 +130,7 @@ Template.termSheetOutputs.helpers({
     return afterTaxWithRenters.formatMoney(0);
   },
   afterTaxUnoccupied: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
     var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
     var cashflowUnoccupied =  -1 * monthlyCostOfOwnership;
@@ -149,7 +149,7 @@ Template.termSheetOutputs.helpers({
     return afterTaxUnoccupied.formatMoney(0);
   },
   freeCashflow: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var rentPrice = Number(temp[0].rentPrice);
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
     var monthlyCostOfOwnership = operatingExpenses;  // Does not include monthly mortgage expense, or cost of additional financing
@@ -165,24 +165,24 @@ Template.termSheetOutputs.helpers({
 
 Template.termSheetReturns.helpers({
   termSheet: function() {
-    return TermSheet.find({ property: Session.get("currentId")._id });
+    return TermSheet.find({ property: Session.get("currentId") });
   },
 
   annualRevenue: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var rentPrice = Number(temp[0].rentPrice);
     var annualRevenue = rentPrice * 12;
     return annualRevenue.formatMoney(0);
   },
   annualCost: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
     var monthlyCostOfOwnership = operatingExpenses; // Does not include monthly mortgage expense, or cost of additional financing
     var annualCost = monthlyCostOfOwnership * 12;
     return annualCost.formatMoney(0);
   },
   annualProfit: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var rentPrice = Number(temp[0].rentPrice);
     var annualRevenue = rentPrice * 12;
 
@@ -194,7 +194,7 @@ Template.termSheetReturns.helpers({
     return annualProfit.formatMoney(0);
   },
   annualProfitAfterTax: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var depreciation = (Number(temp[0].totalPrice) * 0.8 / 360);
     var tax = Number(temp[0].taxes) / 12;
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
@@ -215,7 +215,7 @@ Template.termSheetReturns.helpers({
     return annualProfitAfterTax.formatMoney(0);
   },
   annualROIBeforeTax: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var rentPrice = Number(temp[0].rentPrice);
     var annualRevenue = rentPrice * 12;
 
@@ -231,7 +231,7 @@ Template.termSheetReturns.helpers({
     return (annualROIBeforeTax * 100).formatMoney(2);
   },
   annualROIAfterTax: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var depreciation = (Number(temp[0].totalPrice) * 0.8 / 360);
     var tax = Number(temp[0].taxes) / 12;
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
@@ -256,13 +256,13 @@ Template.termSheetReturns.helpers({
     return (annualROIAfterTax * 100).formatMoney(2);
   },
   annualOperatingExpense: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
     var annualOperatingExpense = operatingExpenses * 12;
     return annualOperatingExpense.formatMoney(0);
   },
   netOperatingIncome: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var rentPrice = Number(temp[0].rentPrice);
     var annualRevenue = rentPrice * 12;
 

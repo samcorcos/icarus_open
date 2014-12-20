@@ -35,20 +35,20 @@ Template.singlePropertyImageCarousel.helpers({
     var currentPropertyImages = [];
     // console.log(this.data)
     var currentPropertyId = Session.get("currentId");
-    // var allImages = Images.find().fetch();
-    //
-    // allImages.forEach(function(image) {
-    //   var temp = {};
-    //   if (image.property == currentPropertyId && image.property != undefined) {
-    //     temp.url = image.bloburl;
-    //     currentPropertyImages.push(temp);
-    //   }
-    // })
-    // // console.log(currentPropertyImages);
-    //
-    // if (currentPropertyImages.length > 0) {
-    //   return currentPropertyImages;
-    // }
+    var allImages = Images.find().fetch();
+
+    allImages.forEach(function(image) {
+      var temp = {};
+      if (image.property == currentPropertyId && image.property != undefined) {
+        temp.url = image.bloburl;
+        currentPropertyImages.push(temp);
+      }
+    })
+    // console.log(currentPropertyImages);
+
+    if (currentPropertyImages.length > 0) {
+      return currentPropertyImages;
+    }
   }
 });
 

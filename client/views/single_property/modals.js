@@ -2,7 +2,7 @@ Template.equityInvestorModal.helpers({
 
 
   totalPrice: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var totalInvestment = (Number(temp[0].totalPrice) + Number(temp[0].closingRepair));
 
     var equitySold = Number(temp[0].equitySold);
@@ -10,30 +10,30 @@ Template.equityInvestorModal.helpers({
     return (totalInvestment * equitySold / 100).formatMoney(0);
   },
   closingRepair: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var equitySold = Number(temp[0].equitySold);
     var closingRepair = Number(temp[0].closingRepair) * equitySold / 100;
     return closingRepair.formatMoney(0);
   },
   taxes: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var taxes = Number(temp[0].taxes);
     return taxes.formatMoney(0);
   },
   insurance: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var insurance = Number(temp[0].insurance);
     return insurance.formatMoney(0);
   },
   downPaymentPercentage: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var downPaymentPercentage = Number(temp[0].downPayment);
     var percentCapitalNeeded = Number(temp[0].percentCapitalNeeded);
 
     return (downPaymentPercentage * percentCapitalNeeded / 100).formatMoney(2);
   },
   totalInvestment: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var equitySold = Number(temp[0].equitySold);
     var downPaymentAmount = (Number(temp[0].totalPrice) * Number(temp[0].downPayment) / 100 * equitySold / 100);
     var equitySold = Number(temp[0].equitySold);
@@ -44,12 +44,12 @@ Template.equityInvestorModal.helpers({
     return totalInvestment.formatMoney(0);
   },
   hoa: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var hoa = Number(temp[0].hoa);
     return hoa.formatMoney(0);
   },
   downPaymentAmount: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var equitySold = Number(temp[0].equitySold);
     var downPaymentAmount = (Number(temp[0].totalPrice) * Number(temp[0].downPayment) / 100);
     var percentCapitalNeeded = Number(temp[0].percentCapitalNeeded / 100);
@@ -57,14 +57,14 @@ Template.equityInvestorModal.helpers({
     return (downPaymentAmount * percentCapitalNeeded).formatMoney(0);
   },
   rentPrice: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var equitySold = Number(temp[0].equitySold);
     var rentPrice = Number(temp[0].rentPrice) * equitySold / 100;
 
     return rentPrice.formatMoney(0);
   },
   cashflowRented: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var equitySold = Number(temp[0].equitySold);
 
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
@@ -75,7 +75,7 @@ Template.equityInvestorModal.helpers({
     return cashflowRented.formatMoney(0);
   },
   cashflowOccupied: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var equitySold = Number(temp[0].equitySold);
 
     var rentPrice = Number(temp[0].rentPrice);
@@ -86,7 +86,7 @@ Template.equityInvestorModal.helpers({
     return cashflowOccupied.formatMoney(0);
   },
   cashflowUnoccupied: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var equitySold = Number(temp[0].equitySold);
 
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
@@ -96,7 +96,7 @@ Template.equityInvestorModal.helpers({
     return cashflowUnoccupied.formatMoney(0);
   },
   afterTaxOccupied: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var equitySold = Number(temp[0].equitySold);
 
     var depreciation = (Number(temp[0].totalPrice) * 0.8 / 360);
@@ -117,7 +117,7 @@ Template.equityInvestorModal.helpers({
     return afterTaxWithRenters.formatMoney(0);
   },
   afterTaxUnoccupied: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var equitySold = Number(temp[0].equitySold);
 
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
@@ -138,7 +138,7 @@ Template.equityInvestorModal.helpers({
     return afterTaxUnoccupied.formatMoney(0);
   },
   freeCashFlow: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var equitySold = Number(temp[0].equitySold);
 
     var rentPrice = Number(temp[0].rentPrice);
@@ -155,7 +155,7 @@ Template.equityInvestorModal.helpers({
     return 0;                                 // Has not been filled in
   },
   monthlyTaxAverage: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
 
     var equitySold = Number(temp[0].equitySold);
 
@@ -163,14 +163,14 @@ Template.equityInvestorModal.helpers({
     return monthlyTaxAverage.formatMoney(0);
   },
   operatingExpenses: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
 
     var equitySold = Number(temp[0].equitySold);
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05)) * equitySold / 100;
     return operatingExpenses.formatMoney(0);
   },
   reserve: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var equitySold = Number(temp[0].equitySold);
 
     var reserve = (Number(temp[0].rentPrice) * 0.05) * equitySold / 100;
@@ -178,7 +178,7 @@ Template.equityInvestorModal.helpers({
     return reserve.formatMoney(0);
   },
   costOfOwnership: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId")._id }).fetch();
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
     var equitySold = Number(temp[0].equitySold);
 
     var operatingExpenses = (Number((temp[0].taxes / 12)) + Number(temp[0].hoa) + Number(temp[0].insurance) + Number((temp[0].rentPrice) * 0.05));
