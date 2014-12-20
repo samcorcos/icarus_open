@@ -19,10 +19,6 @@ Template.singleProperty.rendered = function() {
 
 };
 
-Template.singleProperty.helpers({
-
-});
-
 Template.singleProperty.events({
 
   //// Uncomment when online
@@ -34,7 +30,6 @@ Template.singleProperty.events({
     );
   }
 });
-
 
 Template.singlePropertyImageCarousel.helpers({
   propertyImages: function() { // Maybe I can solve this with Meteor._wrapAsync??
@@ -56,8 +51,6 @@ Template.singlePropertyImageCarousel.helpers({
     }
   }
 });
-
-
 
 Template.singlePropertyImageCarousel.rendered = function() {
   $('#carousel').slick({
