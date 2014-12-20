@@ -4,7 +4,7 @@ this.SinglePropertyController = RouteController.extend({
 		/*YIELD_TEMPLATES*/
 	},
 	onBeforeAction: function() {
-		// filepicker.setKey('ACZTMJqmFR7K1eeuAVsurz');
+		filepicker.setKey('ACZTMJqmFR7K1eeuAVsurz');
 		this.next();
 	},
 	action: function() {
@@ -12,6 +12,7 @@ this.SinglePropertyController = RouteController.extend({
 		/*ACTION_FUNCTION*/
 	},
 	waitOn: function() {
+		Session.set("currentId", this.params._id);
 		return Meteor.subscribe("properties");
 	},
 	data: function() {

@@ -16,10 +16,6 @@ Template.singleProperty.rendered = function() {
       map.setCenter(new google.maps.LatLng( 41.870302, -87.764084 )); // This is going to have to be a function based on some calculation that gets the lat and long... good luck! ...Or just https://developers.google.com/maps/documentation/geocoding/
     }
   );
-
-
-  console.log(this.data)
-
 };
 
 Template.singleProperty.events({
@@ -37,21 +33,22 @@ Template.singleProperty.events({
 Template.singlePropertyImageCarousel.helpers({
   propertyImages: function() { // Maybe I can solve this with Meteor._wrapAsync??
     var currentPropertyImages = [];
-    var currentPropertyId = Session.get("currentId")._id;
-    var allImages = Images.find().fetch();
-
-    allImages.forEach(function(image) {
-      var temp = {};
-      if (image.property == currentPropertyId && image.property != undefined) {
-        temp.url = image.bloburl;
-        currentPropertyImages.push(temp);
-      }
-    })
-    // console.log(currentPropertyImages);
-
-    if (currentPropertyImages.length > 0) {
-      return currentPropertyImages;
-    }
+    // console.log(this.data)
+    var currentPropertyId = Session.get("currentId");
+    // var allImages = Images.find().fetch();
+    //
+    // allImages.forEach(function(image) {
+    //   var temp = {};
+    //   if (image.property == currentPropertyId && image.property != undefined) {
+    //     temp.url = image.bloburl;
+    //     currentPropertyImages.push(temp);
+    //   }
+    // })
+    // // console.log(currentPropertyImages);
+    //
+    // if (currentPropertyImages.length > 0) {
+    //   return currentPropertyImages;
+    // }
   }
 });
 
