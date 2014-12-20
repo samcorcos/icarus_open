@@ -1,5 +1,9 @@
 Template.singleProperty.rendered = function() {
 
+  var latitude = this.data.lat;
+  var longitude = this.data.long;
+  var street = this.data.street;
+
   ////Uncomment when online
   GoogleMaps.init(
     {
@@ -8,12 +12,22 @@ Template.singleProperty.rendered = function() {
       'language': 'en' //optional
     },
     function(){
+      var myLatlng = new google.maps.LatLng(latitude, longitude);
+
       var mapOptions = {
-        zoom: 13,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        zoom: 18,
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        center: myLatlng
       };
+
       map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-      map.setCenter(new google.maps.LatLng( 41.870302, -87.764084 )); // This is going to have to be a function based on some calculation that gets the lat and long... good luck! ...Or just https://developers.google.com/maps/documentation/geocoding/
+
+      var marker = new google.maps.Marker({
+        position: myLatlng,
+        map: map,
+        title: street
+      })
+
     }
   );
 };
@@ -32,10 +46,10 @@ Template.singleProperty.events({
 
 Template.singleProperty.helpers({
   hasTermSheet: function() {
-    TermSheet.findOne({ _id: Session.get("currentId") });
+    TermSheet.findOne({ property: Session.get("currentId") });
   },
   noTermSheet: function() {
-    if (TermSheet.findOne({ _id: Session.get("currentId") })) {
+    if (TermSheet.findOne({ property: Session.get("currentId") })) {
       return false;
     } else { return true }
   }
