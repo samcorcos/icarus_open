@@ -12,9 +12,7 @@ this.SinglePropertyController = RouteController.extend({
 		/*ACTION_FUNCTION*/
 	},
 	waitOn: function() {
-		return [
-		];
-		/*WAIT_FUNCTION*/
+		return Meteor.subscribe("properties");
 	},
 	data: function() {
 		return {
