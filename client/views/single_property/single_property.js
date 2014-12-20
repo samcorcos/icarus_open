@@ -33,7 +33,6 @@ Template.singleProperty.rendered = function() {
 };
 
 Template.singleProperty.events({
-
   //// Uncomment when online
   'click #add-property-image': function(e,t) {
     filepicker.pick(
@@ -41,17 +40,28 @@ Template.singleProperty.events({
         Images.insert({ "owner": Meteor.userId(), "property": t.data._id, "bloburl": Blob.url, "date": Date() }) // I think I'm going to have to get this Session.get from the params, rather than the Session variable inc ase seomeone goes straight to the individual property page.
       }
     );
+  },
+  'click #add-term-sheet-button': function(e,t) {
+    console.log('running');
+    $(".flex-white-div-term-sheet").toggleClass("add-flex-div-show");
+    $(".red-break-term-sheet").toggleClass("add-red-break-show");
+    TermSheet.insert({ "owner": Meteor.userId(), "property": t.data._id, "totalPrice": 0, "downPayment": 0, "closingRepair": 0, "apr": 0, "taxes": 0, "hoa": 0, "insurance": 0, "rentPrice": 0, "squareFootage": 0, "equitySold": 0, "percentCapitalNeeded": 0 });
+    $(".flex-white-div-term-sheet-button").toggleClass("add-flex-div-hide");
+    $(".red-break-term-sheet-button").toggleClass("add-red-break-hide");
+    $(".flex-white-div-inputs").toggleClass("add-flex-div-show");
   }
 });
 
 Template.singleProperty.helpers({
   hasTermSheet: function() {
-    TermSheet.findOne({ property: Session.get("currentId") });
+    if (TermSheet.findOne({ property: Session.get("currentId") })) {
+      return true;
+    } else { return false; }
   },
   noTermSheet: function() {
     if (TermSheet.findOne({ property: Session.get("currentId") })) {
       return false;
-    } else { return true }
+    } else { return true; }
   }
 });
 
