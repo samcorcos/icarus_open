@@ -35,7 +35,7 @@
       <div class="row">
         <h3 style="text-align:center;">Inputs</h3>
         <div class="one-rem-spacer"></div>
-        <div class="term-sheet-input input-field col s4">
+        <div class="term-sheet-input input-field col s12 m4">
           {{#if editingTotalPrice}}
           <h4>Total Price</h4>
           <input id="total-price" type="text" value="{{totalPrice}}" required>
@@ -47,7 +47,7 @@
           {{/if}}
         </div>
 
-        <div class="term-sheet-input input-field col s4">
+        <div class="term-sheet-input input-field col s12 m4">
           {{#if editingDownPayment}}
           <h4>Down Payment</h4>
           <input id="down-payment" type="text" value="{{downPayment}}" required>
@@ -59,7 +59,7 @@
           {{/if}}
         </div>
 
-        <div class="term-sheet-input input-field col s4">
+        <div class="term-sheet-input input-field col s12 m4">
           {{#if editingClosingRepair}}
           <h4>Closing &#38; Repair</h4>
           <input id="closing-repair" type="text" value={{closingRepair}} required>
@@ -71,7 +71,7 @@
           {{/if}}
         </div>
 
-        <div class="term-sheet-input input-field col s4">
+        <div class="term-sheet-input input-field col s12 m4">
           {{#if editingAPR}}
           <h4>APR</h4>
           <input id="apr" type="text" value={{apr}} required>
@@ -83,7 +83,7 @@
           {{/if}}
         </div>
 
-        <div class="term-sheet-input input-field col s4">
+        <div class="term-sheet-input input-field col s12 m4">
           {{#if editingTaxes}}
           <h4>Taxes</h4>
           <input id="taxes" type="text" value={{taxes}} required>
@@ -95,7 +95,7 @@
           {{/if}}
         </div>
 
-        <div class="term-sheet-input input-field col s4">
+        <div class="term-sheet-input input-field col s12 m4">
           {{#if editingHOA}}
           <h4>HOA</h4>
           <input id="hoa" type="text" value={{hoa}} required>
@@ -107,7 +107,7 @@
           {{/if}}
         </div>
 
-        <div class="term-sheet-input input-field col s4">
+        <div class="term-sheet-input input-field col s12 m4">
           {{#if editingInsurance}}
           <h4>Insurance</h4>
           <input id="insurance" type="text" value={{insurance}} required>
@@ -119,7 +119,7 @@
           {{/if}}
         </div>
 
-        <div class="term-sheet-input input-field col s4">
+        <div class="term-sheet-input input-field col s12 m4">
           {{#if editingRentPrice}}
           <h4>Rent Price</h4>
           <input id="rent-price" type="text" value={{rentPrice}} required>
@@ -131,7 +131,7 @@
           {{/if}}
         </div>
 
-        <div class="term-sheet-input input-field col s4">
+        <div class="term-sheet-input input-field col s12 m4">
           {{#if editingSquareFootage}}
           <h4>Square Footage</h4>
           <input id="square-footage" type="text" value={{squareFootage}} required>
@@ -143,7 +143,7 @@
           {{/if}}
         </div>
 
-        <div class="term-sheet-input input-field col s4">
+        <div class="term-sheet-input input-field col s12 m4">
           {{#if editingEquitySold}}
           <h4>Equity Being Sold</h4>
           <input id="equity-sold" type="text" value={{equitySold}} required>
@@ -155,7 +155,7 @@
           {{/if}}
         </div>
 
-        <div class="term-sheet-input input-field col s4">
+        <div class="term-sheet-input input-field col s12 m4">
           {{#if editingPercentCapitalNeeded}}
           <h4>Capital Needed</h4>
           <input id="percent-capital-needed" type="text" value={{percentCapitalNeeded}} required>
@@ -168,13 +168,12 @@
         </div>
 
       </div>
+    <button class="btn" id="term-sheet-submit-inputs" style="margin:auto;display:block;">Submit Inputs</button>
+    <div class="three-rem-spacer"></div>
     </div>
   </div>
+
   {{/each}}
-
-  <button class="btn" id="term-sheet-submit-inputs" style="margin:auto;display:block;">Submit Inputs</button>
-  <div class="three-rem-spacer"></div>
-
 </template>
 
 

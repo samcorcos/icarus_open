@@ -26,7 +26,6 @@ Template.termSheetInputs.helpers({
   },
 
   editingTotalPrice: function() {
-    // console.log(TermSheet.findOne({ property: Session.get("currentId") }).fetch())
     var temp =  TermSheet.find({ property: Session.get("currentId") }).fetch();
     if ( temp["0"]["totalPrice"] == "0"  )
       { return true; }
@@ -91,7 +90,6 @@ Template.termSheetInputs.helpers({
   },
   editingEquitySold: function() {
     var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
-    console.log(temp["0"]["equitySold"])
     if ( temp["0"]["equitySold"] == "0"  )
       { return true; }
     else { return Session.get("editingEquitySold"); }
