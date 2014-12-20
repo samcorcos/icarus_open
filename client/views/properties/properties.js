@@ -12,10 +12,31 @@ Template.properties.rendered = function() {
 };
 
 Template.propertyPanel2.helpers({
-  propertiesEven: function() {
+  properties: function() {
     return Properties.find({}, { field: { zestimate: -1 }}) // Returns list of all properties, ordered by cost
 
     // db.users.find().map( function(u) { return u.name; } );
+  },
+  even: function(cursor) {
+    var temp = [];
+    for (var i = 0; i < cursor.fetch().length; i++) {
+      if (i % 2 !== 0) {
+        console.log(i)
+        console.log(cursor.fetch()[i])
+        temp.push(cursor.fetch()[i])
+      }
+    }
+    return temp;
+  },
+  odd: function(cursor) {
+    var temp = [];
+    for (var i = 0; i < cursor.fetch().length; i++) {
+      if ( (i % 2) === 0) {
+        console.log(cursor.fetch()[i])
+        temp.push(cursor.fetch()[i])
+      }
+    }
+    return temp;
   }
   // Should have an "odd or even" helper, so it can be in two columns/rows and stack property!!!!
 });
