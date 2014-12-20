@@ -53,7 +53,8 @@
           {{> singlePropertyImageCarousel}}
         </div>
         <div class="one-rem-spacer"></div>
-        <button style="display:block;margin:auto;" class="btn" id="add-property-image">Add Image</button> <!-- This can also be taken from Zillow -->
+        <!-- Turn on if you want to be able to upload your own picutres... You'll also have to add the links to the carousel -->
+        <!-- <button style="display:block;margin:auto;" class="btn" id="add-property-image">Add Image</button> -->
       </div>
       <div class="row">
         <a class="col m6 l6" href="#">This is a link</a>
@@ -67,7 +68,7 @@
 <template name="singlePropertyImageCarousel">
   <div id="carousel">
     {{#each propertyImages}}
-      <div><img src="{{this}}"></div>  <!-- I eventually want this to size to 100% of the containing div, and fade out on left and right -->
+      <div><img src="{{this}}"></div>
     {{/each}}
   </div>
 </template>
