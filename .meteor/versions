@@ -51,6 +51,7 @@ natestrauser:font-awesome@4.2.0
 npm-bcrypt@0.7.7
 observe-sequence@1.0.4
 ordered-dict@1.0.2
+particle4dev:sass@1.0.0
 peerlibrary:blocking@0.4.2
 peerlibrary:xml2js@0.4.4_3
 random@1.0.2
