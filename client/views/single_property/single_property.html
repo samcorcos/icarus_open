@@ -67,8 +67,12 @@
 
 <template name="singlePropertyImageCarousel">
   <div id="carousel">
+  {{#if propertyImages}}
     {{#each propertyImages}}
       <div><img src="{{this}}"></div>
     {{/each}}
+  {{else}}
+  <div><img src="/background/guitar.jpg"></div>
+  {{/if}}
   </div>
 </template>
