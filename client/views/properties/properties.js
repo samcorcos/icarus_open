@@ -21,8 +21,6 @@ Template.propertyPanel2.helpers({
     var temp = [];
     for (var i = 0; i < cursor.fetch().length; i++) {
       if (i % 2 !== 0) {
-        console.log(i)
-        console.log(cursor.fetch()[i])
         temp.push(cursor.fetch()[i])
       }
     }
@@ -32,7 +30,6 @@ Template.propertyPanel2.helpers({
     var temp = [];
     for (var i = 0; i < cursor.fetch().length; i++) {
       if ( (i % 2) === 0) {
-        console.log(cursor.fetch()[i])
         temp.push(cursor.fetch()[i])
       }
     }
@@ -102,7 +99,7 @@ Template.newPropertyForm.events({
                 if (result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"].hasOwnProperty("images")) { var imagesArray = result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"]["images"]["0"]["image"]["0"]["url"]; } else { var imagesArray = [] }
 
               } else {
-                console.log(result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"]["message"]["0"]["text"]["0"])
+                console.log(result["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["text"]["0"])
               }
 
               Properties.insert({
