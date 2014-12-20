@@ -25,17 +25,85 @@ Template.termSheetInputs.helpers({
     return TermSheet.find({ property: Session.get("currentId") });
   },
 
-  editingTotalPrice: function() { return (Session.get("editingTotalPrice")); },
-  editingDownPayment: function() { return Session.get("editingDownPayment"); },
-  editingClosingRepair: function() { return Session.get("editingClosingRepair"); },
-  editingAPR: function() { return Session.get("editingAPR"); },
-  editingTaxes: function() { return Session.get("editingTaxes"); },
-  editingHOA: function() { return Session.get("editingHOA"); },
-  editingInsurance: function() { return Session.get("editingInsurance"); },
-  editingRentPrice: function() { return Session.get("editingRentPrice"); },
-  editingSquareFootage: function() { return Session.get("editingSquareFootage"); },
-  editingEquitySold: function() { return Session.get("editingEquitySold"); },
-  editingPercentCapitalNeeded: function() { return Session.get("editingPercentCapitalNeeded"); },
+  editingTotalPrice: function() {
+    // console.log(TermSheet.findOne({ property: Session.get("currentId") }).fetch())
+    var temp =  TermSheet.find({ property: Session.get("currentId") }).fetch();
+    if ( temp["0"]["totalPrice"] == "0"  )
+      { return true; }
+    else { return (Session.get("editingTotalPrice")); }
+
+  },
+  editingDownPayment: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
+    if ( temp["0"]["downPayment"] == "0"  )
+      { return true; }
+    else { return Session.get("editingDownPayment"); }
+
+  },
+  editingClosingRepair: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
+    if ( temp["0"]["closingRepair"] == "0"  )
+      { return true; }
+    else { return Session.get("editingClosingRepair"); }
+
+  },
+  editingAPR: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
+    if ( temp["0"]["apr"] == "0"  )
+      { return true; }
+    else { return Session.get("editingAPR"); }
+
+  },
+  editingTaxes: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
+    if ( temp["0"]["taxes"] == "0"  )
+      { return true; }
+    else { return Session.get("editingTaxes"); }
+
+  },
+  editingHOA: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
+    if ( temp["0"]["hoa"] == "0"  )
+      { return true; }
+    else { return Session.get("editingHOA"); }
+
+  },
+  editingInsurance: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
+    if ( temp["0"]["insurance"] == "0"  )
+      { return true; }
+    else { return Session.get("editingInsurance"); }
+
+  },
+  editingRentPrice: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
+    if ( temp["0"]["rentPrice"] == "0"  )
+      { return true; }
+    else { return Session.get("editingRentPrice"); }
+
+  },
+  editingSquareFootage: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
+    if ( temp["0"]["squareFootage"] == "0"  )
+      { return true; }
+    else { return Session.get("editingSquareFootage"); }
+
+  },
+  editingEquitySold: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
+    console.log(temp["0"]["equitySold"])
+    if ( temp["0"]["equitySold"] == "0"  )
+      { return true; }
+    else { return Session.get("editingEquitySold"); }
+
+  },
+  editingPercentCapitalNeeded: function() {
+    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
+    if ( temp["0"]["percentCapitalNeeded"] == "0"  )
+      { return true; }
+    else { return Session.get("editingPercentCapitalNeeded"); }
+
+  }
 
 });
 

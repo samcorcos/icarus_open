@@ -31,6 +31,10 @@ Template.singlePropertyTermSheet.events({
 
 Template.termSheetInputs.events({
 
+  'click #term-sheet-submit-inputs': function(e,t) {
+
+  },
+
   'click #total-price-div': function(e,t) { Session.set("editingTotalPrice", true); },
   'click #down-payment-div': function(e,t) { Session.set("editingDownPayment", true); },
   'click #closing-repair-div': function(e,t) { Session.set("editingClosingRepair", true); },
