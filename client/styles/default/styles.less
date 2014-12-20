@@ -545,6 +545,9 @@ div.add-flex-div-hide {
   border:   2px solid @icarus-red;
   border-radius: 5px;
   height: 50vh;
+  &.slick-initialized {
+    margin-bottom: 0;
+  }
 }
 
 #carousel div {
@@ -577,9 +580,13 @@ div.add-flex-div-hide {
 @media screen and (min-width: 768px) {
 */
 
-/* div#carousel > div img {
+div#carousel > div img {
   position: relative;
-} */
+  height: 100%;
+  margin: auto;
+  /* min-height: 50vh; */
+  border-radius: 5px;
+}
 
 .term-sheet-item {
 /*   div {
