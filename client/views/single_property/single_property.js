@@ -56,24 +56,28 @@ Template.singleProperty.helpers({
 });
 
 Template.singlePropertyImageCarousel.helpers({
-  propertyImages: function() { // Maybe I can solve this with Meteor._wrapAsync??
-    var currentPropertyImages = [];
-    // console.log(this.data)
-    var currentPropertyId = Session.get("currentId");
-    var allImages = Images.find().fetch();
+  propertyImages: function() {
+    var currentProperty = Properties.findOne({ _id: Session.get("currentId")});
+    return currentProperty.imagesArray;
 
-    allImages.forEach(function(image) {
-      var temp = {};
-      if (image.property == currentPropertyId && image.property != undefined) {
-        temp.url = image.bloburl;
-        currentPropertyImages.push(temp);
-      }
-    })
-    // console.log(currentPropertyImages);
 
-    if (currentPropertyImages.length > 0) {
-      return currentPropertyImages;
-    }
+    // var currentPropertyImages = [];
+    // // console.log(this.data)
+    // var currentPropertyId = Session.get("currentId");
+    // var allImages = Images.find().fetch();
+    //
+    // allImages.forEach(function(image) {
+    //   var temp = {};
+    //   if (image.property == currentPropertyId && image.property != undefined) {
+    //     temp.url = image.bloburl;
+    //     currentPropertyImages.push(temp);
+    //   }
+    // })
+    // // console.log(currentPropertyImages);
+    //
+    // if (currentPropertyImages.length > 0) {
+    //   return currentPropertyImages;
+    // }
   }
 });
 

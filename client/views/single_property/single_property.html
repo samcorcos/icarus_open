@@ -67,7 +67,7 @@
 <template name="singlePropertyImageCarousel">
   <div id="carousel">
     {{#each propertyImages}}
-      <div><img src="{{url}}"></div>  <!-- I eventually want this to size to 100% of the containing div, and fade out on left and right -->
+      <div><img src="{{this}}"></div>  <!-- I eventually want this to size to 100% of the containing div, and fade out on left and right -->
     {{/each}}
   </div>
 </template>
