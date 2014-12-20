@@ -17,6 +17,9 @@ Template.singleProperty.rendered = function() {
     }
   );
 
+
+  console.log(this.data)
+
 };
 
 Template.singleProperty.events({
