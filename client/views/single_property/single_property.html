@@ -11,7 +11,13 @@
   </div>
   <div class="red-break"></div>
 
-{{> singlePropertyTermSheet}}
+  {{#if noTermSheet}}
+    {{> termSheetButton}}
+  {{/if}}
+
+  {{#if hasTermSheet}}
+    {{> singlePropertyTermSheet}}
+  {{/if}}
 <!-- {{> singePropertyReturns}} -->
 
 </template>

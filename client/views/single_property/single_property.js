@@ -30,6 +30,17 @@ Template.singleProperty.events({
   }
 });
 
+Template.singleProperty.helpers({
+  hasTermSheet: function() {
+    TermSheet.findOne({ _id: Session.get("currentId") });
+  },
+  noTermSheet: function() {
+    if (TermSheet.findOne({ _id: Session.get("currentId") })) {
+      return false;
+    } else { return true }
+  }
+});
+
 Template.singlePropertyImageCarousel.helpers({
   propertyImages: function() { // Maybe I can solve this with Meteor._wrapAsync??
     var currentPropertyImages = [];

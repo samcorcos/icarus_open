@@ -20,12 +20,6 @@ Template.singlePropertyTermSheet.helpers({
 
 });
 
-Template.termSheetButton.helpers({
-  termSheetButtonOn: function() {
-    return Session.get("termSheetButtonOn");
-  }
-});
-
 Template.termSheetInputs.helpers({
   termSheet: function() {
     return TermSheet.find({ property: Session.get("currentId") });
