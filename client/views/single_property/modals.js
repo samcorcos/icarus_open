@@ -1,24 +1,40 @@
+function getTermSheet(id) {
+  return TermSheet.find({ property: id }).fetch();
+}
+
+function getTotalInvestment(id) {
+  return (Number(getTermSheet(id)[0].totalPrice) + Number(getTermSheet(id)[0].closingRepair));
+}
+
+function getEquitySold(id) {
+  return Number(getTermSheet(id)[0].equitySold);
+}
+
+function getClosingRepair(id) {
+  return Number(getTermSheet(id)[0].closingRepair);
+}
+
+function getTaxes(id) {
+  return Number(getTermSheet(id)[0].taxes);
+}
+
+function getInsurance(id) {
+  
+}
+
 Template.equityInvestorModal.helpers({
 
 
   totalPrice: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
-    var totalInvestment = (Number(temp[0].totalPrice) + Number(temp[0].closingRepair));
-
-    var equitySold = Number(temp[0].equitySold);
-
-    return (totalInvestment * equitySold / 100).formatMoney(0);
+    var id = Session.get("currentId");
+    return (getTotalInvestment(id) * getEquitySold(id) / 100).formatMoney(0);
   },
   closingRepair: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
-    var equitySold = Number(temp[0].equitySold);
-    var closingRepair = Number(temp[0].closingRepair) * equitySold / 100;
-    return closingRepair.formatMoney(0);
+    var id = Session.get("currentId");
+    return (getClosingRepair(id) * getEquitySold(id) / 100).formatMoney(0);
   },
   taxes: function() {
-    var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
-    var taxes = Number(temp[0].taxes);
-    return taxes.formatMoney(0);
+    return getTaxes(Session.get("currentId")).formatMoney(0);
   },
   insurance: function() {
     var temp = TermSheet.find({ property: Session.get("currentId") }).fetch();
