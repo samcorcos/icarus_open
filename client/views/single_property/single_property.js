@@ -17,11 +17,10 @@ Template.singleProperty.rendered = function() {
     }
   );
 
+
+  console.log(this.data)
+
 };
-
-Template.singleProperty.helpers({
-
-});
 
 Template.singleProperty.events({
 
@@ -34,7 +33,6 @@ Template.singleProperty.events({
     );
   }
 });
-
 
 Template.singlePropertyImageCarousel.helpers({
   propertyImages: function() { // Maybe I can solve this with Meteor._wrapAsync??
@@ -56,8 +54,6 @@ Template.singlePropertyImageCarousel.helpers({
     }
   }
 });
-
-
 
 Template.singlePropertyImageCarousel.rendered = function() {
   $('#carousel').slick({

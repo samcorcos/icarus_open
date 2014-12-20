@@ -520,7 +520,7 @@ div.add-flex-div-hide {
   overflow: hidden;
 }
 
-.add-property-state-dropdown {
+.add-owners-dropdown {
   background-color: lighten(@icarus-grey, 40%);
   width: 100%;
   padding: 5px;
@@ -689,24 +689,20 @@ ul.tabs .indicator {
 /* End tabs */
 
 
-.term-sheet-dashboard {
-
-}
-
 .modal > .row {
   text-align: center;
 }
 
-li.login-button { // Eventually I need to fix this so it only does it's thing @media
+/* li.login-button { // Eventually I need to fix this so it only does it's thing @media
   background-color: white;
   color: @icarus-grey;
   a {
     color: #444;
   }
-}
+} */
 
 .roi-box {
-  border-radius: 5px;
+  border-radius: 50%;
   font-size: 2em;
   text-align: center;
   margin: 1rem;
@@ -716,9 +712,9 @@ li.login-button { // Eventually I need to fix this so it only does it's thing @m
   }
 }
 
-.roi-box:hover {
+/* .roi-box:hover {
   background-color: rgba(256, 256, 256, 0.35);
-}
+} */
 
 .backdrop  {
   position: absolute;
@@ -750,4 +746,49 @@ li.login-button { // Eventually I need to fix this so it only does it's thing @m
   overflow: hidden;
   left:0;
   top:0;
+}
+
+.owners-list {
+  div.col {
+    p:first-child {
+      margin-top: 1rem;
+    }
+  }
+  margin: 0;
+}
+
+a.remove-owner-button {
+  color: #555555;
+  padding: 0em 1em;
+  &:hover {
+    color: @icarus-red;
+  }
+}
+
+.add-owner-button {
+  padding: 1.5rem 1rem;
+  font-size: 2em;
+  margin: auto;
+  line-height: 0;
+}
+
+.property-details, .map-details {
+  h2 a {
+    text-decoration: none;
+  }
+  h2 {
+    text-align: center;
+  }
+  p {
+    text-align: center;
+    font-size: 1.2em;
+  }
+}
+
+.contact-card {
+  text-align: center;
+  p {
+    font-size: 1.5em;
+    color: @icarus-red;
+  }
 }

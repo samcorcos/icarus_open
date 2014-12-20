@@ -1,8 +1,12 @@
+Meteor.subscribe("directory");
+Meteor.subscribe("properties");
+Meteor.subscribe("termSheet");
+
 this.App = {};
 this.Helpers = {};
 
 Meteor.startup(function() {
-	
+
 });
 
 Helpers.menuItemClass = function(routeName) {
@@ -48,4 +52,3 @@ Helpers.integerToTrueFalse = function(i) {
 _.each(Helpers, function (helper, key) {
 	Handlebars.registerHelper(key, helper)
 });
-

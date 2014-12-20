@@ -1,15 +1,9 @@
-Meteor.subscribe("termSheet");
-
-// return TermSheet.find({ property: Session.get("currentId")._id });
-
-
 Template.singlePropertyTermSheet.rendered = function() {
   $('ul.tabs').tabs();
   $('.modal-trigger').leanModal();
 
   // Session.set("termSheetDashboard", "inputs");
   $(".flex-white-div-inputs").toggleClass("add-flex-div-show");
-
 
   var currentPropertyId = Session.get("currentId");
   if (TermSheet.find({ property: currentPropertyId._id }).fetch()[0] !== undefined) {
