@@ -193,6 +193,14 @@ background-color: lighten(@icarus-red, 10%);
 .intro-card {
   margin-top: 50%;
   margin-bottom: 50%;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+}
+.card-show {
+  visibility:visible;
+  opacity:1;
+  transition-delay:0s;
 }
 
 .res-com-rental {

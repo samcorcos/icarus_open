@@ -1,6 +1,9 @@
 Template.home.rendered = function() {
   Session.set("investedCapital", 812344);
   createHomepageMap();
+  Meteor.setTimeout(function() {
+    $(".intro-card").addClass("card-show");
+  }, 500)
 };
 
 Template.home.events({
