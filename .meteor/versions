@@ -50,6 +50,7 @@ mrt:topojson@1.6.8
 natestrauser:font-awesome@4.2.0
 npm-bcrypt@0.7.7
 observe-sequence@1.0.4
+olragon:handsontable@0.11.3
 ordered-dict@1.0.2
 particle4dev:sass@1.0.0
 peerlibrary:blocking@0.4.2
