@@ -29,7 +29,9 @@
   <div class="two-rem-spacer"></div>
   <div class="red-break-property"></div>  <!--  add-property-hidden -->
   <div class="two-rem-spacer-property"></div>
-  {{> investmentReturns}}
+  {{#if hasProperties}}
+    {{> investmentReturns}}
+  {{/if}}
   <div class="red-break"></div>
 </template>
 
@@ -129,16 +131,23 @@
 <template name="investmentReturns">
   <div class="container">
     <div class="row">
-      <div class="col s12 m4">
-        <input type="date" class="datepicker" id="payment-date" placeholder="Date">
-      </div>
-      <div class="col s12 m4">
+      <div class="col s12 m6 l3">
         <select class="disabled choose-property-dropdown">
           <option value="" disabled selected>Select Property</option>
           {{> propertyDropdownList}}
         </select>
       </div>
-      <div class="col s12 m4">
+      <div class="col s12 m6 l3">
+        <select class="disabled choose-type-dropdown">
+          <option value="" disabled selected>Return Type</option>
+          <option value="Debt">Debt</option>
+          <option value="Equity">Equity</option>
+        </select>
+      </div>
+      <div class="col s12 m6 l3">
+        <input type="date" class="datepicker" id="payment-date" placeholder="Date">
+      </div>
+      <div class="col s12 m6 l3">
         <input type="text" id="payment-amount" placeholder="Amount">
       </div>
     </div>
@@ -146,6 +155,7 @@
       <thead>
         <th data-field="date">Date</th>
         <th data-field="property">Property</th>
+        <th data-field="return-type">Return Type</th>
         <th data-field="payment">$</th>
       </thead>
       <tbody>
@@ -154,6 +164,7 @@
         <tr>
           <td>{{date}}</td>
           <td>{{property}}</td>
+          <td>{{returnType}}</td>
           <td>${{amount}}</td>
         </tr>
         {{/each}}
@@ -161,6 +172,7 @@
       </tbody>
     </table>
   </div>
+  <div class="three-rem-spacer"></div>
 </template>
 
 <template name="propertyDropdownList">

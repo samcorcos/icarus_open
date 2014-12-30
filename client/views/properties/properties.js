@@ -3,6 +3,7 @@ Owners = new Mongo.Collection(null);
 Directory = Meteor.users;
 
 Template.properties.rendered = function() {
+  $('.datepicker').pickadate();
 
   if (Returns.find().count() === 0) {
     Returns.insert({
@@ -50,6 +51,14 @@ Template.properties.events({
     $(".flex-white-div-property").toggleClass("add-flex-div-show")
     $(".red-break-property").toggleClass("add-red-break-show")
     $(".two-rem-spacer-property").toggleClass("show-spacer")
+  }
+});
+
+Template.properties.helpers({
+  hasProperties: function() {
+    if (Properties.find().count() > 0) {
+      return true;
+    } else { return false; }
   }
 });
 
@@ -271,6 +280,8 @@ Template.investmentReturns.events({
       var id = tempProperty.match(/(\w+)(::)(.+)/)[1];
       var street = tempProperty.match(/(\w+)(::)(.+)/)[3];
 
+      var type = $(".choose-type-dropdown").val();
+
       var amount = $("#payment-amount").val();
       var currentUser = Meteor.userId();
       var returnsId = Returns.find({ owner: currentUser}).fetch()[0]._id;
@@ -283,6 +294,7 @@ Template.investmentReturns.events({
         payments: {
           property: street,
           propertyId: id,
+          returnType: type,
           date: date,
           formattedDate: formattedDate,
           amount: amount
@@ -292,6 +304,7 @@ Template.investmentReturns.events({
       $(".choose-property-dropdown").val("");
       $("#payment-amount").val("");
       $("#payment-date").val("")
+      $(".choose-type-dropdown").val("");
     }
   }
 });
