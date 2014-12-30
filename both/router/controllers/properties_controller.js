@@ -13,6 +13,7 @@ this.PropertiesController = RouteController.extend({
 	},
 	waitOn: function() {
 		return [
+		Meteor.subscribe("returns")
 		];
 		/*WAIT_FUNCTION*/
 	},

@@ -13,7 +13,7 @@ this.AnalyticsController = RouteController.extend({
 	},
 	waitOn: function() {
 		return [
-			Meteor.subscribe("termSheet"), Meteor.subscribe("properties"), Meteor.subscribe("returns")
+			Meteor.subscribe("termSheet"), Meteor.subscribe("properties")
 		];
 		/*WAIT_FUNCTION*/
 	},

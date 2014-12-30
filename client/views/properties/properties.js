@@ -4,6 +4,13 @@ Directory = Meteor.users;
 
 Template.properties.rendered = function() {
 
+  if (Returns.find().count() === 0) {
+    Returns.insert({
+      owner: Meteor.userId(),
+      payments: []
+    })
+  }
+
   createPropertiesMap();
   $('.modal-trigger').leanModal();
   $('.modal-close').leanModal();
@@ -230,12 +237,7 @@ function toast(message, displayLength, className) {
 Template.investmentReturns.rendered = function() {
   $('.datepicker').pickadate();
 
-  if (Returns.find().count() === 0) {
-    Returns.insert({
-      owner: Meteor.userId(),
-      payments: []
-    })
-  }
+
 }
 
 Template.propertyDropdownList.helpers({
@@ -253,10 +255,12 @@ Template.investmentReturns.events({
       var currentUser = Meteor.userId();
       var returnsId = Returns.find({ owner: currentUser}).fetch()[0]._id;
 
-      Returns.update({ _id: returnsId }, { $set: {
-        property: id,
-        date: date,
-        amount: amount
+      Returns.update({ _id: returnsId }, { $push: {
+        payments: {
+          property: id,
+          date: date,
+          amount: amount
+        }
       }})
 
       $(".choose-property-dropdown").val("");
