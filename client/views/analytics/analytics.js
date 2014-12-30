@@ -3,6 +3,10 @@ Template.analytics.rendered = function() {
   createAssetAllocation();
   $('.tooltipped').tooltip({"delay": 50});
 
+  Meteor.setTimeout(function() {
+    $(".analytics-card").addClass("card-show")
+  }, 150)
+
 
 };
 
