@@ -8,7 +8,7 @@ To Do
 1. ~~Create users for each investor~~
 2. ~~Make it possible for users to see the properties they've invested in~~
 3. ~~Show the properties on a map using the Google Maps API~~
-  1. Needs to convert location into points on the map
+  1. ~~Needs to convert location into points on the map~~
 4. ~~Show the purchase price, rehab cost~~
 
 
@@ -18,20 +18,20 @@ To Do
 2. Give the admin aggregated data
 3. Workflow integration with Trello?
 4. Give the admin the ability to see stats on all other users
-5. Admin must be able to add properties to other users accounts
-6. Must be able to update user data (ROI, etc)
-7. Toast for successful addition of new property
-8. Get D3 maps to load responsively
+5. ~~Admin must be able to add properties to other users accounts~~
+6. ~~Must be able to update user data (ROI, etc)~~
+7. ~~Toast for successful addition of new property~~
+8. ~~Get D3 maps to load responsively~~
 
 ###Properties
 
-1. D3 visualization should re-render circle radius with new inputs
+1. ~~D3 visualization should re-render circle radius with new inputs~~
   1. On hover of the state, all properties listed in the state should pop up in tooltip
   2. The properties should be clickable, and should redirect to the individual property page
-2. Terms sheet link
-3. Analytics spreadsheet-equivalent for admin: https://github.com/ongoworks/meteor-google-spreadsheets
+2. ~~Terms sheet link~~
+3. ~~Analytics spreadsheet-equivalent for admin: https://github.com/ongoworks/meteor-google-spreadsheets~~
 4. Be sure to change the allow-deny and publish settings once ownership has been refactored
-5. Write a helper function so properties can be displayed in two verical columns to avoid overlapping
+5. ~~Write a helper function so properties can be displayed in two verical columns to avoid overlapping~~
 
 ###Homepage
 
@@ -42,7 +42,8 @@ To Do
 
 ###Calculator
 
-1. Create an investment calculator that will calculate CAP rate
+1. ~~Create an investment calculator that will calculate CAP rate~~
+2. Make the calculator look prettier, perhaps with a lock button
 
 ###Analytics
 

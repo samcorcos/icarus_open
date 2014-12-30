@@ -73,9 +73,10 @@ Template.returnOnInvestment.helpers({
     return total.formatMoney(0);
   },
   annualizedReturns: function() {
-
+    return ;
   },
   annualizedLoanReturns: function() {
+    var total = 0;
     return ;
   },
   annualizedEquityReturns: function() {
