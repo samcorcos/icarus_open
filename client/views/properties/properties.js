@@ -49,6 +49,7 @@ Template.properties.events({
   'click #add-property-button': function(e,t) {
     $(".flex-white-div-property").toggleClass("add-flex-div-show")
     $(".red-break-property").toggleClass("add-red-break-show")
+    $(".two-rem-spacer-property").toggleClass("show-spacer")
   }
 });
 
