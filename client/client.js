@@ -1,6 +1,7 @@
 Meteor.subscribe("directory");
 Meteor.subscribe("properties");
 Meteor.subscribe("termSheet");
+Meteor.subscribe("returns")
 
 this.App = {};
 this.Helpers = {};
