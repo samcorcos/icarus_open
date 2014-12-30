@@ -270,10 +270,8 @@ Template.investmentReturns.events({
   }
 });
 
-
-// 'keypress input#taxes': function(e,t) {
-//   if (e.keyCode === 13 || e.keyCode === 9) {
-//     Session.set("editingTaxes", false);
-//     TermSheet.update({ _id: this._id }, { $set: { taxes: e.currentTarget.value }});
-//   }
-// },
+Template.investmentReturns.helpers({
+  returns: function() {
+    return Returns.find({});
+  }
+});

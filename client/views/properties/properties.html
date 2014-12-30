@@ -145,11 +145,15 @@
         <th data-field="payment">$</th>
       </thead>
       <tbody>
+      {{#each returns}}
+        {{#each payments}}
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>{{date}}</td>
+          <td>{{property}}</td>
+          <td>${{amount}}</td>
         </tr>
+        {{/each}}
+      {{/each}}
       </tbody>
     </table>
   </div>
