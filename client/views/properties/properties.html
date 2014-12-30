@@ -28,18 +28,7 @@
   </div>
   <div class="two-rem-spacer"></div>
   <div class="red-break-property"></div>  <!--  add-property-hidden -->
-  <div class="flex-white-div">
-    <div class="container">
-      <div class="row">
-        <div class="col l12 m12 s12">
-          <div class="two-rem-spacer"></div>
-          <h3 style="text-align:center;">Additional Information</h3>
-          <div class="five-rem-spacer"></div>
-          <div class="five-rem-spacer"></div>
-        </div>
-      </div>
-    </div>
-  </div>
+  {{> investmentReturns}}
   <div class="red-break"></div>
 </template>
 
@@ -130,4 +119,30 @@
   {{#each users}}
     <option value="{{profile.name}} : {{_id}}">Name: {{profile.name}}, ID: {{_id}}</option>
   {{/each}}
+</template>
+
+
+<template name="investmentReturns">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m4"><input type="date" class="datepicker"></div>
+      <div class="col s12 m4"><input type="text"></div>
+      <div class="col s12 m4"><input type="text"></div>
+    </div>
+    <button class="btn">Add Payment</button>
+    <table>
+      <thead>
+        <th data-field="date">Date</th>
+        <th data-field="property">Property</th>
+        <th data-field="payment">$</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>

@@ -226,3 +226,7 @@ function toast(message, displayLength, className) {
 
 // { owners: ["321321321321", "#2132324324", "13213211"]}
 // Admin panel will have
+
+Template.investmentReturns.rendered = function() {
+  $('.datepicker').pickadate();
+}
