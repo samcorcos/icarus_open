@@ -22,27 +22,41 @@
   <div class="col s12 m6 l6">
     <div class="card analytics-card">
       <div class="card-content">
+        <h2>Return on Investment</h2>
         <div class="row">
-          <h2>Return on Investment</h2>
-
+          <h3 style="text-align:center;margin:0;">Annualized Returns</h3>
+          <div class="col s12 m6 l6">
+            <div class="roi-box tooltipped" data-position="top" data-tooltip="Annualized Asset Appreciation">
+              <p class="flow-text">{{annualizedAssetAppreciation}}%</p>
+            </div>
+            <div class="roi-box tooltipped" data-position="top" data-tooltip="Annualized Net Returns">
+              <p class="flow-text">{{annualizedNetReturns}}%</p>
+            </div>
+          </div>
+          <div class="col s12 m6 l6">
+            <div class="roi-box tooltipped" data-position="top" data-tooltip="Annualized Loan Returns">
+              <p class="flow-text">{{annualizedLoanReturns}}%</p>
+            </div>
+            <div class="roi-box tooltipped" data-position="top" data-tooltip="Annualized Equity Returns">
+              <p class="flow-text">{{annualizedEquityReturns}}%</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <h3 style="text-align:center;margin:0;">Net Returns</h3>
           <div class="col s12 m6 l6">
             <div class="roi-box tooltipped" data-position="top" data-tooltip="Total Asset Appreciation (%)">
               <p class="flow-text">{{totalAssetAppreciationPercent}}%</p>
             </div>
+          </div>
+
+          <div class="col s12 m6 l6">
             <div class="roi-box tooltipped" data-position="top" data-tooltip="Total Asset Appreciation ($)">
               <p class="flow-text">${{totalAssetAppreciation}}</p>
             </div>
           </div>
-
-          <div class="col s12 m6 l6">
-            <div class="roi-box tooltipped" data-position="top" data-tooltip="Average Monthly Rental Returns">
-              <p class="flow-text">$0</p>
-            </div>
-            <div class="roi-box tooltipped" data-position="top" data-tooltip="Average Monthly Loan Returns">
-              <p class="flow-text">$0</p>
-            </div>
-          </div>
         </div>
+
 
 
 
