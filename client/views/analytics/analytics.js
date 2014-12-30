@@ -8,17 +8,19 @@ Template.analytics.rendered = function() {
 
 
 
-Template.assetAllocation.helpers({
-
-});
-
 Template.returnOnInvestment.helpers({
-  zestimate: function() {
-    var temp = Session.get("zestimate");
-    return Number(temp).formatMoney(0);
+  totalAssetAppreciationPercent: function() {
+
+  },
+  averageMonthlyRentalReturns: function() {
+
+  },
+  totalAssetAppreciation: function() {
+
+  },
+  averageMonthlyLoanReturns: function() {
+
   }
-
-
 });
 
 Template.analytics.events({

@@ -12,7 +12,9 @@ this.AnalyticsController = RouteController.extend({
 		/*ACTION_FUNCTION*/
 	},
 	waitOn: function() {
-		return Meteor.subscribe("termSheet");
+		return [
+			Meteor.subscribe("termSheet"), Meteor.subscribe("properties")
+		];
 		/*WAIT_FUNCTION*/
 	},
 	data: function() {
