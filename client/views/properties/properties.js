@@ -229,4 +229,47 @@ function toast(message, displayLength, className) {
 
 Template.investmentReturns.rendered = function() {
   $('.datepicker').pickadate();
+
+  if (Returns.find().count() === 0) {
+    Returns.insert({
+      owner: Meteor.userId(),
+      payments: []
+    })
+  }
 }
+
+Template.propertyDropdownList.helpers({
+  properties: function() {
+    return Properties.find({});
+  }
+});
+
+Template.investmentReturns.events({
+  'keypress input#payment-amount': function(e,t) {
+    if (e.keyCode === 13) {
+      var id = $(".choose-property-dropdown").val();
+      var date = $("#payment-date").val();
+      var amount = $("#payment-amount").val();
+      var currentUser = Meteor.userId();
+      var returnsId = Returns.find({ owner: currentUser}).fetch()[0]._id;
+
+      Returns.update({ _id: returnsId }, { $set: {
+        property: id,
+        date: date,
+        amount: amount
+      }})
+
+      $(".choose-property-dropdown").val("");
+      $("#payment-amount").val("");
+      $("#payment-date").val("")
+    }
+  }
+});
+
+
+// 'keypress input#taxes': function(e,t) {
+//   if (e.keyCode === 13 || e.keyCode === 9) {
+//     Session.set("editingTaxes", false);
+//     TermSheet.update({ _id: this._id }, { $set: { taxes: e.currentTarget.value }});
+//   }
+// },
