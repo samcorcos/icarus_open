@@ -6,15 +6,27 @@ Template.analytics.rendered = function() {
 
 };
 
+
+
+Template.assetAllocation.helpers({
+  loan: function() {
+    var tempArray = TermSheet.find().fetch();
+    var loan;
+    tempArray.forEach(function(prop) {
+      loan += (Number(prop.totalPrice) + Number(prop.closingRepair)) * Number(prop.equitySold) / 100;
+    })
+    return loan;
+  },
+  equity: function() {
+    return
+  }
+});
+
 Template.returnOnInvestment.helpers({
   zestimate: function() {
     var temp = Session.get("zestimate");
     return Number(temp).formatMoney(0);
   }
-
-
-// Go through all term sheets you own, compare prices paid to API call, ???, Profit
-// I'm going to make sure the Zillow API values are stored in the database. It can be updated with the push of a button.
 
 
 });
@@ -29,18 +41,5 @@ Template.analytics.events({
     });
     console.log(temp);
 
-    // Meteor.call("getProperty", "63706372", function(err, zest) {
-    //   if (err) { console.log("Error with Zillow API Call") }
-    //
-    //   Session.set("zestimate", zest);
-    //   console.log("Zillow API Call Successful");
-    //
-    // })
   }
 });
-
-// zpid for place in chicago
-// 63706372
-
-// Below is a sample call to the API for zpid 48749425:
-// http://www.zillow.com/webservice/GetZestimate.htm?zws-id=<ZWSID>&zpid=48749425
