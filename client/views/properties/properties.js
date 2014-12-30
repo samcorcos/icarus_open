@@ -55,102 +55,120 @@ Template.properties.events({
 Template.newPropertyForm.events({
   'click #submit-new-property': function(e,t) {
     // e.preventDefault();
-    if ($("#zpid").val()) {
-      if (Number($("#zpid").val())) {
-        if (Owners.find().fetch()[0] !== undefined) {
 
-          Meteor.call("getProperty", Number($("#zpid").val()), function(err, result) {
-            if (err) { console.log("Error with Zillow API Call") }
-            Session.set("propertyData", result);
+    var date = $("#purchase-date").val();
+    console.log("date",date);
+    var tempDate = moment(new Date(date));
+    var formattedDate = tempDate.format();
 
-            var x = result["Zestimate:zestimate"]["response"]["0"];
+    if ($("#purchase-date").val()) {
+      if ($("#zpid").val()) {
+        if (Number($("#zpid").val())) {
+          if (Owners.find().fetch()[0] !== undefined) {
 
-            var address = x["address"]["0"];
-            var city = address["city"]["0"];
-            var latitude = address["latitude"]["0"];
-            var longitude = address["longitude"]["0"];
-            var state = address["state"]["0"];
-            var street = address["street"]["0"];
-            var zipcode = address["zipcode"]["0"];
+            Meteor.call("getProperty", Number($("#zpid").val()), function(err, result) {
+              if (err) { console.log("Error with Zillow API Call") }
+              Session.set("propertyData", result);
 
-            var zestimate = x["zestimate"]["0"]["amount"]["0"]["_"];
-            var zpid = x["zpid"]["0"];
+              var x = result["Zestimate:zestimate"]["response"]["0"];
 
-            console.log("Zillow API Call Successful");
+              var address = x["address"]["0"];
+              var city = address["city"]["0"];
+              var latitude = address["latitude"]["0"];
+              var longitude = address["longitude"]["0"];
+              var state = address["state"]["0"];
+              var street = address["street"]["0"];
+              var zipcode = address["zipcode"]["0"];
 
-            var owners = Owners.find().fetch();
 
-            // This is where we are going to set all the new characteristics of the property we just called, adding to Properties collection
+              var zestimate = x["zestimate"]["0"]["amount"]["0"]["_"];
+              var zpid = x["zpid"]["0"];
 
-            Meteor.call("getPropertyImages", Number($("#zpid").val()), function(err, result) {
-              if (err) { console.log("Error with Zillow Image API Call") }
-              console.log(result)
+              console.log("Zillow API Call Successful");
 
-              if (result["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["code"]["0"] === "0") { // This means that the code is "success"
-                var y = result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"]["editedFacts"]["0"];
+              var owners = Owners.find().fetch();
 
-                if (y.hasOwnProperty("bathrooms")) { var bath = y["bathrooms"]["0"]; } else { var bath = "unknown" }
-                if (y.hasOwnProperty("bedrooms")) { var bed = y["bedrooms"]["0"]; } else { var bed = "unknown" }
-                if (y.hasOwnProperty("finishedSqFt")) { var sqft = y["finishedSqFt"]["0"]; } else { var sqft = "unknown" }
-                if (y.hasOwnProperty("lotSizeSqFt")) { var lotSizeSqFt = y["lotSizeSqFt"]["0"]; } else { var lotSizeSqFt = "unknown" }
-                if (y.hasOwnProperty("rooms")) { var rooms = y["rooms"]["0"]; } else { var rooms = "unknown" }
-                if (y.hasOwnProperty("yearBuilt")) { var yearBuilt = y["yearBuilt"]["0"]; } else { var yearBuilt = "unknown" }
+              // This is where we are going to set all the new characteristics of the property we just called, adding to Properties collection
 
-                // var bath = y["bathrooms"]["0"];
-                // var bed = y["bedrooms"]["0"];
-                // var sqft = y["finishedSqFt"]["0"];
-                // var lotSizeSqFt = y["lotSizeSqFt"]["0"];
-                // var rooms = y["rooms"]["0"];
-                // var yearBuilt = y["yearBuilt"]["0"];
+              Meteor.call("getPropertyImages", Number($("#zpid").val()), function(err, result) {
+                if (err) { console.log("Error with Zillow Image API Call") }
 
-                if (result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"].hasOwnProperty("images")) { var imagesArray = result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"]["images"]["0"]["image"]["0"]["url"]; } else { var imagesArray = [] }
 
-              } else {
-                console.log(result["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["text"]["0"])
-              }
+                if (result["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["code"]["0"] === "0") { // This means that the code is "success"
+                  var y = result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"]["editedFacts"]["0"];
 
-              Properties.insert({
-                owners: owners,
-                street: street,
-                city: city,
-                lat: latitude,
-                long: longitude,
-                state: state,
-                zip: zipcode,
-                zestimate: zestimate,
-                zpid: zpid,
-                bed: bed,
-                bath: bath,
-                sqft: sqft,
-                lotSizeSqft: lotSizeSqFt,
-                rooms: rooms,
-                yearBuilt: yearBuilt,
-                imagesArray: imagesArray
-              });
+                  if (y.hasOwnProperty("bathrooms")) { var bath = y["bathrooms"]["0"]; } else { var bath = "unknown" }
+                  if (y.hasOwnProperty("bedrooms")) { var bed = y["bedrooms"]["0"]; } else { var bed = "unknown" }
+                  if (y.hasOwnProperty("finishedSqFt")) { var sqft = y["finishedSqFt"]["0"]; } else { var sqft = "unknown" }
+                  if (y.hasOwnProperty("lotSizeSqFt")) { var lotSizeSqFt = y["lotSizeSqFt"]["0"]; } else { var lotSizeSqFt = "unknown" }
+                  if (y.hasOwnProperty("rooms")) { var rooms = y["rooms"]["0"]; } else { var rooms = "unknown" }
+                  if (y.hasOwnProperty("yearBuilt")) { var yearBuilt = y["yearBuilt"]["0"]; } else { var yearBuilt = "unknown" }
 
-              toast('Successfully Added To Database!', 3000);
+                  // var bath = y["bathrooms"]["0"];
+                  // var bed = y["bedrooms"]["0"];
+                  // var sqft = y["finishedSqFt"]["0"];
+                  // var lotSizeSqFt = y["lotSizeSqFt"]["0"];
+                  // var rooms = y["rooms"]["0"];
+                  // var yearBuilt = y["yearBuilt"]["0"];
+
+                  if (result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"].hasOwnProperty("images")) { var imagesArray = result["UpdatedPropertyDetails:updatedPropertyDetails"]["response"]["0"]["images"]["0"]["image"]["0"]["url"]; } else { var imagesArray = [] }
+
+                } else {
+                  console.log(result["UpdatedPropertyDetails:updatedPropertyDetails"]["message"]["0"]["text"]["0"])
+                }
+
+
+
+
+
+
+                Properties.insert({
+                  purchaseDate: formattedDate,
+                  owners: owners,
+                  street: street,
+                  city: city,
+                  lat: latitude,
+                  long: longitude,
+                  state: state,
+                  zip: zipcode,
+                  zestimate: zestimate,
+                  zpid: zpid,
+                  bed: bed,
+                  bath: bath,
+                  sqft: sqft,
+                  lotSizeSqft: lotSizeSqFt,
+                  rooms: rooms,
+                  yearBuilt: yearBuilt,
+                  imagesArray: imagesArray
+                });
+
+                toast('Successfully Added To Database!', 3000);
+
+              })
+
+              // Clearing the form and the current owners
+              Owners.remove({});
+              $("#zpid").val("");
+              $("#purchase-date").val("");
+
+              // This is where we re-render the D3 map to reflect the new property
+              $("#property-map").remove();
+              $("#append-map-here").append("<div id='property-map'></div>")
+              createPropertiesMap();
+
 
             })
-
-            // Clearing the form and the current owners
-            Owners.remove({});
-            $("#zpid").val("");
-
-            // This is where we re-render the D3 map to reflect the new property
-            $("#property-map").remove();
-            $("#append-map-here").append("<div id='property-map'></div>")
-            createPropertiesMap();
-
-
-          })
+          } else {
+            toast("Please add owners.", 3000);
+          }
         } else {
-          toast("Please add owners.", 3000);
+          toast("ZPID can only contain numbers.", 4000)
         }
       } else {
-        toast("ZPID can only contain numbers.", 4000)
+        toast("Please enter ZPID.", 3000);
       }
     } else {
-      toast("Please enter ZPID.", 3000);
+      toast("Please enter purchase date.", 3000)
     }
   }
 });
