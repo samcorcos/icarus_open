@@ -249,7 +249,9 @@ Template.propertyDropdownList.helpers({
 Template.investmentReturns.events({
   'keypress input#payment-amount': function(e,t) {
     if (e.keyCode === 13) {
-      var id = $(".choose-property-dropdown").val();
+      var tempProperty = $(".choose-property-dropdown").val();
+      var id = tempProperty.match(/(\w+)(::)(.+)/)[1];
+      var street = tempProperty.match(/(\w+)(::)(.+)/)[3];;
       var date = $("#payment-date").val();
       var amount = $("#payment-amount").val();
       var currentUser = Meteor.userId();
@@ -257,7 +259,8 @@ Template.investmentReturns.events({
 
       Returns.update({ _id: returnsId }, { $push: {
         payments: {
-          property: id,
+          property: street,
+          propertyId: id,
           date: date,
           amount: amount
         }
