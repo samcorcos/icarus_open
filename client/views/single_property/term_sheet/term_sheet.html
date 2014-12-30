@@ -228,68 +228,65 @@
 </template>
 
 
-
 <template name="termSheetReturns">
+  <div class="container returns">
   {{#each termSheet}}
-  <div class="flex-white-div-returns">
-    <div class="container">
-      <div class="row">
-        <h3 style="text-align:center;">Returns</h3>
-        <div class="one-rem-spacer"></div>
-        <div class="term-sheet-input input-field col s4">
-          <div class="term-sheet-item">
-            <h4>Annual Revenue</h4>
-            <p class="flow-text">${{annualRevenue}}</p>
-          </div>
-        </div>
-        <div class="term-sheet-input input-field col s4">
-          <div class="term-sheet-item">
-            <h4>Annual Cost</h4>
-            <p class="flow-text">${{annualCost}}</p>
-          </div>
-        </div>
-        <div class="term-sheet-input input-field col s4">
-          <div class="term-sheet-item">
-            <h4>Annual Profit</h4>
-            <p class="flow-text">${{annualProfit}}</p>
-          </div>
-        </div>
-        <div class="term-sheet-input input-field col s4">
-          <div class="term-sheet-item">
-            <h4>Annual Profit (After Tax)</h4>
-            <p class="flow-text">${{annualProfitAfterTax}}</p>
-          </div>
-        </div>
-        <div class="term-sheet-input input-field col s4">
-          <div class="term-sheet-item">
-            <h4>Annual ROI (Before Tax)</h4>
-            <p class="flow-text">{{annualROIBeforeTax}}%</p>
-          </div>
-        </div>
-        <div class="term-sheet-input input-field col s4">
-          <div class="term-sheet-item">
-            <h4>Annual ROI (After Tax)</h4>
-            <p class="flow-text">{{annualROIAfterTax}}%</p>
-          </div>
-        </div>
-        <div class="term-sheet-input input-field col s4">
-          <div class="term-sheet-item">
-            <h4>Annual Operating Expense</h4>
-            <p class="flow-text">${{annualOperatingExpense}}</p>
-          </div>
-        </div>
-        <div class="term-sheet-input input-field col s4">
-          <div class="term-sheet-item">
-            <h4>Net Operating Income</h4>
-            <p class="flow-text">${{netOperatingIncome}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  {{/each}}
-</template>
+  <table>
+    <thead>
+      <tr>
+        <th data-field="input">Returns</th>
+        <th data-field="dollars">$</th>
+        <th data-field="percent">%</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Annual Revenue</td>
+        <td>${{annualRevenue}}</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Annual Cost</td>
+        <td>${{annualCost}}</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Annual Profit</td>
+        <td>${{annualProfit}}</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Annual Profit (After Tax)</td>
+        <td>${{annualProfitAfterTax}}</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Annual ROI (Before Tax)</td>
+        <td>-</td>
+        <td>{{annualROIBeforeTax}}%</td>
+      </tr>
+      <tr>
+        <td>Annual ROI (After Tax)</td>
+        <td>-</td>
+        <td>{{annualROIAfterTax}}%</td>
+      </tr>
+      <tr>
+        <td>Annual Operating Expense</td>
+        <td>${{annualOperatingExpense}}</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Net Operating Income</td>
+        <td>${{netOperatingIncome}}</td>
+        <td>-</td>
+      </tr>
+    </tbody>
 
+
+  </table>
+  {{/each}}
+  </div>
+</template>
 
 
 <template name="termSheetDashboard">

@@ -3,25 +3,25 @@ Template.singlePropertyTermSheet.events({
   'click #input-tab': function(e,t) {
     $(".inputs").toggleClass("add-flex-div-show");
     $(".outputs").removeClass("add-flex-div-show");
-    $(".flex-white-div-returns").removeClass("add-flex-div-show");
-    $(".flex-white-div-additional").removeClass("add-flex-div-show");
+    $(".returns").removeClass("add-flex-div-show");
+    $(".additional").removeClass("add-flex-div-show");
   },
   'click #output-tab': function(e,t) {
     $(".outputs").toggleClass("add-flex-div-show");
     $(".inputs").removeClass("add-flex-div-show");
-    $(".flex-white-div-returns").removeClass("add-flex-div-show");
-    $(".flex-white-div-additional").removeClass("add-flex-div-show");
+    $(".returns").removeClass("add-flex-div-show");
+    $(".additional").removeClass("add-flex-div-show");
   },
   'click #returns-tab': function(e,t) {
-    $(".flex-white-div-returns").toggleClass("add-flex-div-show");
+    $(".returns").toggleClass("add-flex-div-show");
     $(".outputs").removeClass("add-flex-div-show");
     $(".inputs").removeClass("add-flex-div-show");
-    $(".flex-white-div-additional").removeClass("add-flex-div-show");
+    $(".additional").removeClass("add-flex-div-show");
   },
   'click #additional-tab': function(e,t) {
-    $(".flex-white-div-additional").toggleClass("add-flex-div-show");
+    $(".additional").toggleClass("add-flex-div-show");
     $(".outputs").removeClass("add-flex-div-show");
-    $(".flex-white-div-returns").removeClass("add-flex-div-show");
+    $(".returns").removeClass("add-flex-div-show");
     $(".inputs").removeClass("add-flex-div-show");
 
   }
@@ -119,67 +119,67 @@ Template.termSheetInputs.events({
   'click #percent-capital-needed-cell': function(e,t) { Session.set("editingPercentCapitalNeeded", true); },
 
   'keypress input#total-price': function(e,t) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 9) {
       Session.set("editingTotalPrice", false);
       TermSheet.update({ _id: this._id }, { $set: { totalPrice: e.currentTarget.value }});
     }
   },
   'keypress input#down-payment': function(e,t) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 9) {
       Session.set("editingDownPayment", false);
       TermSheet.update({ _id: this._id }, { $set: { downPayment: e.currentTarget.value }});
     }
   },
   'keypress input#closing-repair': function(e,t) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 9) {
       Session.set("editingClosingRepair", false);
       TermSheet.update({ _id: this._id }, { $set: { closingRepair: e.currentTarget.value }});
     }
   },
   'keypress input#apr': function(e,t) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 9) {
       Session.set("editingAPR", false);
       TermSheet.update({ _id: this._id }, { $set: { apr: e.currentTarget.value }});
     }
   },
   'keypress input#taxes': function(e,t) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 9) {
       Session.set("editingTaxes", false);
       TermSheet.update({ _id: this._id }, { $set: { taxes: e.currentTarget.value }});
     }
   },
   'keypress input#hoa': function(e,t) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 9) {
       Session.set("editingHOA", false);
       TermSheet.update({ _id: this._id }, { $set: { hoa: e.currentTarget.value }});
     }
   },
   'keypress input#insurance': function(e,t) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 9) {
       Session.set("editingInsurance", false);
       TermSheet.update({ _id: this._id }, { $set: { insurance: e.currentTarget.value }});
     }
   },
   'keypress input#rent-price': function(e,t) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 9) {
       Session.set("editingRentPrice", false);
       TermSheet.update({ _id: this._id }, { $set: { rentPrice: e.currentTarget.value }});
     }
   },
   'keypress input#square-footage': function(e,t) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 9) {
       Session.set("editingSquareFootage", false);
       TermSheet.update({ _id: this._id }, { $set: { squareFootage: e.currentTarget.value }});
     }
   },
   'keypress input#equity-sold': function(e,t) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 9) {
       Session.set("editingEquitySold", false);
       TermSheet.update({ _id: this._id }, { $set: { equitySold: e.currentTarget.value }});
     }
   },
   'keypress input#percent-capital-needed': function(e,t) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 || e.keyCode === 9) {
       Session.set("editingPercentCapitalNeeded", false);
       TermSheet.update({ _id: this._id }, { $set: { percentCapitalNeeded: e.currentTarget.value }});
     }
