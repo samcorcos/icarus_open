@@ -18,5 +18,5 @@ Template.home.helpers({
 });
 
 Meteor.setInterval(function() {
-  Session.set("investedCapital", Session.get("investedCapital")+Math.random()*10)
-}, 100)
+  Session.set("investedCapital", Session.get("investedCapital")+Math.random()*100)
+}, 2000)

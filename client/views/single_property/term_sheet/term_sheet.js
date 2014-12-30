@@ -3,7 +3,7 @@ Template.singlePropertyTermSheet.rendered = function() {
   $('.modal-trigger').leanModal();
 
   // Session.set("termSheetDashboard", "inputs");
-  $(".flex-white-div-inputs").toggleClass("add-flex-div-show");
+  $(".inputs").toggleClass("add-flex-div-show");
 
   if (TermSheet.find({ property: Session.get("currentId") }).fetch()[0] !== undefined) {
     Session.set("termSheetButtonOn", false);

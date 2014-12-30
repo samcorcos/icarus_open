@@ -1,28 +1,28 @@
 Template.singlePropertyTermSheet.events({
 
   'click #input-tab': function(e,t) {
-    $(".flex-white-div-inputs").toggleClass("add-flex-div-show");
-    $(".flex-white-div-outputs").removeClass("add-flex-div-show");
+    $(".inputs").toggleClass("add-flex-div-show");
+    $(".outputs").removeClass("add-flex-div-show");
     $(".flex-white-div-returns").removeClass("add-flex-div-show");
     $(".flex-white-div-additional").removeClass("add-flex-div-show");
   },
   'click #output-tab': function(e,t) {
-    $(".flex-white-div-outputs").toggleClass("add-flex-div-show");
-    $(".flex-white-div-inputs").removeClass("add-flex-div-show");
+    $(".outputs").toggleClass("add-flex-div-show");
+    $(".inputs").removeClass("add-flex-div-show");
     $(".flex-white-div-returns").removeClass("add-flex-div-show");
     $(".flex-white-div-additional").removeClass("add-flex-div-show");
   },
   'click #returns-tab': function(e,t) {
     $(".flex-white-div-returns").toggleClass("add-flex-div-show");
-    $(".flex-white-div-outputs").removeClass("add-flex-div-show");
-    $(".flex-white-div-inputs").removeClass("add-flex-div-show");
+    $(".outputs").removeClass("add-flex-div-show");
+    $(".inputs").removeClass("add-flex-div-show");
     $(".flex-white-div-additional").removeClass("add-flex-div-show");
   },
   'click #additional-tab': function(e,t) {
     $(".flex-white-div-additional").toggleClass("add-flex-div-show");
-    $(".flex-white-div-outputs").removeClass("add-flex-div-show");
+    $(".outputs").removeClass("add-flex-div-show");
     $(".flex-white-div-returns").removeClass("add-flex-div-show");
-    $(".flex-white-div-inputs").removeClass("add-flex-div-show");
+    $(".inputs").removeClass("add-flex-div-show");
 
   }
 
@@ -106,17 +106,17 @@ Template.termSheetInputs.events({
   },
 
 
-  'click #total-price-div': function(e,t) { Session.set("editingTotalPrice", true); },
-  'click #down-payment-div': function(e,t) { Session.set("editingDownPayment", true); },
-  'click #closing-repair-div': function(e,t) { Session.set("editingClosingRepair", true); },
-  'click #apr-div': function(e,t) { Session.set("editingAPR", true); },
-  'click #taxes-div': function(e,t) { Session.set("editingTaxes", true); },
-  'click #hoa-div': function(e,t) { Session.set("editingHOA", true); },
-  'click #insurance-div': function(e,t) { Session.set("editingInsurance", true); },
-  'click #rent-price-div': function(e,t) { Session.set("editingRentPrice", true); },
-  'click #square-footage-div': function(e,t) { Session.set("editingSquareFootage", true); },
-  'click #equity-sold-div': function(e,t) { Session.set("editingEquitySold", true); },
-  'click #percent-capital-needed-div': function(e,t) { Session.set("editingPercentCapitalNeeded", true); },
+  'click #total-price-cell': function(e,t) { Session.set("editingTotalPrice", true); },
+  'click #down-payment-cell': function(e,t) { Session.set("editingDownPayment", true); },
+  'click #closing-repair-cell': function(e,t) { Session.set("editingClosingRepair", true); },
+  'click #apr-cell': function(e,t) { Session.set("editingAPR", true); },
+  'click #taxes-cell': function(e,t) { Session.set("editingTaxes", true); },
+  'click #hoa-cell': function(e,t) { Session.set("editingHOA", true); },
+  'click #insurance-cell': function(e,t) { Session.set("editingInsurance", true); },
+  'click #rent-price-cell': function(e,t) { Session.set("editingRentPrice", true); },
+  'click #square-footage-cell': function(e,t) { Session.set("editingSquareFootage", true); },
+  'click #equity-sold-cell': function(e,t) { Session.set("editingEquitySold", true); },
+  'click #percent-capital-needed-cell': function(e,t) { Session.set("editingPercentCapitalNeeded", true); },
 
   'keypress input#total-price': function(e,t) {
     if (e.keyCode === 13) {
