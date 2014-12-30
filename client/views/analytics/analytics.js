@@ -9,17 +9,7 @@ Template.analytics.rendered = function() {
 
 
 Template.assetAllocation.helpers({
-  loan: function() {
-    var tempArray = TermSheet.find().fetch();
-    var loan;
-    tempArray.forEach(function(prop) {
-      loan += (Number(prop.totalPrice) + Number(prop.closingRepair)) * Number(prop.equitySold) / 100;
-    })
-    return loan;
-  },
-  equity: function() {
-    return
-  }
+
 });
 
 Template.returnOnInvestment.helpers({

@@ -35,9 +35,49 @@ createAssetAllocation = function() {
 
   sum = 0;
 
-  d3.json("allocation.json", function(error, allocation) {
-    var data = allocation.allocation;
-    if (error) return console.error(error);
+
+
+
+  // var tempArray = TermSheet.find().fetch();
+  // var loan;
+  // tempArray.forEach(function(prop) {
+  //   loan += (Number(prop.totalPrice) + Number(prop.closingRepair)) * Number(prop.equitySold) / 100;
+  // })
+  // return loan;
+
+  getEquity = function() {
+    var temp = 0;
+    TermSheet.find().fetch().forEach(function(prop) {
+      totalPrice = Number(prop.totalPrice);
+      closingRepair = Number(prop.closingRepair);
+      equitySold = Number(prop.equitySold) / 100;
+      temp += (totalPrice + closingRepair) * (equitySold);
+    })
+    return temp;
+  }
+
+  getLoan = function() {
+    var temp = 0;
+    TermSheet.find().fetch().forEach(function(prop) {
+      totalPrice = Number(prop.totalPrice);
+      closingRepair = Number(prop.closingRepair);
+      equitySold = Number(prop.equitySold) / 100;
+      temp += (totalPrice + closingRepair) * (1 - equitySold);
+    })
+    return temp;
+  }
+
+// If you want to add an asset type, change it here, in "data", then add a getter above.
+  var data = [
+    {
+      "type": "loan",
+      "total": getLoan()
+    },
+    {
+      "type": "equity",
+      "total": getEquity()
+    }
+  ];
 
     for(var i = 0; i<data.length;i++){
       sum += data[i]['total'];
@@ -88,8 +128,6 @@ createAssetAllocation = function() {
         d3.select(this)
         .style('opacity', 1)
       })
-
-    });
 
 };
 
