@@ -10,6 +10,24 @@ Template.analytics.rendered = function() {
 
 };
 
+getTotalAssetAppreciation = function() {
+  var total = 0;
+
+  Properties.find().fetch().forEach(function(property) {
+    var currentId = property._id;
+    if (TermSheet.find({ property: currentId}).fetch()[0]) {
+      var zestimate = Number(property.zestimate);
+
+      var temp = TermSheet.find({ property: currentId}).fetch()[0];
+
+      var closingRepair = Number(temp.closingRepair);
+      var totalPrice = Number(temp.totalPrice);
+      var price = closingRepair + totalPrice;
+      total += (zestimate - price);
+    }
+  })
+  return total;
+}
 
 
 Template.returnOnInvestment.helpers({
@@ -38,29 +56,30 @@ Template.returnOnInvestment.helpers({
 
     return percent.formatMoney(2);
   },
-  averageMonthlyRentalReturns: function() {
-
-  },
   totalAssetAppreciation: function() {
+    return getTotalAssetAppreciation().formatMoney(0);
+  },
+  annualizedAssetAppreciation: function() {
     var total = 0;
-
     Properties.find().fetch().forEach(function(property) {
-      var currentId = property._id;
-      if (TermSheet.find({ property: currentId}).fetch()[0]) {
-        var zestimate = Number(property.zestimate);
+      var purchaseDate = moment(property.purchaseDate);
+      var today = moment();
+      var diff = purchaseDate.diff(today, "days"); // this is always going to give you a negative number, in days away from today
+      var appreciation = getTotalAssetAppreciation();
+      var divisor = diff / -365;
 
-        var temp = TermSheet.find({ property: currentId}).fetch()[0];
-
-        var closingRepair = Number(temp.closingRepair);
-        var totalPrice = Number(temp.totalPrice);
-        var price = closingRepair + totalPrice;
-        total += (zestimate - price);
-      }
+      total += (appreciation / divisor);
     })
     return total.formatMoney(0);
   },
-  averageMonthlyLoanReturns: function() {
+  annualizedReturns: function() {
 
+  },
+  annualizedLoanReturns: function() {
+    return ;
+  },
+  annualizedEquityReturns: function() {
+    return ;
   }
 });
 
@@ -76,3 +95,5 @@ Template.analytics.events({
 
   }
 });
+
+// moment("2014-12-18T00:00:00-08:00").format("YYYY")
