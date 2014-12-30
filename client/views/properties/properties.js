@@ -57,7 +57,6 @@ Template.newPropertyForm.events({
     // e.preventDefault();
 
     var date = $("#purchase-date").val();
-    console.log("date",date);
     var tempDate = moment(new Date(date));
     var formattedDate = tempDate.format();
 
@@ -269,17 +268,22 @@ Template.investmentReturns.events({
     if (e.keyCode === 13) {
       var tempProperty = $(".choose-property-dropdown").val();
       var id = tempProperty.match(/(\w+)(::)(.+)/)[1];
-      var street = tempProperty.match(/(\w+)(::)(.+)/)[3];;
-      var date = $("#payment-date").val();
+      var street = tempProperty.match(/(\w+)(::)(.+)/)[3];
+
       var amount = $("#payment-amount").val();
       var currentUser = Meteor.userId();
       var returnsId = Returns.find({ owner: currentUser}).fetch()[0]._id;
+
+      var date = $("#payment-date").val();
+      var tempDate = moment(new Date(date));
+      var formattedDate = tempDate.format();
 
       Returns.update({ _id: returnsId }, { $push: {
         payments: {
           property: street,
           propertyId: id,
           date: date,
+          formattedDate: formattedDate,
           amount: amount
         }
       }})
