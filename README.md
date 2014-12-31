@@ -32,6 +32,7 @@ To Do
 3. ~~Analytics spreadsheet-equivalent for admin: https://github.com/ongoworks/meteor-google-spreadsheets~~
 4. Be sure to change the allow-deny and publish settings once ownership has been refactored
 5. ~~Write a helper function so properties can be displayed in two verical columns to avoid overlapping~~
+6. Fix modals for icarus and investor numbers
 
 ###Homepage
 

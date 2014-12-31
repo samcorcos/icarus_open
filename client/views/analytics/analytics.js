@@ -8,8 +8,43 @@ Template.analytics.rendered = function() {
   }, 150)
 
 
+
+
+
+
+
+
+
 };
 
+
+
+// Get the number of days since purchase date
+// Get all payments of particular type (from the purchase date, which means all of them)
+// Then, divide:     360/<days since purchse> * <all payments>
+// That will give you the annualized return from that investment type
+
+// Then, use that number to divide by the totalCost (purchase + repair) to get the annual rate of return.
+
+
+
+
+///////These are functions for getting data////////
+///////////////////////////////////////////////////
+
+getPayments = function(propertyId, paymentType) {
+  Returns.find().fetch()[0].payments.forEach(function(payment) {
+    console.log("test");
+  })
+}
+
+getDaysSincePurchase = function(property) {
+  var purchaseDate = moment(property.purchaseDate);
+  var diff = purchaseDate.diff(moment(), "days")
+  return diff;
+}
+
+// This function will give you the total amount that your property value has increased, regardless of the time period.
 getTotalAssetAppreciation = function() {
   var total = 0;
 
@@ -30,6 +65,9 @@ getTotalAssetAppreciation = function() {
 }
 
 
+
+
+
 Template.returnOnInvestment.helpers({
   totalAssetAppreciationPercent: function() {
     var total = 0;
@@ -41,8 +79,6 @@ Template.returnOnInvestment.helpers({
         var zestimate = Number(property.zestimate);
 
         var temp = TermSheet.find({ property: currentId}).fetch()[0];
-
-
         var closingRepair = Number(temp.closingRepair);
         var totalPrice = Number(temp.totalPrice);
         var price = closingRepair + totalPrice;
@@ -62,17 +98,16 @@ Template.returnOnInvestment.helpers({
   annualizedAssetAppreciation: function() {
     var total = 0;
     Properties.find().fetch().forEach(function(property) {
-      var purchaseDate = moment(property.purchaseDate);
-      var today = moment();
-      var diff = purchaseDate.diff(today, "days"); // this is always going to give you a negative number, in days away from today
+      var daysSincePurchase = getDaysSincePurchase(property);
       var appreciation = getTotalAssetAppreciation();
-      var divisor = diff / -365;
+      var divisor = daysSincePurchase / -365;
 
       total += (appreciation / divisor);
     })
     return total.formatMoney(0);
   },
   annualizedReturns: function() {
+    console.log(getPayments("KeRvBxnf2TgnNRjgR", "Debt"));
     return ;
   },
   annualizedLoanReturns: function() {
