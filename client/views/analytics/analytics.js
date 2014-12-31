@@ -40,8 +40,13 @@ getPropertiesAndDays = function() {
 
 
 getAnnualizedReturns = function() {
-
-}
+  var propAndDaysArray = getPropertiesAndDays();
+  propAndDaysArray.forEach(function(propAndDays) {
+    var terms = TermSheet.find({ property: propAndDays.propertyId}).fetch()[0] // It has now found the property that has the currentId of the property.
+    var total = Number(terms.totalPrice) + Number(terms.closingRepair)
+    propAndDays.purchasePrice = total;
+  })
+s}
 
 getPayments = function(propertyId, paymentType) { // eg  getPayments("KeRvBxnf2TgnNRjgR", "Debt");
   var total = 0;
@@ -88,6 +93,8 @@ Template.returnOnInvestment.helpers({
   totalAssetAppreciationPercent: function() {
     var total = 0;
     var zest = 0;
+
+    getAnnualizedReturns();
 
     Properties.find().fetch().forEach(function(property) {
       var currentId = property._id;
