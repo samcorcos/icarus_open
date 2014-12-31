@@ -33,9 +33,14 @@ Template.analytics.rendered = function() {
 ///////////////////////////////////////////////////
 
 getPayments = function(propertyId, paymentType) {
+  var total = 0;
   Returns.find().fetch()[0].payments.forEach(function(payment) {
-    console.log("test");
+    if (payment.returnType == paymentType) {
+      total += Number(payment.amount);
+      console.log("type match"); // When they match, add "payment.amount" to total, then return total
+    }
   })
+  return total;
 }
 
 getDaysSincePurchase = function(property) {
