@@ -5,15 +5,7 @@ Template.analytics.rendered = function() {
 
   Meteor.setTimeout(function() {
     $(".analytics-card").addClass("card-show")
-  }, 150)
-
-
-
-
-
-
-
-
+  }, 150);
 
 };
 
@@ -32,7 +24,16 @@ Template.analytics.rendered = function() {
 ///////These are functions for getting data////////
 ///////////////////////////////////////////////////
 
-getPayments = function(propertyId, paymentType) {
+getAnnualizedReturnsOnDebt = function() {
+  // I need to get the property Ids, then pass them through to getPayments()
+
+}
+
+getAnnualizedReturns = function() {
+
+}
+
+getPayments = function(propertyId, paymentType) { // eg  getPayments("KeRvBxnf2TgnNRjgR", "Debt");
   var total = 0;
   Returns.find().fetch()[0].payments.forEach(function(payment) {
     if (payment.returnType == paymentType) {
@@ -105,14 +106,13 @@ Template.returnOnInvestment.helpers({
     Properties.find().fetch().forEach(function(property) {
       var daysSincePurchase = getDaysSincePurchase(property);
       var appreciation = getTotalAssetAppreciation();
-      var divisor = daysSincePurchase / -365;
+      var divisor = -365 / daysSincePurchase;
 
-      total += (appreciation / divisor);
+      total += (appreciation * divisor);
     })
     return total.formatMoney(0);
   },
   annualizedReturns: function() {
-    console.log(getPayments("KeRvBxnf2TgnNRjgR", "Debt"));
     return ;
   },
   annualizedLoanReturns: function() {
@@ -136,5 +136,3 @@ Template.analytics.events({
 
   }
 });
-
-// moment("2014-12-18T00:00:00-08:00").format("YYYY")
