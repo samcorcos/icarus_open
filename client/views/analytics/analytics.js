@@ -24,10 +24,20 @@ Template.analytics.rendered = function() {
 ///////These are functions for getting data////////
 ///////////////////////////////////////////////////
 
-getAnnualizedReturnsOnDebt = function() {
-  // I need to get the property Ids, then pass them through to getPayments()
-
+getPropertiesAndDays = function() {
+  var tempArray = [];
+  Properties.find().fetch().forEach(function(property) {
+    var days = getDaysSincePurchase(property);
+    var propertyId = property._id;
+    var tempObject = {
+      daysSincePurchase: days,
+      propertyId: propertyId
+    };
+    tempArray.push(tempObject)
+  });
+  return tempArray;
 }
+
 
 getAnnualizedReturns = function() {
 
