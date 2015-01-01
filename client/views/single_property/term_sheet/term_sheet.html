@@ -32,7 +32,7 @@
 <template name="termSheetInputs">
   <div class="container inputs">
     {{#each termSheet}}
-    <table>
+    <table class="hoverable">
       <thead>
         <tr>
           <th data-field="input">Input</th>
@@ -141,7 +141,7 @@
 <template name="termSheetOutputs">
   <div class="container outputs">
   {{#each termSheet}}
-  <table>
+  <table class="hoverable">
     <thead>
       <tr>
         <th data-field="input">Output</th>
@@ -231,7 +231,7 @@
 <template name="termSheetReturns">
   <div class="container returns">
   {{#each termSheet}}
-  <table>
+  <table class="hoverable">
     <thead>
       <tr>
         <th data-field="input">Returns</th>
