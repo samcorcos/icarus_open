@@ -3,7 +3,6 @@ Template.singlePropertyTermSheet.helpers({
     return TermSheet.find({ property: Session.get("currentId") });
   },
 
-
   // Helpers for tabs on term sheet
   inputsActive: function() {
     return (Session.get("termSheetDashboard") == "inputs") ? true : false;
