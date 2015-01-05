@@ -39,7 +39,7 @@ Template.returnOnInvestment.helpers
       if property.cost? then sumCost += property.cost
       return
     (sumAnnualized / sumCost * 100).formatMoney(2)
-    
+
   annualizedReturns: ->
     #
     0
@@ -62,3 +62,14 @@ Template.returnOnInvestment.helpers
       if property.cost? then sumCost += property.cost
       return
     (sumAnnualized / sumCost * 100).formatMoney(2)
+
+Template.analytics.rendered = ->
+  createTimeline()
+  createAssetAllocation()
+  $('.tooltipped').tooltip
+    "delay": 50
+  
+  Meteor.setTimeout (->
+    $(".analytics-card").addClass "card-show"
+    return
+  ), 150
