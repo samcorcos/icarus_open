@@ -41,8 +41,18 @@ Template.returnOnInvestment.helpers
     (sumAnnualized / sumCost * 100).formatMoney(2)
 
   annualizedReturns: ->
-    #
-    0
+    sumAnnualized = 0
+    sumCost = 0
+    getPropertiesAndDays().forEach (property) ->
+      if property.cost? then assetReturn = Number(property.zestimate) - property.cost
+      sumAnnualized = (365 / property.daysSincePurchase * -1) * assetReturn if property.daysSincePurchase < -90 and assetReturn?
+      debtReturns = getPayments(property.propertyId, "Debt")
+      sumAnnualized += (365 / property.daysSincePurchase * -1) * debtReturns if property.daysSincePurchase < -90
+      equityReturns = getPayments(property.propertyId, "Equity")
+      sumAnnualized += (365 / property.daysSincePurchase * -1) * equityReturns if property.daysSincePurchase < -90
+      if property.cost? then sumCost += property.cost
+      return
+    (sumAnnualized / sumCost * 100).formatMoney(2)
   annualizedLoanReturns: ->
     sumCost = 0
     sumAnnualized = 0
@@ -68,7 +78,7 @@ Template.analytics.rendered = ->
   createAssetAllocation()
   $('.tooltipped').tooltip
     "delay": 50
-  
+
   Meteor.setTimeout (->
     $(".analytics-card").addClass "card-show"
     return
