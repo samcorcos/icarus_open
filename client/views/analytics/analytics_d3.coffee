@@ -8,7 +8,6 @@
 
 
   Returns.find().fetch()[0].payments.forEach (payment) ->
-    console.log payment
     tempObject = {}
     tempObject.amount = Number(payment.amount)
     tempObject.date = payment.formattedDate
@@ -37,8 +36,8 @@
       .orient("left")
 
   line = d3.svg.line()
-      .x (d) -> x(d.date)
-      .y (d) -> y(d.amount)
+    .x((d) -> x d.date)
+    .y((d) -> y d.amount)
 
 
   svg = d3.select('#analytics-timeline').append('svg')
@@ -47,34 +46,31 @@
     .append('g')
       .attr('transform', "translate(#{margin.left}, #{margin.top})")
 
+  data = debtData
+  data.forEach (d) ->
+    d.date = parseDate(d.date)
+    d.amount = +d.amount
+    return
 
+  x.domain d3.extend(data, (d) -> d.date)
+  y.domain d3.extend(data, (d) -> d.amount)
 
-#   d3.tsv("data.tsv", function(error, data) {
-#   data.forEach(function(d) {
-#     d.date = parseDate(d.date);
-#     d.close = +d.close;
-#   });
-#
-#   x.domain(d3.extent(data, function(d) { return d.date; }));
-#   y.domain(d3.extent(data, function(d) { return d.close; }));
-#
-#   svg.append("g")
-#       .attr("class", "x axis")
-#       .attr("transform", "translate(0," + height + ")")
-#       .call(xAxis);
-#
-#   svg.append("g")
-#       .attr("class", "y axis")
-#       .call(yAxis)
-#     .append("text")
-#       .attr("transform", "rotate(-90)")
-#       .attr("y", 6)
-#       .attr("dy", ".71em")
-#       .style("text-anchor", "end")
-#       .text("Price ($)");
-#
-#   svg.append("path")
-#       .datum(data)
-#       .attr("class", "line")
-#       .attr("d", line);
-# });
+  svg.append('g')
+    .attr('class', 'x axis')
+    .attr('transform', "translate(0, #{height})")
+    .call(xAxis)
+
+  svg.append('g')
+    .attr('class', 'y axis')
+    .call(yAxis)
+    .append('text')
+      .attr('transform', 'rotate(-90)')
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Price ($)")
+
+  svg.append("path")
+    .datum(data)
+    .attr("class", "line")
+    .attr("d", line)
