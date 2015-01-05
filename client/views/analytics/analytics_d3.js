@@ -1,12 +1,5 @@
 // This is where our Analytics D3 functions will live
 
-createTimeline = function() {
-
-  // var svg = d3.select("#analytics-timeline")
-  //   .append("svg")
-
-};
-
 Session.setDefault("activeTotal", 0);
 Session.setDefault("activePercentage", 0);
 
@@ -34,17 +27,7 @@ createAssetAllocation = function() {
     .value(function(d) { return d.total; }); // layout.pie() must take in an array of objects.
 
   sum = 0;
-
-
-
-
-  // var tempArray = TermSheet.find().fetch();
-  // var loan;
-  // tempArray.forEach(function(prop) {
-  //   loan += (Number(prop.totalPrice) + Number(prop.closingRepair)) * Number(prop.equitySold) / 100;
-  // })
-  // return loan;
-
+  
   getEquity = function() {
     var temp = 0;
     TermSheet.find().fetch().forEach(function(prop) {
