@@ -43,20 +43,21 @@ Template.returnOnInvestment.helpers
     #
     0
   annualizedLoanReturns: ->
-    sumCost = 0;
-    sumAnnualized = 0;
+    sumCost = 0
+    sumAnnualized = 0
     getPropertiesAndDays().forEach (property) ->
-      debtReturns = getPayments(property.propertyId, "Debt") # this returns the total returns for that property of the defined return type
+      debtReturns = getPayments(property.propertyId, "Debt")
       sumAnnualized += (365 / property.daysSincePurchase * -1) * debtReturns if property.daysSincePurchase < -90
       if property.cost? then sumCost += property.cost
       return
     (sumAnnualized / sumCost * 100).formatMoney(2)
-    # for each property returned from getPropertiesAndDays() --done
-    # annualize the returns --done
-    # add together all the annualized returns (as long as days < -90) --done
-    # then add together all the purchasing costs of the properties --done
-    # then divide returns by cost
 
   annualizedEquityReturns: ->
-    #
-    0
+    sumCost = 0
+    sumAnnualized = 0
+    getPropertiesAndDays().forEach (property) ->
+      equityReturns = getPayments(property.propertyId, "Equity")
+      sumAnnualized += (365 / property.daysSincePurchase * -1) * equityReturns if property.daysSincePurchase < -90
+      if property.cost? then sumCost += property.cost
+      return
+    (sumAnnualized / sumCost * 100).formatMoney(2)
