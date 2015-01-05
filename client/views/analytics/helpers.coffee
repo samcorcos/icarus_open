@@ -24,7 +24,7 @@
 @getPayments = (propertyId, paymentType) -> # eg (getPayments("KeRvBxnf2TgnNRjgR", "Debt"))
   total = 0
   Returns.find().fetch()[0].payments.forEach (payment) ->
-    if payment.returnType is paymentType
+    if payment.returnType is paymentType and payment.propertyId is propertyId
       total += Number(payment.amount)
     return
   total
@@ -36,15 +36,20 @@ Template.returnOnInvestment.helpers
     0
   annualizedReturns: ->
     #
-    return 0
+    0
   annualizedLoanReturns: ->
+    console.log getPropertiesAndDays()
+    tempArray = getPropertiesAndDays()
+    tempArray.forEach (property) ->
+      console.log getPayments(property.propertyId, "Debt")
+
+      return
     # for each property returned from getPropertiesAndDays()
     # annualize the returns
     # add together all the annualized returns (as long as days < -90)
     # then add together all the purchasing costs of the properties
     # then divide returns by cost
 
-    console.log getPropertiesAndDays()
   annualizedEquityReturns: ->
     #
-    return 0
+    0
