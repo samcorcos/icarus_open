@@ -20,7 +20,6 @@
       cost: getPurchasePrice(property._id)
     tempArray.push(tempObject)
     return
-  console.log tempArray
   tempArray
 
 @getPayments = (propertyId, paymentType) -> # eg (getPayments("KeRvBxnf2TgnNRjgR", "Debt"))
@@ -44,16 +43,18 @@ Template.returnOnInvestment.helpers
     #
     0
   annualizedLoanReturns: ->
-    temp = 0;
+    sumCost = 0;
+    sumAnnualized = 0;
     getPropertiesAndDays().forEach (property) ->
       debtReturns = getPayments(property.propertyId, "Debt") # this returns the total returns for that property of the defined return type
-      annualized = (365 / property.daysSincePurchase * -1) * debtReturns if property.daysSincePurchase < -90
+      sumAnnualized += (365 / property.daysSincePurchase * -1) * debtReturns if property.daysSincePurchase < -90
+      if property.cost? then sumCost += property.cost
       return
-
-    # for each property returned from getPropertiesAndDays()
-    # annualize the returns
-    # add together all the annualized returns (as long as days < -90)
-    # then add together all the purchasing costs of the properties
+    (sumAnnualized / sumCost * 100).formatMoney(2)
+    # for each property returned from getPropertiesAndDays() --done
+    # annualize the returns --done
+    # add together all the annualized returns (as long as days < -90) --done
+    # then add together all the purchasing costs of the properties --done
     # then divide returns by cost
 
   annualizedEquityReturns: ->
