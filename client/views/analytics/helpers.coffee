@@ -17,8 +17,10 @@
     tempObject =
       daysSincePurchase: getDaysSincePurchase(property)
       propertyId: property._id
+      cost: getPurchasePrice(property._id)
     tempArray.push(tempObject)
     return
+  console.log tempArray
   tempArray
 
 @getPayments = (propertyId, paymentType) -> # eg (getPayments("KeRvBxnf2TgnNRjgR", "Debt"))
@@ -29,6 +31,10 @@
     return
   total
 
+@getPurchasePrice = (propertyId) ->
+  temp = TermSheet.findOne({ property: propertyId })
+  if temp?
+    Number(temp.closingRepair) + Number(temp.totalPrice)
 
 Template.returnOnInvestment.helpers
   annualizedAssetAppreciation: ->
@@ -38,12 +44,12 @@ Template.returnOnInvestment.helpers
     #
     0
   annualizedLoanReturns: ->
-    console.log getPropertiesAndDays()
-    tempArray = getPropertiesAndDays()
-    tempArray.forEach (property) ->
-      console.log getPayments(property.propertyId, "Debt")
-
+    temp = 0;
+    getPropertiesAndDays().forEach (property) ->
+      debtReturns = getPayments(property.propertyId, "Debt") # this returns the total returns for that property of the defined return type
+      annualized = (365 / property.daysSincePurchase * -1) * debtReturns if property.daysSincePurchase < -90
       return
+
     # for each property returned from getPropertiesAndDays()
     # annualize the returns
     # add together all the annualized returns (as long as days < -90)
