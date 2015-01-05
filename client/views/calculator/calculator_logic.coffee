@@ -24,18 +24,13 @@ Template.calculatorBox.events
     Session.set("editingCAP", true)
 
   'keypress input#purchase-price': (e,t) ->
-    if e.keyCode is 13
-      Session.set("editingPP", false)
+    Session.set("editingPP", false) if e.keyCode is 13
   'keypress input#closing-repair': (e,t) ->
-    if e.keyCode is 13
-      Session.set("editingCR", false)
+    Session.set("editingCR", false) if e.keyCode is 13
   'keypress input#monthly-income': (e,t) ->
-    if e.keyCode is 13
-      Session.set("editingMI", false)
+    Session.set("editingMI", false) if e.keyCode is 13
   'keypress input#cap-rate': (e,t) ->
-    if e.keyCode is 13
-      Session.set("editingCAP", false)
-
+    Session.set("editingCAP", false) if e.keyCode is 13
 
 Template.calculatorBox.helpers
   calculator: ->
@@ -48,28 +43,3 @@ Template.calculatorBox.helpers
     Session.get("editingMI")
   editingCAP: ->
     Session.get("editingCAP")
-
-# I should set up the click events now so I know how to set things up.
-
-# //
-# //   'keypress input#purchase-price': function(e,t) {
-# //     if (e.keyCode === 13) {
-# //       Session.set("editingTotalPriceCalc", false);
-# //     }
-# //   },
-# //   'keypress input#closing-repair': function(e,t) {
-# //     if (e.keyCode === 13) {
-# //       Session.set("editingClosingRepairCalc", false);
-# //     }
-# //   },
-# //   'keypress input#monthly-income': function(e,t) {
-# //     if (e.keyCode === 13) {
-# //       Session.set("editingMonthlyIncomeCalc", false);
-# //     }
-# //   }
-# //   // 'keypress input#cap-rate': function(e,t) {
-# //   //   if (e.keyCode === 13) {
-# //   //     Session.set("editingCAPRateCalc", false);
-# //   //   }
-# //   // }
-# //
