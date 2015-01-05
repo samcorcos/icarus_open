@@ -21,16 +21,30 @@
     return
   tempArray
 
+@getPayments = (propertyId, paymentType) -> # eg (getPayments("KeRvBxnf2TgnNRjgR", "Debt"))
+  total = 0
+  Returns.find().fetch()[0].payments.forEach (payment) ->
+    if payment.returnType is paymentType
+      total += Number(payment.amount)
+    return
+  total
+
+
 Template.returnOnInvestment.helpers
   annualizedAssetAppreciation: ->
     #
-    console.log getPropertiesAndDays()
+    0
   annualizedReturns: ->
     #
     return 0
   annualizedLoanReturns: ->
-    #
-    return 0
+    # for each property returned from getPropertiesAndDays()
+    # annualize the returns
+    # add together all the annualized returns (as long as days < -90)
+    # then add together all the purchasing costs of the properties
+    # then divide returns by cost
+
+    console.log getPropertiesAndDays()
   annualizedEquityReturns: ->
     #
     return 0
