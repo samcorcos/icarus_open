@@ -74,7 +74,7 @@
                   <div class="calculator-item" id="purchase-price">
                     <h3>Purchase Price</h3>
                     {{#if editingPP}}
-                    <input type="text" value={{purchasePrice}}>
+                    <input type="text" value={{purchasePrice}} id="purchase-price">
                     {{else}}
                     <p>${{purchasePrice}}</p>
                     {{/if}}
@@ -84,7 +84,7 @@
                   <div class="calculator-item" id="closing-repair">
                     <h3>Closing &amp; Repair</h3>
                     {{#if editingCR}}
-                    <input type="text" value="{{closingRepair}}">
+                    <input type="text" value="{{closingRepair}}" id="closing-repair">
                     {{else}}
                     <p>${{closingRepair}}</p>
                     {{/if}}
@@ -96,7 +96,7 @@
                   <div class="calculator-item" id="monthly-income">
                     <h3>Monthly Income <i class="fa fa-info-circle tooltipped" data-position="top" data-tooltip="Net income, not gross"></i></h3>
                     {{#if editingMI}}
-                    <input type="text" value="{{monthlyIncome}}">
+                    <input type="text" value="{{monthlyIncome}}" id="monthly-income">
                     {{else}}
                     <p>${{monthlyIncome}}</p>
                     {{/if}}
@@ -106,7 +106,7 @@
                   <div class="calculator-item" id="cap-rate">
                     <h3>CAP Rate</h3>
                     {{#if editingCAP}}
-                    <input type="text" value="{{capRate}}">
+                    <input type="text" value="{{capRate}}" id="cap-rate">
                     {{else}}
                     <p>{{capRate}}%</p>
                     {{/if}}
