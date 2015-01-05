@@ -1,12 +1,3 @@
-#
-# Get the number of days since purchase date
-# Get all payments of particular type (from the purchase date, which means all of them)
-# Then, divide:     360/<days since purchse> * <all payments>
-# That will give you the annualized return from that investment type
-#
-# Then, use that number to divide by the totalCost (purchase + repair) to get the annual rate of return.
-#
-
 @getDaysSincePurchase = (property) ->
   purchaseDate = moment(property.purchaseDate)
   diff = purchaseDate.diff(moment(), "days")
@@ -18,6 +9,7 @@
       daysSincePurchase: getDaysSincePurchase(property)
       propertyId: property._id
       cost: getPurchasePrice(property._id)
+      zestimate: property.zestimate
     tempArray.push(tempObject)
     return
   tempArray
@@ -35,10 +27,19 @@
   if temp?
     Number(temp.closingRepair) + Number(temp.totalPrice)
 
+
+
 Template.returnOnInvestment.helpers
   annualizedAssetAppreciation: ->
-    #
-    0
+    sumAnnualized = 0
+    sumCost = 0
+    getPropertiesAndDays().forEach (property) ->
+      if property.cost? then assetReturn = Number(property.zestimate) - property.cost
+      sumAnnualized = (365 / property.daysSincePurchase * -1) * assetReturn if property.daysSincePurchase < -90 and assetReturn?
+      if property.cost? then sumCost += property.cost
+      return
+    (sumAnnualized / sumCost * 100).formatMoney(2)
+    
   annualizedReturns: ->
     #
     0
