@@ -21,7 +21,7 @@ if(Meteor.isClient) {
 Router.map(function () {
 	this.route("home", {path: "/", controller: "HomeController"});
 	this.route("about", {path: "/about", controller: "AboutController"});
-	this.route("calculator", {path: "/calculator", controller: "CalculatorController"});
+	this.route("calculatorBox", {path: "/calculator"});
 	this.route("contact", {path: "/contact", controller: "ContactController"});
 	this.route("login", {path: "/login", controller: "LoginController"});
 	this.route("properties", {path: "/properties", controller: "PropertiesController"});
@@ -32,6 +32,6 @@ Router.map(function () {
 
 Router.route("/properties/:_id", {
 	name: 'singleProperty',
-	data: function() { return Properties.findOne(this.params._id); }, 
+	data: function() { return Properties.findOne(this.params._id); },
 	controller: "SinglePropertyController"
 });
