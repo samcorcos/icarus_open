@@ -12,7 +12,7 @@ Template.calculatorBox.rendered = ->
 
 Template.calculatorBox.events
   'click #purchase-price': (e,t) ->
-    Session.set("editingTP", true)
+    Session.set("editingPP", true)
   'click #closing-repair': (e,t) ->
     Session.set("editingCR", true)
   'click #monthly-income': (e,t) ->
@@ -23,13 +23,13 @@ Template.calculatorBox.events
 Template.calculatorBox.helpers
   calculator: ->
     Calculator.find({})
-  editingTotalPriceCalc: ->
-    Session.get("editingTP")
-  editingClosingRepairCalc: ->
+  editingPP: ->
+    Session.get("editingPP")
+  editingCR: ->
     Session.get("editingCR")
-  editingMonthlyIncomeCalc: ->
+  editingMI: ->
     Session.get("editingMI")
-  editingCAPRateCalc: ->
+  editingCAP: ->
     Session.get("editingCAP")
 
 # I should set up the click events now so I know how to set things up.
