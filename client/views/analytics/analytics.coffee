@@ -75,7 +75,8 @@ Template.returnOnInvestment.helpers
 
 Template.analytics.rendered = ->
   # createTimeline()
-  createAssetAllocation()
+  createAssetAllocation() if TermSheet.find().count() > 0
+
   $('.tooltipped').tooltip
     "delay": 50
 

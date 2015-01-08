@@ -1,7 +1,3 @@
-Meteor.publish("properties", function () {
-  return Properties.find({ owners: { $elemMatch: { _id: this.userId }} });
-});
-
 Meteor.publish("images", function () {
   return Images.find({ owner: this.userId });
 });
