@@ -21,10 +21,14 @@ Template.login.events
     Meteor.logout()
     return
   'click #login': (e,t) ->
-    Meteor.loginWithPassword(t.find('#username').value, t.find('#password').value)
+    Meteor.loginWithPassword t.find('#username').value, t.find('#password').value, (err) ->
+      alert "Incorrect username/password", 3000 if err
     return
   'keypress input.login-password': (e,t) ->
-    Meteor.loginWithPassword(t.find('#username').value, t.find('#password').value) if e.keyCode is 13
+    # if e.keyCode is 13
+    #   # Meteor.loginWithPasswordt.find('#username').value, t.find('#password').value (err) ->
+    #   #   toast "Incorrect username/password", 3000 if err
+    #   #   return
     return
   'keypress input.new-account-password': (e,t) ->
     if e.keyCode is 13
@@ -35,3 +39,11 @@ Template.login.events
         email: t.find('#email').value
         profile:
           name: t.find('#name').value
+
+#
+# Meteor.template.events
+#     "click #login": (e, t) ->
+#       Meteor.loginWithPassword t.find("#username").value, t.find("#password").value, (err) ->
+#         console.log "error"  if err
+#         return
+#       return
