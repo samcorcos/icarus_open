@@ -13,3 +13,7 @@ Meteor.publish("directory", function () {
 Meteor.publish("returns", function() {
   return Returns.find({ owner: this.userId });
 })
+
+// Meteor.publish("properties", function() {
+//   Properties.find({ owners: {$in: { _id: this.userId}}})
+// })
