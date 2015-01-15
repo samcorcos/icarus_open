@@ -1,4 +1,4 @@
-@Properties = new Meteor.Collection 'properties'
+@Properties = new Mongo.Collection 'properties'
 
 if Meteor.isServer
   Meteor.publish 'properties', ->
@@ -6,7 +6,7 @@ if Meteor.isServer
 
   Properties.allow
     insert: (userid, doc) ->
-      
+
       # return (userid && doc.owner === userid);
       true
 
