@@ -1,0 +1,803 @@
+// @import url(http://fonts.googleapis.com/css?family=Cinzel:400,700);
+
+$icarus-red: #D1122B;
+$icarus-grey: #797979;
+
+.side-nav {
+  margin-right: 10%;
+}
+
+a.brand-logo {
+  overflow: hidden;
+  height: 60px;
+}
+
+@media only screen and (min-width: 993px) {
+  .brand-logo {
+    margin-left: 10%;
+  }
+}
+
+.lead {
+  margin-top: 2rem;
+}
+
+nav {
+  background-color: $icarus-red;
+}
+
+/* Navbar hover over color */
+nav ul li:hover, nav ul li.active {
+  background-color: lighten($icarus-red, 10%);
+}
+
+.homepage-background-one {
+  height: 84vh;
+  width: 100%;
+  background: url(/background/houses.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+.calculator-background {
+  min-height: 100vh;
+  height: auto;
+  width: 100%;
+  background: url(/background/brick.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+.contact-background {
+  min-height: 92vh;
+  height: auto;
+  width: 100%;
+  background: url(/background/another_ny.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+.flex-red-div {
+  height: auto;
+  width: 100%;
+  background-color: $icarus-red;
+}
+
+.flex-white-div {
+  height: auto;
+  width: 100%;
+  background-color: white;
+}
+
+.flex-white-div-term-sheet-button {
+  max-height: 10rem;
+  width: 100%;
+  background-color: white;
+}
+
+.property-panel-two {
+  height: auto;
+  width: 100%;
+  background-color: white;
+  /* background: url(/textures/grey_noise.png); */
+}
+
+.homepage-background-two {
+  height: auto;
+  width: 100%;
+  background: url(/background/more_houses.jpeg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+.about-background, .single-property-background {
+  min-height: 84vh;
+  height: auto;
+  width: 100%;
+  background: url(/background/new_york.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+.red-break {
+  height: 0.5rem;
+  width: 100%;
+  background-color: $icarus-red;
+}
+
+.red-break-term-sheet-button {
+  height: 0.5rem;
+  width: 100%;
+  background-color: $icarus-red;
+}
+
+.grey-break {
+  height: 0.5rem;
+  width: 100%;
+  background-color: $icarus-grey;
+}
+
+.white-break {
+  height: 0.5rem;
+  width: 100%;
+  background-color: white;
+}
+
+.navbar-logo {
+  background-color: white;
+  border-radius: 10px;
+  padding: 0.25rem;
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.8);
+
+  p {
+    color: lighten(black, 20%);
+    font-size: 1em;
+  }
+  input {
+    color: lighten(black, 20%);
+    font-size: 1em;
+  }
+  h2 {
+    margin: 0.5rem;
+    color: $icarus-red;
+    font-size: 2em;
+    line-height: 1em;
+  }
+  h3.properties {
+    color: $icarus-red;
+    opacity: 0.6;
+    font-size: 1.5em;
+    line-height: 1em;
+  }
+  a {
+    color: $icarus-red;
+    text-decoration: underline;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  h3 {
+    color: lighten(black, 20%);
+    font-size: 1.3em;
+  }
+}
+
+.intro-card {
+  margin-top: 40%;
+  margin-bottom: 50%;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+}
+
+.about-card, .contact-card, .analytics-card {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+}
+
+.card-show {
+  visibility:visible;
+  opacity:1;
+  transition-delay:0s;
+}
+
+.res-com-rental {
+  min-height: 32rem;
+  h2 {
+    text-align: center;
+  }
+}
+
+.calculator-card {
+  margin-top: 25%;
+}
+
+.card-image {
+  span {
+    text-align: center;
+  }
+  i {
+    position: relative;
+    font-size: 10em;
+    color: $icarus-red;
+    margin: 2rem 2rem 0 2rem;
+  }
+  svg {
+    margin: 2rem 2rem 0 2rem;
+  }
+  p {
+    text-align: center;
+  }
+}
+
+.for-rent-svg {
+  max-width: 70%;
+  max-height: 150px;
+  margin-left: 10%;
+}
+
+.homepage-background-three {
+  height: auto;
+  width: 100%;
+  background: url(/background/ny-filtered.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+.login-background {
+  height: auto;
+  min-height: 100vh;
+  width: 100%;
+  background: url(/background/tropics.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+.analytics-background {
+  height: auto;
+  min-height: 100vh;
+  width: 100%;
+  background: url(/background/wood.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+.properties-background {
+  height: auto;
+  width: 100%;
+  background: url(/background/blue_city_blur.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+
+footer {
+  p {
+    color: lighten(black, 50%);
+    text-align: right;
+    margin-right: 10%;
+  }
+}
+
+.faq-header {
+  color: $icarus-red;
+  text-align: center;
+}
+
+.contact-page-logo {
+  height: 50%;
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.stats-over-red {
+  color: white;
+  font-size: 5em;
+  margin: 0;
+  text-align: center;
+}
+
+.stats-over-red-large {
+  color: white;
+  font-size: 5em;
+  margin: 0;
+  text-align: center;
+}
+
+.stats-over-red-subtitle {
+  color: lighten($icarus-grey, 20%);
+  margin: 0;
+  text-align: center;
+}
+
+.login-button {
+  background-color: darken($icarus-red, 10%);
+  border-radius: 50%;
+}
+
+.login-card {
+  margin-top: 15%;
+  h2 {
+    text-align: center;
+  }
+  h3 {
+    text-align: center;
+
+  }
+}
+
+.btn {
+  background-color: $icarus-red;
+}
+
+.btn:hover {
+  background-color: lighten($icarus-red, 10%);
+}
+
+
+
+
+// Styles for D3
+
+// path {
+//   fill: none;
+//   stroke: #000;
+//   stroke-linejoin: round;
+//   stroke-linecap: round;
+// }
+
+.one-rem-spacer {
+  height: 1rem;
+}
+.two-rem-spacer {
+  height: 2rem;
+}
+.three-rem-spacer {
+  height: 3rem;
+}
+.four-rem-spacer {
+  height: 4rem;
+}
+.five-rem-spacer {
+  height: 5rem;
+}
+
+#add-property-button {
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* This is all the CSS for the add property transition */
+div.add-flex-div-show {
+  max-height: 200rem;
+  transition: max-height 0.5s ease-in;
+}
+
+div.add-red-break-show {
+  height: 0.5rem;
+  transition: height 0.15s ease-in;
+}
+
+div.add-red-break-hide {
+  height: 0rem;
+  transition: height 0.5s ease-in;
+}
+
+.flex-white-div-property, .flex-white-div-term-sheet, .inputs, .outputs, .returns, .additional {
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+  background-color: white;
+  overflow: hidden;
+}
+
+
+div.add-flex-div-hide {
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
+  background-color: white;
+  overflow: hidden;
+}
+
+.red-break-property, .red-break-term-sheet {
+  height: 0;
+  width: 100%;
+  background-color: $icarus-red;
+  transition: height 0.5s ease-out;
+}
+.two-rem-spacer-property {
+  height: 0;
+  width: 100%;
+  transition: height 0.15s ease-out;
+}
+.show-spacer {
+  height: 2rem;
+  transition: height 0.1s ease-in;
+}
+
+/* End add property transition */
+
+
+/* Styles for Map Visualization */
+.subunit {
+  fill: grey;
+  stroke: #A9A9A9;
+  stroke-width: 1;
+}
+
+.state:hover {
+  fill-opacity: 0.5;
+}
+
+#tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 20px;
+  margin: 10px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 1px;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+#tooltip h4 {
+  margin: 0;
+  font-size: 14px;
+}
+
+#tooltip{
+  background:rgba(0,0,0,0.9);
+  border:1px solid grey;
+  border-radius:5px;
+  font-size:12px;
+  width:auto;
+  padding:4px;
+  color:white;
+  opacity:0;
+}
+#tooltip table{
+  table-layout:fixed;
+}
+#tooltip tr td{
+  padding:0;
+  margin:0;
+}
+#tooltip tr td:nth-child(1){
+  width:50px;
+}
+#tooltip tr td:nth-child(2){
+  text-align:center;
+}
+
+.bubble {
+  fill: $icarus-red;
+  fill-opacity: .5;
+  stroke: #fff;
+  stroke-width: .5px;
+}
+
+.bubble :hover {
+  stroke: #000;
+}
+
+/* End styles for map */
+
+
+.homepage-map-header {
+  text-align: center;
+}
+
+.special-navbar-buttons {
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+
+.asset-allocation-data {
+  border-radius: 5px;
+  text-align: center;
+  h3 {
+    margin: 0;
+  }
+  p {
+    font-size: 1.5em;
+  }
+}
+
+.analytics-chart > svg {
+  display: block;
+  margin: auto;
+}
+
+.homepage-concentration-map > svg {
+  margin: 0 3rem;
+}
+
+.home-concentration-map {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+.add-owners-dropdown, .choose-property-dropdown, .choose-type-dropdown {
+  background-color: lighten($icarus-grey, 40%);
+  width: 100%;
+  padding: 5px;
+  border: 1px solid lighten($icarus-grey, 25%);
+  border-radius: 2px;
+  height: 3rem;
+}
+
+#dropzoneDiv .dropzone .dz-clickable {
+  height: 100px;
+}
+
+.dropzone {
+  min-height: 150px;
+}
+
+
+
+/* Carousel CSS */
+
+#carousel {
+  border:   2px solid $icarus-red;
+  border-radius: 5px;
+  height: 50vh;
+  &.slick-initialized {
+    margin-bottom: 0;
+  }
+}
+
+#carousel div {
+  height: 100%;
+  /* max-width: 20rem; */
+  position:relative;
+}
+
+
+
+.slick-prev:before, .slick-next:before {
+  color:    $icarus-grey;
+}
+
+/* End Carousel */
+
+.map-spacer {
+  margin: 1rem 1rem;
+}
+
+.image-spacer {
+  margin: 1rem 2rem;
+}
+
+/*
+@media (min-width: 768px)
+@media (min-width: 992px) {
+@media (min-width: 1200px) {
+@media (max-device-width: 480px) and (orientation: landscape) {
+@media screen and (min-width: 768px) {
+*/
+
+div#carousel > div img {
+  position: relative;
+  height: 100%;
+  margin: auto;
+  /* min-height: 50vh; */
+  border-radius: 5px;
+}
+
+.term-sheet-item {
+  /*   div {
+  display: inline-block;
+} */
+
+h4 {
+  color: $icarus-red;
+  font-size: 1.8em;
+}
+p {
+  line-height:1;
+  margin: 1rem 0;
+  vertical-align: middle;
+}
+text-align: center;
+border: 1px solid #ccc;
+border-radius: 10px;
+margin: 0rem;
+min-height: 8rem;
+/* vertical-align: middle; */
+/* display: inline-block; */
+}
+
+
+div.term-sheet-input.col.s4 {
+  min-height: 11rem;
+  h4 {
+    text-align: center;
+    /* padding-top: 1.2rem; */
+  }
+}
+
+.toast {
+  background-color: $icarus-red;
+}
+
+.calculator-item {
+  text-align: center;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  &:hover {
+    color: $icarus-red;
+  }
+  h3 {
+    margin: 0;
+  }
+  p {
+    font-size: 1.5em;
+    padding-bottom: 26px;
+  }
+  input {
+    font-size: 1.5em;
+    text-align: center;
+  }
+}
+
+
+
+
+
+/* CSS for tabs */
+
+ul.tabs {
+  position: relative;
+  height: 48px;
+  background-color: #FFF;
+  margin: 0 auto;
+  width: 100%;
+  white-space: nowrap;
+}
+
+ul.tabs li.tab {
+  background-color: #fff;
+}
+ul.tabs li.tab a {
+  color: #000;
+}
+ul.tabs li.tab a:hover {
+  color: lighten($icarus-red, 10%);
+}
+ul.tabs .indicator {
+  background-color: $icarus-red;
+}
+
+/* End tabs */
+
+
+.modal > .row {
+  text-align: center;
+}
+
+/* li.login-button { // Eventually I need to fix this so it only does it's thing @media
+background-color: white;
+color: $icarus-grey;
+a {
+color: #444;
+}
+} */
+
+.roi-box {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  font-size: 2em;
+  text-align: center;
+  margin: 1rem;
+  min-height: 3em;
+  p.flow-text {
+    padding-top: 0.7em;
+  }
+}
+
+/* .roi-box:hover {
+background-color: rgba(256, 256, 256, 0.35);
+} */
+
+.backdrop  {
+  position: absolute;
+  opacity: 0;
+  display: none;
+  max-height: 10rem;
+  width: 14px;
+  /* @include border-radius(0 0 14px 14px); */
+  background-color: #323232;
+  z-index: -1;
+  /* @include transform-origin( 50% 10%); */
+}
+
+
+.material-tooltip {
+  padding: 10px 8px;
+  font-size: 1rem;
+  z-index: 1000;
+  background-color: transparent;
+  /* @include border-radius(2px); */
+  color: #fff;
+  height: auto;
+  line-height: 1rem;
+  max-width: 200px;
+  opacity: 0;
+  display: none;
+  position: absolute;
+  text-align: center;
+  overflow: hidden;
+  left:0;
+  top:0;
+}
+
+.owners-list {
+  div.col {
+    p:first-child {
+      margin-top: 1rem;
+    }
+  }
+  margin: 0;
+}
+
+a.remove-owner-button {
+  color: #555555;
+  padding: 0em 1em;
+  &:hover {
+    color: $icarus-red;
+  }
+}
+
+.add-owner-button {
+  padding: 1.5rem 1rem;
+  font-size: 2em;
+  margin: auto;
+  line-height: 0;
+}
+
+.property-details, .map-details {
+  h2 a {
+    text-decoration: none;
+  }
+  h2 {
+    text-align: center;
+  }
+  p {
+    text-align: center;
+    font-size: 1.2em;
+  }
+}
+
+.contact-card {
+  text-align: center;
+  p {
+    font-size: 1.5em;
+    color: $icarus-red;
+  }
+}
+
+.input-hover:hover {
+  color: $icarus-red;
+}
+
+.calculator-input {
+  &:hover {
+    color: $icarus-red;
+  }
+}
