@@ -1,4 +1,13 @@
-@createTimeline = () ->
+Session.setDefault 'activeTotal', 0
+Session.setDefault 'activePercentage', 0
+
+# @createAssetAllocation = ->
+#   width = 300
+#   height = 300
+#   radius = Math.min(width, height) / 2
+
+
+@createTimeline = ->
   # http://bl.ocks.org/mbostock/3902569
 
   # data needs to be an array of objects
