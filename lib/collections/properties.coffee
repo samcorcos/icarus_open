@@ -6,19 +6,12 @@ if Meteor.isServer
 
   Properties.allow
     insert: (userId, doc) ->
-      # return (userid && doc.owner === userid);
       true
 
     update: (userId, docs, fields, modifier) ->
-      # return _.all(docs, function(doc) {
-      #   return doc.owner === userId;
-      # })
       true
 
     remove: (userId, docs) ->
-      # return _.all(docs, function(doc) {
-      #   return doc.owner === userId;
-      # })
       true
 
   Properties.deny
@@ -29,8 +22,8 @@ if Meteor.isServer
     remove: (userId, docs) ->
 
 
-  Schemas = {}
-  Schemas.Property = new SimpleSchema
+  Schema = {}
+  Schema.Property = new SimpleSchema
     bath:
       type: String
       label: "Bath"

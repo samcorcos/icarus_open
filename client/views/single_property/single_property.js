@@ -45,7 +45,7 @@ Template.singleProperty.events({
     console.log('running');
     $(".flex-white-div-term-sheet").toggleClass("add-flex-div-show");
     $(".red-break-term-sheet").toggleClass("add-red-break-show");
-    TermSheet.insert({ "owner": Meteor.userId(), "property": t.data._id, "totalPrice": 0, "downPayment": 0, "closingRepair": 0, "apr": 0, "taxes": 0, "hoa": 0, "insurance": 0, "rentPrice": 0, "squareFootage": 0, "equitySold": 0, "percentCapitalNeeded": 0 });
+    TermSheets.insert({ "owner": Meteor.userId(), "property": t.data._id, "totalPrice": 0, "downPayment": 0, "closingRepair": 0, "apr": 0, "taxes": 0, "hoa": 0, "insurance": 0, "rentPrice": 0, "squareFootage": 0, "equitySold": 0, "percentCapitalNeeded": 0 });
     $(".flex-white-div-term-sheet-button").toggleClass("add-flex-div-hide");
     $(".red-break-term-sheet-button").toggleClass("add-red-break-hide");
     $(".flex-white-div-inputs").toggleClass("add-flex-div-show");
@@ -54,12 +54,12 @@ Template.singleProperty.events({
 
 Template.singleProperty.helpers({
   hasTermSheet: function() {
-    if (TermSheet.findOne({ property: Session.get("currentId") })) {
+    if (TermSheets.findOne({ property: Session.get("currentId") })) {
       return true;
     } else { return false; }
   },
   noTermSheet: function() {
-    if (TermSheet.findOne({ property: Session.get("currentId") })) {
+    if (TermSheets.findOne({ property: Session.get("currentId") })) {
       return false;
     } else { return true; }
   }

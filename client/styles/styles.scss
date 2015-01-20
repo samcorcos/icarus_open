@@ -3,6 +3,14 @@
 $icarus-red: #D1122B;
 $icarus-grey: #797979;
 
+h1,h2,h3,h4,p,.row {
+  margin: 0;
+}
+
+footer {
+  background-color: white;
+}
+
 .side-nav {
   margin-right: 10%;
 }
@@ -800,4 +808,10 @@ a.remove-owner-button {
   &:hover {
     color: $icarus-red;
   }
+}
+
+.shadow-inset {
+  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.5);
+  -moz-box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.5);
+  box-shadow: inset 0px 0px 10px 1px rgba(0,0,0,0.5);
 }
